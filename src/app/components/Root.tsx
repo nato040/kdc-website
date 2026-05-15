@@ -2,14 +2,51 @@ import { useState } from "react";
 import { Outlet, Link, useLocation } from "react-router";
 import logoImg from "../../imports/kenny_donna_collective_logo_transparent-1.png";
 
-const navLinks = [
+const SUBSTACK_URL = "https://kennydonnacollective.substack.com";
+
+type NavLink = {
+  to: string;
+  label: string;
+  external?: boolean;
+};
+
+const navLinks: NavLink[] = [
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/approach", label: "Approach" },
   { to: "/case-studies", label: "Case Studies" },
-  { to: "/journal", label: "Journal" },
+  { to: SUBSTACK_URL, label: "Journal", external: true },
   { to: "/contact", label: "Contact" },
 ];
+
+type NavItemProps = {
+  link: NavLink;
+  className: string;
+  style?: React.CSSProperties;
+  onClick?: () => void;
+};
+
+function NavItem({ link, className, style, onClick }: NavItemProps) {
+  if (link.external) {
+    return (
+      <a
+        href={link.to}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+        style={style}
+        onClick={onClick}
+      >
+        {link.label}
+      </a>
+    );
+  }
+  return (
+    <Link to={link.to} className={className} style={style} onClick={onClick}>
+      {link.label}
+    </Link>
+  );
+}
 
 export default function Root() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,14 +67,12 @@ export default function Root() {
           <div className="hidden lg:grid grid-cols-3 items-center gap-12">
             <div className="flex gap-9 lg:gap-14 justify-start">
               {navLinks.slice(0, 3).map((l) => (
-                <Link
+                <NavItem
                   key={l.to}
-                  to={l.to}
+                  link={l}
                   className="text-xs tracking-widest uppercase transition-all hover:opacity-60"
                   style={{ color: '#5E5954', letterSpacing: '0.15em' }}
-                >
-                  {l.label}
-                </Link>
+                />
               ))}
             </div>
             <Link to="/" className="flex justify-center">
@@ -45,14 +80,12 @@ export default function Root() {
             </Link>
             <div className="flex gap-9 lg:gap-14 justify-end">
               {navLinks.slice(3).map((l) => (
-                <Link
+                <NavItem
                   key={l.to}
-                  to={l.to}
+                  link={l}
                   className="text-xs tracking-widest uppercase transition-all hover:opacity-60"
                   style={{ color: '#5E5954', letterSpacing: '0.15em' }}
-                >
-                  {l.label}
-                </Link>
+                />
               ))}
             </div>
           </div>
@@ -106,20 +139,18 @@ export default function Root() {
         >
           <div className="px-6 sm:px-8 py-8 flex flex-col gap-6">
             {navLinks.map((l) => {
-              const active = location.pathname === l.to;
+              const active = !l.external && location.pathname === l.to;
               return (
-                <Link
+                <NavItem
                   key={l.to}
-                  to={l.to}
+                  link={l}
                   onClick={handleNavClick}
                   className="text-sm tracking-widest uppercase transition-all"
                   style={{
                     color: active ? '#171717' : '#5E5954',
                     letterSpacing: '0.18em',
                   }}
-                >
-                  {l.label}
-                </Link>
+                />
               );
             })}
           </div>
@@ -146,14 +177,12 @@ export default function Root() {
             {/* Center - Navigation */}
             <div className="flex flex-col gap-4">
               {navLinks.map((l) => (
-                <Link
+                <NavItem
                   key={l.to}
-                  to={l.to}
+                  link={l}
                   className="text-xs tracking-widest uppercase transition-all hover:opacity-60"
                   style={{ color: '#5E5954', letterSpacing: '0.15em' }}
-                >
-                  {l.label}
-                </Link>
+                />
               ))}
             </div>
 
@@ -165,7 +194,7 @@ export default function Root() {
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-xs tracking-widest uppercase transition-all hover:opacity-60" style={{ color: '#5E5954', letterSpacing: '0.15em' }}>
                 LinkedIn
               </a>
-              <a href="https://substack.com" target="_blank" rel="noopener noreferrer" className="text-xs tracking-widest uppercase transition-all hover:opacity-60" style={{ color: '#5E5954', letterSpacing: '0.15em' }}>
+              <a href={SUBSTACK_URL} target="_blank" rel="noopener noreferrer" className="text-xs tracking-widest uppercase transition-all hover:opacity-60" style={{ color: '#5E5954', letterSpacing: '0.15em' }}>
                 Substack
               </a>
             </div>

@@ -15,7 +15,7 @@ const navLinks: NavLink[] = [
   { to: "/services", label: "Services" },
   { to: "/approach", label: "Approach" },
   { to: "/case-studies", label: "Case Studies" },
-  { to: SUBSTACK_URL, label: "Journal", external: true },
+  { to: "/journal", label: "Journal" },
   { to: "/contact", label: "Contact" },
 ];
 

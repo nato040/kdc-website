@@ -1,54 +1,51 @@
-type Service = {
-  title: string;
-  description: string;
-  offerings: string[];
+type CapabilityGroup = {
+  category: string;
+  items: string[];
 };
 
-const services: Service[] = [
+const capabilities: CapabilityGroup[] = [
   {
-    title: "Analytics & CRM",
-    description:
-      "Built-in performance intelligence. Our proprietary CRM aggregates campaign, lifecycle, and channel data so every decision is grounded in what's actually moving revenue.",
-    offerings: [
-      "Performance Tracking",
-      "Lifecycle Analytics",
-      "Revenue Attribution",
-      "Cohort & Retention Reporting",
-      "Custom Dashboards",
+    category: "Strategy",
+    items: [
+      "Brand Positioning",
+      "Campaign Strategy",
+      "Promotion Strategy",
+      "Messaging Systems",
+      "Customer Journey",
+      "Brand Storytelling",
     ],
   },
   {
-    title: "Email Marketing",
-    description:
-      "Lifecycle-driven email strategy that connects merchandising calendars to customer journeys, optimized for measurable retention and revenue.",
-    offerings: [
-      "Campaign Strategy",
+    category: "Creative",
+    items: [
+      "Creative Direction",
+      "Content Production",
+      "Social Media",
+      "UGC Direction",
+      "Photoshoots",
+      "Reels/TikTok",
+    ],
+  },
+  {
+    category: "CRM",
+    items: [
+      "Email Marketing",
+      "SMS Marketing",
+      "Klaviyo Management",
       "Lifecycle Flows",
       "Segmentation",
-      "Merchandising Alignment",
-      "Performance Optimization",
+      "Retention Marketing",
     ],
   },
   {
-    title: "SMS Marketing",
-    description:
-      "Short-form messaging that respects the inbox — offer-led, retention-focused, growth-aware.",
-    offerings: [
-      "Campaign Planning",
-      "Offer Strategy",
-      "Retention Messaging",
-      "Subscriber Growth",
-    ],
-  },
-  {
-    title: "Social Content Strategy",
-    description:
-      "Content direction and storytelling frameworks that translate brand vision into platform-native creative.",
-    offerings: [
-      "Content Direction",
-      "Campaign Storytelling",
-      "Trend Translation",
-      "Creative Briefing",
+    category: "Growth",
+    items: [
+      "Paid Social Strategy",
+      "Meta Ads",
+      "SEO Strategy",
+      "Conversion Optimization",
+      "Funnel Analysis",
+      "Reporting & Analytics",
     ],
   },
 ];
@@ -83,42 +80,48 @@ export default function Services() {
           />
         </div>
 
-        {/* Services Grid — POV-style: description + bullet list per service */}
-        <div className="grid lg:grid-cols-2 gap-12 sm:gap-14 lg:gap-x-20 lg:gap-y-24 mt-16 lg:mt-24">
-          {services.map((service) => (
-            <article key={service.title} className="space-y-6 lg:space-y-8">
-              <h3
-                style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 300 }}
-                className="text-2xl sm:text-3xl lg:text-[2.25rem] leading-tight"
-              >
-                {service.title}
-              </h3>
+        {/* Capabilities Overview — 4-column matrix across Strategy, Creative, CRM, Growth */}
+        <div className="mt-16 lg:mt-24">
+          <p
+            className="text-xs tracking-widest uppercase mb-10 lg:mb-16"
+            style={{ color: '#5E5954', letterSpacing: '0.15em' }}
+          >
+            Capabilities Overview
+          </p>
 
-              <p
-                className="text-base sm:text-lg max-w-xl"
-                style={{ color: '#3A342F', fontWeight: 300, lineHeight: '1.8' }}
-              >
-                {service.description}
-              </p>
-
-              <div
-                className="pt-5 lg:pt-6"
-                style={{ borderTop: '1px solid #D6D0CF' }}
-              >
-                <ul className="space-y-3 lg:space-y-4">
-                  {service.offerings.map((offering) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-10">
+            {capabilities.map((group) => (
+              <div key={group.category}>
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-serif)',
+                    color: '#5E5954',
+                    fontWeight: 300,
+                    borderBottom: '1px solid #D6D0CF',
+                  }}
+                  className="text-xl sm:text-2xl pb-4 lg:pb-5 mb-2"
+                >
+                  {group.category}
+                </h3>
+                <ul>
+                  {group.items.map((item, i) => (
                     <li
-                      key={offering}
-                      className="text-xs tracking-widest uppercase"
-                      style={{ color: '#5E5954', letterSpacing: '0.15em' }}
+                      key={item}
+                      className="text-base lg:text-[15px] py-4 lg:py-[14px]"
+                      style={{
+                        color: '#171717',
+                        fontWeight: 300,
+                        borderBottom: i < group.items.length - 1 ? '1px solid #E8E2D6' : 'none',
+                        lineHeight: '1.4',
+                      }}
                     >
-                      {offering}
+                      {item}
                     </li>
                   ))}
                 </ul>
               </div>
-            </article>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

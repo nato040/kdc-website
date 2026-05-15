@@ -80,6 +80,75 @@ export default function Services() {
           />
         </div>
 
+        {/* Platform — proprietary CRM & analytics positioning */}
+        <div className="mb-20 lg:mb-32">
+          <p
+            className="text-xs tracking-widest uppercase mb-8 lg:mb-12"
+            style={{ color: '#5E5954', letterSpacing: '0.15em' }}
+          >
+            Built In-House
+          </p>
+
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
+            {/* Left — headline + description */}
+            <div className="lg:col-span-7">
+              <h2
+                style={{
+                  fontFamily: 'var(--font-serif)',
+                  color: '#171717',
+                  fontWeight: 300,
+                }}
+                className="text-2xl sm:text-3xl lg:text-[2.75rem] leading-tight mb-6 lg:mb-10"
+              >
+                We don't just run your marketing. We built the platform that measures it.
+              </h2>
+              <p
+                className="text-base sm:text-lg max-w-xl"
+                style={{ color: '#3A342F', fontWeight: 300, lineHeight: '1.8' }}
+              >
+                Our proprietary CRM and analytics platform aggregates campaign, lifecycle, and channel data in one place — giving every client real-time visibility into what's actually moving revenue. No third-party black boxes, no integration drama. Insight you own.
+              </p>
+            </div>
+
+            {/* Right — what's built in */}
+            <div className="lg:col-span-5 lg:pt-4">
+              <p
+                className="text-xs tracking-widest uppercase pb-4 lg:pb-5 mb-2"
+                style={{
+                  color: '#5E5954',
+                  letterSpacing: '0.15em',
+                  borderBottom: '1px solid #D6D0CF',
+                }}
+              >
+                What's In The Platform
+              </p>
+              <ul>
+                {[
+                  'Custom CRM & Client Reporting',
+                  'Real-Time Performance Tracking',
+                  'Revenue Attribution',
+                  'Cohort & Lifecycle Analytics',
+                  'Bespoke Client Dashboards',
+                ].map((item, i, arr) => (
+                  <li
+                    key={item}
+                    className="text-base lg:text-[15px] py-4 lg:py-[14px]"
+                    style={{
+                      color: '#171717',
+                      fontWeight: 300,
+                      borderBottom:
+                        i < arr.length - 1 ? '1px solid #E8E2D6' : 'none',
+                      lineHeight: '1.4',
+                    }}
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
         {/* Capabilities Overview — 4-column matrix across Strategy, Creative, CRM, Growth */}
         <div className="mt-16 lg:mt-24">
           <p

@@ -1,3 +1,58 @@
+type Service = {
+  title: string;
+  description: string;
+  offerings: string[];
+};
+
+const services: Service[] = [
+  {
+    title: "Analytics & CRM",
+    description:
+      "Built-in performance intelligence. Our proprietary CRM aggregates campaign, lifecycle, and channel data so every decision is grounded in what's actually moving revenue.",
+    offerings: [
+      "Performance Tracking",
+      "Lifecycle Analytics",
+      "Revenue Attribution",
+      "Cohort & Retention Reporting",
+      "Custom Dashboards",
+    ],
+  },
+  {
+    title: "Email Marketing",
+    description:
+      "Lifecycle-driven email strategy that connects merchandising calendars to customer journeys, optimized for measurable retention and revenue.",
+    offerings: [
+      "Campaign Strategy",
+      "Lifecycle Flows",
+      "Segmentation",
+      "Merchandising Alignment",
+      "Performance Optimization",
+    ],
+  },
+  {
+    title: "SMS Marketing",
+    description:
+      "Short-form messaging that respects the inbox — offer-led, retention-focused, growth-aware.",
+    offerings: [
+      "Campaign Planning",
+      "Offer Strategy",
+      "Retention Messaging",
+      "Subscriber Growth",
+    ],
+  },
+  {
+    title: "Social Content Strategy",
+    description:
+      "Content direction and storytelling frameworks that translate brand vision into platform-native creative.",
+    offerings: [
+      "Content Direction",
+      "Campaign Storytelling",
+      "Trend Translation",
+      "Creative Briefing",
+    ],
+  },
+];
+
 export default function Services() {
   return (
     <section className="py-20 sm:py-28 lg:py-40 px-6 sm:px-8 lg:px-16 mt-20 sm:mt-24 lg:mt-32" style={{ backgroundColor: '#FCFBF8', position: 'relative' }}>
@@ -28,38 +83,42 @@ export default function Services() {
           />
         </div>
 
-        {/* Services Grid */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-12 lg:gap-16 mt-16 lg:mt-24">
-          <div className="space-y-6 lg:space-y-8">
-            <h3 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 300 }} className="text-2xl lg:text-3xl mb-6 lg:mb-10">Email Marketing</h3>
-            <ul className="space-y-4 text-base" style={{ color: '#5E5954', fontWeight: 300 }}>
-              <li>Campaign Strategy</li>
-              <li>Lifecycle Flows</li>
-              <li>Segmentation</li>
-              <li>Merchandising Alignment</li>
-              <li>Performance Optimization</li>
-            </ul>
-          </div>
+        {/* Services Grid — POV-style: description + bullet list per service */}
+        <div className="grid lg:grid-cols-2 gap-12 sm:gap-14 lg:gap-x-20 lg:gap-y-24 mt-16 lg:mt-24">
+          {services.map((service) => (
+            <article key={service.title} className="space-y-6 lg:space-y-8">
+              <h3
+                style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 300 }}
+                className="text-2xl sm:text-3xl lg:text-[2.25rem] leading-tight"
+              >
+                {service.title}
+              </h3>
 
-          <div className="space-y-6 lg:space-y-8">
-            <h3 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 300 }} className="text-2xl lg:text-3xl mb-6 lg:mb-10">SMS Marketing</h3>
-            <ul className="space-y-4 text-base" style={{ color: '#5E5954', fontWeight: 300 }}>
-              <li>Campaign Planning</li>
-              <li>Offer Strategy</li>
-              <li>Retention Messaging</li>
-              <li>Subscriber Growth</li>
-            </ul>
-          </div>
+              <p
+                className="text-base sm:text-lg max-w-xl"
+                style={{ color: '#3A342F', fontWeight: 300, lineHeight: '1.8' }}
+              >
+                {service.description}
+              </p>
 
-          <div className="space-y-6 lg:space-y-8">
-            <h3 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 300 }} className="text-2xl lg:text-3xl mb-6 lg:mb-10">Social Content Strategy</h3>
-            <ul className="space-y-4 text-base" style={{ color: '#5E5954', fontWeight: 300 }}>
-              <li>Content Direction</li>
-              <li>Campaign Storytelling</li>
-              <li>Trend Translation</li>
-              <li>Creative Briefing</li>
-            </ul>
-          </div>
+              <div
+                className="pt-5 lg:pt-6"
+                style={{ borderTop: '1px solid #D6D0CF' }}
+              >
+                <ul className="space-y-3 lg:space-y-4">
+                  {service.offerings.map((offering) => (
+                    <li
+                      key={offering}
+                      className="text-xs tracking-widest uppercase"
+                      style={{ color: '#5E5954', letterSpacing: '0.15em' }}
+                    >
+                      {offering}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

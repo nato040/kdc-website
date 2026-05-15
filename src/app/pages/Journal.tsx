@@ -24,35 +24,35 @@ export default function Journal() {
   ];
 
   return (
-    <section className="py-40 px-8 lg:px-16 mt-32" style={{ backgroundColor: '#FCFBF8', position: 'relative' }}>
+    <section className="py-20 sm:py-28 lg:py-40 px-6 sm:px-8 lg:px-16 mt-20 sm:mt-24 lg:mt-32" style={{ backgroundColor: '#FCFBF8', position: 'relative' }}>
       {/* Subtle texture overlay */}
       <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{
         backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.7\' numOctaves=\'3\' /%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' /%3E%3C/svg%3E")',
         backgroundSize: '250px 250px'
       }} />
       <div className="max-w-7xl mx-auto relative">
-        <p className="text-xs tracking-widest uppercase mb-12" style={{ color: '#5E5954', letterSpacing: '0.15em' }}>Journal</p>
-        <h2 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 300 }} className="text-4xl lg:text-5xl mb-20 max-w-3xl leading-tight">
+        <p className="text-xs tracking-widest uppercase mb-8 lg:mb-12" style={{ color: '#5E5954', letterSpacing: '0.15em' }}>Journal</p>
+        <h2 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 300 }} className="text-3xl sm:text-4xl lg:text-5xl mb-12 lg:mb-20 max-w-3xl leading-tight">
           Thoughts on brand, strategy, and building marketing that feels intentional.
         </h2>
 
         {/* Featured Article */}
-        <div className="mb-32">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="mb-16 lg:mb-32">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
               <img
                 src={articles[0].image}
                 alt={articles[0].title}
-                className="w-full h-[600px] object-cover"
+                className="w-full h-[380px] sm:h-[480px] lg:h-[600px] object-cover"
                 style={{ filter: 'grayscale(8%)' }}
               />
             </div>
-            <div className="space-y-6">
+            <div className="space-y-5 lg:space-y-6">
               <p className="text-xs tracking-widest uppercase" style={{ color: '#5E5954', letterSpacing: '0.15em' }}>{articles[0].category}</p>
-              <h3 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 300 }} className="text-3xl lg:text-4xl leading-tight">
+              <h3 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 300 }} className="text-2xl sm:text-3xl lg:text-4xl leading-tight">
                 {articles[0].title}
               </h3>
-              <p className="text-lg" style={{ color: '#3A342F', fontWeight: 300, lineHeight: '1.8' }}>
+              <p className="text-base sm:text-lg" style={{ color: '#3A342F', fontWeight: 300, lineHeight: '1.8' }}>
                 {articles[0].excerpt}
               </p>
               <p className="text-sm pt-4" style={{ color: '#5E5954', fontWeight: 300 }}>{articles[0].date}</p>
@@ -61,17 +61,17 @@ export default function Journal() {
         </div>
 
         {/* Article Grid */}
-        <div className="grid md:grid-cols-2 gap-20">
+        <div className="grid md:grid-cols-2 gap-10 lg:gap-20">
           {articles.slice(1).map((article, i) => (
-            <div key={i} className="space-y-6">
+            <div key={i} className="space-y-5 lg:space-y-6">
               <img
                 src={article.image}
                 alt={article.title}
-                className="w-full h-[400px] object-cover"
+                className="w-full h-[260px] sm:h-[340px] lg:h-[400px] object-cover"
                 style={{ filter: 'grayscale(8%)' }}
               />
               <p className="text-xs tracking-widest uppercase" style={{ color: '#5E5954', letterSpacing: '0.15em' }}>{article.category}</p>
-              <h3 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 300 }} className="text-2xl lg:text-3xl leading-tight">
+              <h3 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 300 }} className="text-xl sm:text-2xl lg:text-3xl leading-tight">
                 {article.title}
               </h3>
               <p className="text-base" style={{ color: '#3A342F', fontWeight: 300, lineHeight: '1.8' }}>

@@ -28,7 +28,9 @@ export function HeroCarousel() {
   };
 
   return (
-    <div className="relative w-full overflow-hidden bg-black" style={{ height: '95vh' }}>
+    <div
+      className="relative w-full overflow-hidden bg-black min-h-[560px] h-[88vh] lg:h-[95vh]"
+    >
       {/* Hero Background Image */}
       <img
         src={heroImages[currentIndex]}
@@ -48,10 +50,10 @@ export function HeroCarousel() {
         }} />
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows — hidden on mobile, dots are the touch interface */}
       <button
         onClick={prevSlide}
-        className="absolute left-8 top-1/2 -translate-y-1/2 z-20 text-white hover:opacity-80 transition-opacity"
+        className="hidden sm:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 text-white hover:opacity-80 transition-opacity items-center justify-center w-11 h-11"
         style={{ fontSize: '2rem' }}
         aria-label="Previous image"
       >
@@ -59,30 +61,34 @@ export function HeroCarousel() {
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-8 top-1/2 -translate-y-1/2 z-20 text-white hover:opacity-80 transition-opacity"
+        className="hidden sm:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 text-white hover:opacity-80 transition-opacity items-center justify-center w-11 h-11"
         style={{ fontSize: '2rem' }}
         aria-label="Next image"
       >
         ›
       </button>
 
-      {/* Dot Indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+      {/* Dot Indicators — bigger hit area via padding, visual stays small */}
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2 sm:gap-3">
         {heroImages.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className="w-2 h-2 rounded-full transition-all hover:opacity-80"
-            style={{
-              backgroundColor: currentIndex === index ? '#FCFBF8' : 'rgba(252, 251, 248, 0.4)'
-            }}
+            className="p-2 -m-2 rounded-full transition-all hover:opacity-80"
             aria-label={`Go to image ${index + 1}`}
-          />
+          >
+            <span
+              className="block w-2 h-2 rounded-full"
+              style={{
+                backgroundColor: currentIndex === index ? '#FCFBF8' : 'rgba(252, 251, 248, 0.4)'
+              }}
+            />
+          </button>
         ))}
       </div>
 
       {/* Content overlay */}
-      <div className="absolute inset-0 flex items-center px-8 lg:px-16 z-10">
+      <div className="absolute inset-0 flex items-center px-6 sm:px-8 lg:px-16 z-10">
         <div className="text-white max-w-7xl mx-auto w-full lg:pl-12">
           <h1
             style={{
@@ -91,14 +97,14 @@ export function HeroCarousel() {
               letterSpacing: '-0.02em',
               textShadow: '0 2px 30px rgba(0, 0, 0, 0.4)',
               lineHeight: '1.1',
-              fontSize: 'clamp(3rem, 8vw, 5.75rem)'
+              fontSize: 'clamp(2.25rem, 8vw, 5.75rem)'
             }}
-            className="mb-10 animate-fade-in"
+            className="mb-6 sm:mb-10 animate-fade-in"
           >
             Built by Instinct.<br />
             Iconic by design.
           </h1>
-          <p className="text-base lg:text-lg animate-fade-in-delay" style={{ color: 'rgba(255, 255, 255, 0.6)', fontWeight: 300, letterSpacing: '0.05em', marginTop: '2rem' }}>
+          <p className="text-sm sm:text-base lg:text-lg animate-fade-in-delay" style={{ color: 'rgba(255, 255, 255, 0.6)', fontWeight: 300, letterSpacing: '0.05em', marginTop: '1.25rem' }}>
             Marketing, shaped like a brand.
           </p>
         </div>

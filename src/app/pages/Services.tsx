@@ -70,16 +70,6 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Large Editorial Image */}
-        <div className="mb-16 lg:mb-24">
-          <img
-            src="https://images.unsplash.com/photo-1754680837239-cfe387461287?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-            alt="Campaign moodboard"
-            className="w-full h-[360px] sm:h-[520px] lg:h-[800px] object-cover"
-            style={{ filter: 'grayscale(8%)' }}
-          />
-        </div>
-
         {/* Platform — proprietary CRM & analytics positioning */}
         <div className="mb-20 lg:mb-32">
           <p

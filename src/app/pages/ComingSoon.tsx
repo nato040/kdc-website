@@ -4,6 +4,10 @@ const SUBSTACK_URL = "https://kennydonnacollective.substack.com";
 const INSTAGRAM_URL = "https://instagram.com";
 const CONTACT_EMAIL = "hello@kennydonna.com";
 
+// Shared small-label style — used for eyebrow, social links, footer.
+const labelClass = "text-xs uppercase transition-opacity hover:opacity-60";
+const labelStyle = { color: "#5E5954", letterSpacing: "0.18em" } as const;
+
 export default function ComingSoon() {
   return (
     <div
@@ -21,22 +25,19 @@ export default function ComingSoon() {
       />
 
       <div className="relative max-w-xl w-full">
-        {/* Logo */}
+        {/* Logo — the anchor */}
         <img
           src={logoImg}
           alt="Kenny Donna Collective"
-          className="h-20 sm:h-28 lg:h-32 w-auto mx-auto mb-12 lg:mb-16"
+          className="h-28 sm:h-40 lg:h-52 w-auto mx-auto mb-10 lg:mb-14"
         />
 
-        {/* Eyebrow */}
-        <p
-          className="text-xs uppercase mb-8"
-          style={{ color: "#5E5954", letterSpacing: "0.28em" }}
-        >
+        {/* Eyebrow (small label) */}
+        <p className={labelClass} style={{ ...labelStyle, marginBottom: "1.75rem" }}>
           Coming Soon
         </p>
 
-        {/* Headline — brand signature line */}
+        {/* Headline — the single large element */}
         <h1
           style={{
             fontFamily: "var(--font-serif)",
@@ -45,72 +46,52 @@ export default function ComingSoon() {
             lineHeight: 1.12,
             letterSpacing: "-0.01em",
           }}
-          className="text-3xl sm:text-4xl lg:text-[3.25rem] mb-6"
+          className="text-3xl sm:text-4xl lg:text-5xl mb-6"
         >
           Built by Instinct.
           <br />
           Iconic by design.
         </h1>
 
-        {/* Tagline */}
+        {/* Tagline (body) */}
         <p
-          className="text-base sm:text-lg mb-10 lg:mb-12"
+          className="text-base sm:text-lg mb-6"
           style={{ color: "#5E5954", fontWeight: 300, letterSpacing: "0.02em" }}
         >
           Marketing, shaped like a brand.
         </p>
 
-        {/* Subline */}
+        {/* Subline + inline contact (body, same size as tagline) */}
         <p
-          className="text-base sm:text-lg max-w-md mx-auto mb-12 lg:mb-14"
+          className="text-base sm:text-lg max-w-md mx-auto"
           style={{ color: "#3A342F", fontWeight: 300, lineHeight: 1.8 }}
         >
-          A new home for our work is on its way. For partnership inquiries, reach us directly.
+          A new home for our work is on its way. For inquiries, reach us at{" "}
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            className="transition-opacity hover:opacity-60 break-all sm:break-normal"
+            style={{ color: "#171717", borderBottom: "1px solid #171717" }}
+          >
+            {CONTACT_EMAIL}
+          </a>
+          .
         </p>
 
-        {/* Contact email */}
-        <a
-          href={`mailto:${CONTACT_EMAIL}`}
-          style={{
-            fontFamily: "var(--font-serif)",
-            color: "#171717",
-            fontWeight: 300,
-          }}
-          className="text-xl sm:text-2xl lg:text-[1.75rem] inline-block transition-opacity hover:opacity-60 break-all sm:break-normal"
-        >
-          {CONTACT_EMAIL}
-        </a>
-
-        {/* Social links */}
+        {/* Social links (small labels, same size as eyebrow) */}
         <div
-          className="flex flex-wrap justify-center gap-6 sm:gap-10 mt-14 lg:mt-16 pt-10"
+          className="flex flex-wrap justify-center gap-8 sm:gap-10 mt-12 lg:mt-14 pt-10"
           style={{ borderTop: "1px solid #D6D0CF" }}
         >
-          <a
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs tracking-widest uppercase transition-opacity hover:opacity-60"
-            style={{ color: "#5E5954", letterSpacing: "0.15em" }}
-          >
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className={labelClass} style={labelStyle}>
             Instagram
           </a>
-          <a
-            href={SUBSTACK_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs tracking-widest uppercase transition-opacity hover:opacity-60"
-            style={{ color: "#5E5954", letterSpacing: "0.15em" }}
-          >
+          <a href={SUBSTACK_URL} target="_blank" rel="noopener noreferrer" className={labelClass} style={labelStyle}>
             Substack
           </a>
         </div>
 
-        {/* Footer mark */}
-        <p
-          className="text-xs tracking-widest uppercase mt-16"
-          style={{ color: "#5E5954", letterSpacing: "0.15em" }}
-        >
+        {/* Footer mark (small label, same size) */}
+        <p className={labelClass} style={{ ...labelStyle, marginTop: "3rem" }}>
           © 2026 Kenny Donna Collective
         </p>
       </div>

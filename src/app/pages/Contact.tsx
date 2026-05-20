@@ -19,11 +19,11 @@ export default function Contact() {
           </p>
 
           <a
-            href="mailto:hello@kennydonna.com"
+            href="mailto:hello@kennydonnacollective.com"
             style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 300 }}
             className="text-xl sm:text-2xl lg:text-3xl inline-block hover:opacity-60 transition-opacity break-all sm:break-normal"
           >
-            hello@kennydonna.com
+            hello@kennydonnacollective.com
           </a>
         </div>
 
@@ -31,7 +31,7 @@ export default function Contact() {
           <p className="text-xs tracking-widest uppercase mb-6 lg:mb-8" style={{ color: '#5E5954', letterSpacing: '0.15em' }}>Connect</p>
           <div className="flex flex-wrap justify-center gap-6 sm:gap-10 lg:gap-12">
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/kennydonnacollective"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm tracking-widest uppercase transition-all hover:opacity-60"

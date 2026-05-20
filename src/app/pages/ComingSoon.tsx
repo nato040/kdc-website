@@ -2,7 +2,7 @@ import logoImg from "../../imports/kenny_donna_collective_logo_transparent-1.png
 
 const SUBSTACK_URL = "https://kennydonnacollective.substack.com";
 const INSTAGRAM_URL = "https://instagram.com/kennydonnacollective";
-const CONTACT_EMAIL = "hello@kennydonna.com";
+const CONTACT_EMAIL = "hello@kennydonnacollective.com";
 
 // Shared small-label style — used for "Coming Soon", social links, footer.
 const labelClass = "text-xs uppercase transition-opacity hover:opacity-60";

@@ -188,7 +188,7 @@ export default function Root() {
 
             {/* Right - Social Links */}
             <div className="flex flex-col gap-4 lg:items-end">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-xs tracking-widest uppercase transition-all hover:opacity-60" style={{ color: '#5E5954', letterSpacing: '0.15em' }}>
+              <a href="https://instagram.com/kennydonnacollective" target="_blank" rel="noopener noreferrer" className="text-xs tracking-widest uppercase transition-all hover:opacity-60" style={{ color: '#5E5954', letterSpacing: '0.15em' }}>
                 Instagram
               </a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-xs tracking-widest uppercase transition-all hover:opacity-60" style={{ color: '#5E5954', letterSpacing: '0.15em' }}>

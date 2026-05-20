@@ -11,7 +11,7 @@ const labelStyle = { color: "#5E5954", letterSpacing: "0.18em" } as const;
 export default function ComingSoon() {
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center px-6 py-16 text-center"
+      className="min-h-screen flex flex-col justify-center px-6 sm:px-12 lg:px-24 py-16"
       style={{ backgroundColor: "#FCFBF8", position: "relative" }}
     >
       {/* Subtle texture overlay */}
@@ -24,12 +24,12 @@ export default function ComingSoon() {
         }}
       />
 
-      <div className="relative max-w-xl w-full">
+      <div className="relative max-w-2xl w-full text-left">
         {/* Logo — the anchor */}
         <img
           src={logoImg}
           alt="Kenny Donna Collective"
-          className="h-28 sm:h-40 lg:h-52 w-auto mx-auto mb-10 lg:mb-14"
+          className="h-28 sm:h-40 lg:h-52 w-auto mb-10 lg:mb-14"
         />
 
         {/* Eyebrow (small label) */}
@@ -63,7 +63,7 @@ export default function ComingSoon() {
 
         {/* Subline + inline contact (body, same size as tagline) */}
         <p
-          className="text-base sm:text-lg max-w-md mx-auto"
+          className="text-base sm:text-lg max-w-md"
           style={{ color: "#3A342F", fontWeight: 300, lineHeight: 1.8 }}
         >
           A new home for our work is on its way. For inquiries, reach us at{" "}
@@ -79,7 +79,7 @@ export default function ComingSoon() {
 
         {/* Social links (small labels, same size as eyebrow) */}
         <div
-          className="flex flex-wrap justify-center gap-8 sm:gap-10 mt-12 lg:mt-14 pt-10"
+          className="flex flex-wrap gap-8 sm:gap-10 mt-12 lg:mt-14 pt-10"
           style={{ borderTop: "1px solid #D6D0CF" }}
         >
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className={labelClass} style={labelStyle}>

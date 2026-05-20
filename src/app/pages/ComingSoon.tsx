@@ -1,17 +1,17 @@
 import logoImg from "../../imports/kenny_donna_collective_logo_transparent-1.png";
 
 const SUBSTACK_URL = "https://kennydonnacollective.substack.com";
-const INSTAGRAM_URL = "https://instagram.com";
+const INSTAGRAM_URL = "https://instagram.com/kennydonnacollective";
 const CONTACT_EMAIL = "hello@kennydonna.com";
 
-// Shared small-label style — used for eyebrow, social links, footer.
+// Shared small-label style — used for "Coming Soon", social links, footer.
 const labelClass = "text-xs uppercase transition-opacity hover:opacity-60";
 const labelStyle = { color: "#5E5954", letterSpacing: "0.18em" } as const;
 
 export default function ComingSoon() {
   return (
     <div
-      className="min-h-screen flex flex-col justify-center px-6 sm:px-12 lg:px-24 py-16"
+      className="min-h-screen flex flex-col items-center justify-center px-6 py-16 text-center"
       style={{ backgroundColor: "#FCFBF8", position: "relative" }}
     >
       {/* Subtle texture overlay */}
@@ -24,20 +24,15 @@ export default function ComingSoon() {
         }}
       />
 
-      <div className="relative max-w-2xl w-full text-left">
+      <div className="relative max-w-xl w-full">
         {/* Logo — the anchor */}
         <img
           src={logoImg}
           alt="Kenny Donna Collective"
-          className="h-28 sm:h-40 lg:h-52 w-auto mb-10 lg:mb-14"
+          className="h-28 sm:h-40 lg:h-52 w-auto mx-auto mb-10 lg:mb-14"
         />
 
-        {/* Eyebrow (small label) */}
-        <p className={labelClass} style={{ ...labelStyle, marginBottom: "1.75rem" }}>
-          Coming Soon
-        </p>
-
-        {/* Headline — the single large element */}
+        {/* Headline — the brand line from the Figma hero */}
         <h1
           style={{
             fontFamily: "var(--font-serif)",
@@ -46,24 +41,29 @@ export default function ComingSoon() {
             lineHeight: 1.12,
             letterSpacing: "-0.01em",
           }}
-          className="text-3xl sm:text-4xl lg:text-5xl mb-6"
+          className="text-3xl sm:text-4xl lg:text-5xl mb-5"
         >
-          Built by Instinct.
+          Marketing, shaped
           <br />
-          Iconic by design.
+          like a brand.
         </h1>
 
-        {/* Tagline (body) */}
+        {/* Subline — what KDC does */}
         <p
-          className="text-base sm:text-lg mb-6"
-          style={{ color: "#5E5954", fontWeight: 300, letterSpacing: "0.02em" }}
+          className="text-base sm:text-lg max-w-md mx-auto mb-8"
+          style={{ color: "#5E5954", fontWeight: 300, letterSpacing: "0.01em" }}
         >
-          Marketing, shaped like a brand.
+          Editorial commerce systems for modern consumer brands.
         </p>
 
-        {/* Subline + inline contact (body, same size as tagline) */}
+        {/* Coming Soon — small label, sits under the text block */}
+        <p className={labelClass} style={{ ...labelStyle, marginBottom: "2.5rem" }}>
+          Coming Soon
+        </p>
+
+        {/* Info + inline contact */}
         <p
-          className="text-base sm:text-lg max-w-md"
+          className="text-base sm:text-lg max-w-md mx-auto"
           style={{ color: "#3A342F", fontWeight: 300, lineHeight: 1.8 }}
         >
           A new home for our work is on its way. For inquiries, reach us at{" "}
@@ -77,9 +77,9 @@ export default function ComingSoon() {
           .
         </p>
 
-        {/* Social links (small labels, same size as eyebrow) */}
+        {/* Social links */}
         <div
-          className="flex flex-wrap gap-8 sm:gap-10 mt-12 lg:mt-14 pt-10"
+          className="flex flex-wrap justify-center gap-8 sm:gap-10 mt-12 lg:mt-14 pt-10"
           style={{ borderTop: "1px solid #D6D0CF" }}
         >
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className={labelClass} style={labelStyle}>
@@ -90,7 +90,7 @@ export default function ComingSoon() {
           </a>
         </div>
 
-        {/* Footer mark (small label, same size) */}
+        {/* Footer mark */}
         <p className={labelClass} style={{ ...labelStyle, marginTop: "3rem" }}>
           © 2026 Kenny Donna Collective
         </p>

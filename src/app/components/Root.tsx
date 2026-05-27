@@ -6,10 +6,11 @@ import { ScrollToHash } from "./ScrollToHash";
 const SUBSTACK_URL = "https://kennydonnacollective.substack.com";
 
 // The KDC index — surfaces the "THE [X]" taxonomy as chapter titles in the footer.
-// Order reads as a manifesto: spark -> diagnosis -> identity -> method -> proof.
+// Order reads as a manifesto: spark -> diagnosis -> model -> identity -> method -> proof.
 const indexLinks: Array<{ to: string; label: string }> = [
   { to: "/about#why", label: "The Why" },
   { to: "/#problem", label: "The Problem" },
+  { to: "/#surfaces", label: "The Four Surfaces" },
   { to: "/about#collective", label: "The Collective" },
   { to: "/#partnership", label: "The Partnership" },
   { to: "/case-studies#work", label: "The Work" },

@@ -100,21 +100,21 @@ export default function Home() {
 
       <SectionDivider />
 
-      {/* WHAT WE OWN — dark */}
-      <section className="px-6 lg:px-16" style={{ ...sectionStyle, backgroundColor: "#171717" }}>
+      {/* THE FOUR SURFACES — dark */}
+      <section id="surfaces" className="px-6 lg:px-16 scroll-mt-24" style={{ ...sectionStyle, backgroundColor: "#171717" }}>
         <div className="max-w-[1280px] mx-auto relative">
           <p className="text-[11px] tracking-widest uppercase mb-6" style={{ ...eyebrowStyle, color: "#D6D0CF" }}>
-            WHAT WE OWN
+            THE FOUR SURFACES
           </p>
           <h2
-            className="text-[28px] md:text-[40px] lg:text-[56px] mb-8"
+            className="text-[28px] md:text-[40px] lg:text-[56px] mb-10"
             style={{ ...headingStyle, color: "#FAFAFA" }}
           >
-            We don&rsquo;t hand over a list of deliverables. We take ownership.
+            Brand. Content. Retention. Community.
           </h2>
           <div className="text-[16px] lg:text-[18px]" style={{ ...bodyStyle, color: "#D6D0CF" }}>
             <p>
-              Of campaigns, content, retention, and the brand running through every channel.
+              The four surfaces of a modern brand. We don&rsquo;t hand over a list of deliverables &mdash; we take ownership of how the surfaces connect, and how the work that lives on them compounds.
             </p>
             <p style={{ color: "#FAFAFA", fontWeight: 400, paddingTop: "16px" }}>
               You stay the brand. We own how it performs.
@@ -140,7 +140,7 @@ export default function Home() {
               KDC works as an extension of your team, inside the brand, accountable to the numbers, present for the long build, not a project with an end date.
             </p>
             <p style={{ color: "#171717", paddingTop: "16px" }}>
-              We take a limited number of partners. The ones we say yes to get all of it.
+              Twelve partners at a time. By invitation. The ones we say yes to get all of it.
             </p>
           </div>
         </div>

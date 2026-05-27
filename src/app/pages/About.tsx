@@ -1,5 +1,5 @@
 import { SectionDivider } from "../components/SectionDivider";
-import aboutImg from "../../imports/Screenshot_2026-04-21_at_5.26.10 PM.png";
+import aboutImg from "../../imports/i-vgrVGvj-X2.jpg";
 
 /**
  * About — Cody's story. Editorial, ownership-led, no overlap with the homepage or Signals.

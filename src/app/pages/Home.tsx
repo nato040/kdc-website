@@ -1,7 +1,7 @@
 import { HeroCarousel } from "../components/HeroCarousel";
 import { SectionDivider } from "../components/SectionDivider";
 import { Link } from "react-router";
-import whoWeWorkWithImg from "../../imports/i-vgrVGvj-X2.jpg";
+import whoWeWorkWithImg from "../../imports/_DUG9698.jpg";
 
 /**
  * Home — six tight beats, no echo:
@@ -70,8 +70,8 @@ export default function Home() {
             <div>
               <img
                 src={whoWeWorkWithImg}
-                alt="Cody in Paris"
-                style={{ width: "100%", height: "680px", objectFit: "cover", objectPosition: "center center" }}
+                alt="On the rack"
+                style={{ width: "100%", height: "600px", objectFit: "cover", objectPosition: "center 85%" }}
               />
             </div>
           </div>

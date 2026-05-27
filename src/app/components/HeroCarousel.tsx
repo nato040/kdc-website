@@ -9,7 +9,7 @@ import heroPoster from "../../imports/kenny-donna-hero-poster.jpg";
 export function HeroCarousel() {
   return (
     <div className="relative w-full overflow-hidden bg-black" style={{ minHeight: "90vh", height: "90vh" }}>
-      {/* Hero background video */}
+      {/* Hero background video — objectPosition biased to top so heads/faces aren't cropped */}
       <video
         src={heroVideo}
         poster={heroPoster}
@@ -20,7 +20,7 @@ export function HeroCarousel() {
         preload="auto"
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ objectPosition: "center center" }}
+        style={{ objectPosition: "center 25%" }}
       />
 
       {/* Soft charcoal overlay for legibility */}

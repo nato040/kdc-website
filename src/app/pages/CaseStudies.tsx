@@ -52,13 +52,13 @@ export default function CaseStudies() {
               </p>
             </div>
 
-            {/* Block 3 */}
+            {/* Block 3 — our own retention platform */}
             <div className="space-y-6">
               <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
-                Retention as a strategic engine.
+                Our own retention platform.
               </h3>
               <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                Klaviyo lifecycle programs and SMS strategy, built to anchor recurring revenue.
+                Built in-house. Klaviyo data, campaign and flow performance, monthly KPIs, send calendars, and creative briefs &mdash; one system per partner, every metric in real time. No third-party black box.
               </p>
             </div>
 

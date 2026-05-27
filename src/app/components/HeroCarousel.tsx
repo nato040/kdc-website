@@ -8,7 +8,7 @@ import heroPoster from "../../imports/kenny-donna-hero-poster.jpg";
  */
 export function HeroCarousel() {
   return (
-    <div className="relative w-full overflow-hidden bg-black" style={{ height: "75vh" }}>
+    <div className="relative w-full overflow-hidden bg-black" style={{ minHeight: "90vh", height: "90vh" }}>
       {/* Hero background video */}
       <video
         src={heroVideo}

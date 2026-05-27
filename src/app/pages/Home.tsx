@@ -100,23 +100,24 @@ export default function Home() {
 
       <SectionDivider />
 
-      {/* THE FOUR SURFACES — dark */}
-      <section id="surfaces" className="px-6 lg:px-16 scroll-mt-24" style={{ ...sectionStyle, backgroundColor: "#171717" }}>
+      {/* THE FOUR SURFACES — same cream as the rest of the scroll */}
+      <section id="surfaces" className="px-6 lg:px-16 scroll-mt-24" style={sectionStyle}>
+        {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
-          <p className="text-[11px] tracking-widest uppercase mb-6" style={{ ...eyebrowStyle, color: "#D6D0CF" }}>
+          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
             THE FOUR SURFACES
           </p>
           <h2
             className="text-[28px] md:text-[40px] lg:text-[56px] mb-10"
-            style={{ ...headingStyle, color: "#FAFAFA" }}
+            style={headingStyle}
           >
             Brand. Content. Retention. Community.
           </h2>
-          <div className="text-[16px] lg:text-[18px]" style={{ ...bodyStyle, color: "#D6D0CF" }}>
+          <div className="text-[16px] lg:text-[18px]" style={bodyStyle}>
             <p>
               The four surfaces of a modern brand. We don&rsquo;t hand over a list of deliverables &mdash; we take ownership of how the surfaces connect, and how the work that lives on them compounds.
             </p>
-            <p style={{ color: "#FAFAFA", fontWeight: 400, paddingTop: "16px" }}>
+            <p style={{ color: "#171717", fontWeight: 400, paddingTop: "16px" }}>
               You stay the brand. We own how it performs.
             </p>
           </div>
@@ -148,8 +149,9 @@ export default function Home() {
 
       <SectionDivider />
 
-      {/* WHERE WE SIT — editorial pause, one cyan-marked line */}
-      <section className="px-6 lg:px-16" style={{ ...sectionStyle, backgroundColor: "#F3F0EA" }}>
+      {/* WHERE WE SIT — editorial pause, on the same cream as the rest of the page */}
+      <section className="px-6 lg:px-16" style={sectionStyle}>
+        {noiseOverlay}
         <div className="max-w-[960px] mx-auto relative text-center">
           <h2
             className="text-[32px] md:text-[44px] lg:text-[56px]"

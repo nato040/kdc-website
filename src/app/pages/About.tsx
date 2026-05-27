@@ -88,6 +88,51 @@ export default function About() {
 
       <SectionDivider />
 
+      {/* THE COLLECTIVE — now ahead of the founder bio, per Phase */}
+      <section
+        id="collective"
+        className="px-6 lg:px-16 relative scroll-mt-24"
+        style={{ paddingTop: "120px", paddingBottom: "120px" }}
+      >
+        <div className="max-w-[1280px] mx-auto">
+          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
+            THE COLLECTIVE
+          </p>
+
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+            {/* Left — text */}
+            <div>
+              <h2
+                className="text-[28px] md:text-[40px] lg:text-[52px] mb-10"
+                style={headingStyle}
+              >
+                KDC is not an agency. It&rsquo;s a small, focused team, built to work as one with founders and the people already inside the business.
+              </h2>
+              <div className="space-y-5 text-[16px] lg:text-[18px]" style={bodyStyle}>
+                <p>
+                  Strategy stays joined to execution. Outside perspective stays joined to inside context. Nothing gets handed off, nothing gets lost in translation.
+                </p>
+                <p>
+                  That&rsquo;s what keeps the work sharp, the brand intact, and the partnership long.
+                </p>
+              </div>
+            </div>
+
+            {/* Right — image */}
+            <div>
+              <img
+                src={collectiveImg}
+                alt="The collective at work"
+                className="w-full h-[500px] lg:h-[600px] object-cover"
+                style={{ filter: "grayscale(8%) contrast(0.95)" }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
       {/* FOUNDER */}
       <section
         className="px-6 lg:px-16 relative"
@@ -168,51 +213,6 @@ export default function About() {
                   &rarr; Connect on LinkedIn
                 </a>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* THE COLLECTIVE — lives here only */}
-      <section
-        id="collective"
-        className="px-6 lg:px-16 relative scroll-mt-24"
-        style={{ paddingTop: "120px", paddingBottom: "120px" }}
-      >
-        <div className="max-w-[1280px] mx-auto">
-          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
-            THE COLLECTIVE
-          </p>
-
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            {/* Left — text */}
-            <div>
-              <h2
-                className="text-[28px] md:text-[40px] lg:text-[52px] mb-10"
-                style={headingStyle}
-              >
-                KDC is not an agency. It&rsquo;s a small, focused team, built to work as one with founders and the people already inside the business.
-              </h2>
-              <div className="space-y-5 text-[16px] lg:text-[18px]" style={bodyStyle}>
-                <p>
-                  Strategy stays joined to execution. Outside perspective stays joined to inside context. Nothing gets handed off, nothing gets lost in translation.
-                </p>
-                <p>
-                  That&rsquo;s what keeps the work sharp, the brand intact, and the partnership long.
-                </p>
-              </div>
-            </div>
-
-            {/* Right — image */}
-            <div>
-              <img
-                src={collectiveImg}
-                alt="The collective at work"
-                className="w-full h-[500px] lg:h-[600px] object-cover"
-                style={{ filter: "grayscale(8%) contrast(0.95)" }}
-              />
             </div>
           </div>
         </div>

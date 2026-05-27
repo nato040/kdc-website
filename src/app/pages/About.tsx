@@ -61,7 +61,8 @@ export default function About() {
 
       {/* THE WHY */}
       <section
-        className="px-6 lg:px-16 relative"
+        id="why"
+        className="px-6 lg:px-16 relative scroll-mt-24"
         style={{ paddingTop: "120px", paddingBottom: "120px" }}
       >
         <div className="max-w-[1280px] mx-auto">
@@ -176,7 +177,8 @@ export default function About() {
 
       {/* THE COLLECTIVE — lives here only */}
       <section
-        className="px-6 lg:px-16 relative"
+        id="collective"
+        className="px-6 lg:px-16 relative scroll-mt-24"
         style={{ paddingTop: "120px", paddingBottom: "120px" }}
       >
         <div className="max-w-[1280px] mx-auto">

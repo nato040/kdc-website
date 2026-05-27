@@ -81,7 +81,7 @@ export default function Home() {
       <SectionDivider />
 
       {/* THE PROBLEM */}
-      <section className="px-6 lg:px-16" style={sectionStyle}>
+      <section id="problem" className="px-6 lg:px-16 scroll-mt-24" style={sectionStyle}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
           <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
@@ -125,8 +125,8 @@ export default function Home() {
 
       <SectionDivider />
 
-      {/* HOW WE PARTNER */}
-      <section className="px-6 lg:px-16" style={sectionStyle}>
+      {/* THE PARTNERSHIP */}
+      <section id="partnership" className="px-6 lg:px-16 scroll-mt-24" style={sectionStyle}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
           <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>

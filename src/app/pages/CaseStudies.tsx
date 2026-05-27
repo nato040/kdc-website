@@ -25,7 +25,7 @@ export default function CaseStudies() {
       <SectionDivider />
 
       {/* SECTION 2 — THE WORK */}
-      <section className="px-6 lg:px-16 relative" style={{ paddingTop: '120px', paddingBottom: '120px' }}>
+      <section id="work" className="px-6 lg:px-16 relative scroll-mt-24" style={{ paddingTop: '120px', paddingBottom: '120px' }}>
         <div className="max-w-[1280px] mx-auto">
           <p className="text-[11px] tracking-widest uppercase mb-6" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.20em' }}>
             THE WORK

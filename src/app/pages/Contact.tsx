@@ -66,7 +66,7 @@ export default function Contact() {
         <div className="max-w-[1280px] mx-auto">
           <div className="space-y-10">
             <p className="text-[16px] lg:text-[18px]" style={bodyStyle}>
-              We say yes when the brand and the partnership match. Most engagements start with a short conversation. Tell us about the brand, where it is now, and what isn&rsquo;t connecting.
+              Most engagements start with a short conversation. Tell us about the brand, where it is now, and what isn&rsquo;t connecting.
             </p>
 
             <a
@@ -76,6 +76,10 @@ export default function Contact() {
             >
               hello@kennydonnacollective.com
             </a>
+
+            <p className="text-[14px] lg:text-[15px] pt-4" style={{ color: "#5E5954", fontStyle: "italic", maxWidth: "640px" }}>
+              We say yes when the brand and the partnership match.
+            </p>
           </div>
         </div>
       </section>

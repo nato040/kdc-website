@@ -1,4 +1,5 @@
 import { SectionDivider } from "../components/SectionDivider";
+import heroImg from "../../imports/_DUG9734.jpg";
 import aboutImg from "../../imports/i-vgrVGvj-X2.jpg";
 import collectiveImg from "../../imports/_DUG9728.jpg";
 
@@ -39,21 +40,28 @@ export default function About() {
         }}
       />
 
-      {/* HERO */}
+      {/* HERO — headline stacked over a chapter-opening image */}
       <section
         className="px-6 lg:px-16 mt-32 relative"
-        style={{ paddingTop: "96px", paddingBottom: "120px" }}
+        style={{ paddingTop: "96px", paddingBottom: "80px" }}
       >
         <div className="max-w-[1280px] mx-auto">
           <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
             ABOUT
           </p>
           <h1
-            className="text-[40px] md:text-[56px] lg:text-[72px]"
+            className="text-[40px] md:text-[56px] lg:text-[72px] max-w-[1100px] mb-16 lg:mb-20"
             style={{ ...headingStyle, lineHeight: "1.1" }}
           >
             KDC exists because taste and performance were never meant to be a trade-off.
           </h1>
+
+          <img
+            src={heroImg}
+            alt="Curating reference imagery on iPad"
+            className="w-full h-[400px] md:h-[500px] lg:h-[620px] object-cover"
+            style={{ filter: "grayscale(8%) contrast(0.95)" }}
+          />
         </div>
       </section>
 
@@ -63,14 +71,14 @@ export default function About() {
       <section
         id="why"
         className="px-6 lg:px-16 relative scroll-mt-24"
-        style={{ paddingTop: "120px", paddingBottom: "120px" }}
+        style={{ paddingTop: "100px", paddingBottom: "100px" }}
       >
         <div className="max-w-[1280px] mx-auto">
           <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
             THE WHY
           </p>
           <h2
-            className="text-[28px] md:text-[40px] lg:text-[44px] mb-10"
+            className="text-[28px] md:text-[40px] lg:text-[52px] mb-8"
             style={headingStyle}
           >
             Kenny Donna Collective started from a frustration Cody knew from both sides of the table.
@@ -92,18 +100,18 @@ export default function About() {
       <section
         id="collective"
         className="px-6 lg:px-16 relative scroll-mt-24"
-        style={{ paddingTop: "120px", paddingBottom: "120px" }}
+        style={{ paddingTop: "100px", paddingBottom: "100px" }}
       >
         <div className="max-w-[1280px] mx-auto">
           <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
             THE COLLECTIVE
           </p>
 
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left — text */}
             <div>
               <h2
-                className="text-[28px] md:text-[40px] lg:text-[52px] mb-10"
+                className="text-[28px] md:text-[40px] lg:text-[52px] mb-8"
                 style={headingStyle}
               >
                 KDC is not an agency. It&rsquo;s a small, focused team, built to work as one with founders and the people already inside the business.
@@ -136,7 +144,7 @@ export default function About() {
       {/* FOUNDER */}
       <section
         className="px-6 lg:px-16 relative"
-        style={{ paddingTop: "120px", paddingBottom: "120px" }}
+        style={{ paddingTop: "100px", paddingBottom: "100px" }}
       >
         <div className="max-w-[1280px] mx-auto">
           <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
@@ -155,10 +163,10 @@ export default function About() {
             </div>
 
             {/* Right — Bio */}
-            <div className="space-y-10 lg:space-y-12">
-              <div className="space-y-4">
+            <div>
+              <div className="mb-8">
                 <h2
-                  className="text-[28px] md:text-[40px] lg:text-[52px]"
+                  className="text-[28px] md:text-[40px] lg:text-[52px] mb-3"
                   style={headingStyle}
                 >
                   Cody Lynn Abt
@@ -171,7 +179,7 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="space-y-5 text-[16px] lg:text-[18px]" style={bodyStyle}>
+              <div className="space-y-5 text-[16px] lg:text-[18px] mb-10" style={bodyStyle}>
                 <p style={{ color: "#171717", fontWeight: 400 }}>
                   Cody&rsquo;s eye was trained on the floor, not in a deck.
                 </p>
@@ -190,9 +198,9 @@ export default function About() {
               </div>
 
               {/* Pull Quote */}
-              <div className="pt-8 space-y-8">
+              <div className="pt-6 border-t" style={{ borderColor: "#D6D0CF" }}>
                 <p
-                  className="text-[22px] lg:text-[26px]"
+                  className="text-[22px] lg:text-[26px] mb-8"
                   style={{
                     fontFamily: "var(--font-serif)",
                     color: "#3A342F",
@@ -218,22 +226,6 @@ export default function About() {
         </div>
       </section>
 
-      <SectionDivider />
-
-      {/* CLOSING */}
-      <section
-        className="px-6 lg:px-16 relative"
-        style={{ paddingTop: "120px", paddingBottom: "160px", backgroundColor: "#F3F0EA" }}
-      >
-        <div className="max-w-[1280px] mx-auto">
-          <h2
-            className="text-[28px] md:text-[40px] lg:text-[52px]"
-            style={headingStyle}
-          >
-            We take a limited number of partners. The brands we say yes to get all of it.
-          </h2>
-        </div>
-      </section>
     </div>
   );
 }

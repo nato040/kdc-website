@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import { SectionDivider } from "../components/SectionDivider";
 
 export default function CaseStudies() {
@@ -108,26 +107,6 @@ export default function CaseStudies() {
         </div>
       </section>
 
-      <SectionDivider />
-
-      {/* SECTION 5 — CLOSING */}
-      <section className="px-6 lg:px-16 relative" style={{ paddingTop: '120px', paddingBottom: '120px' }}>
-        <div className="max-w-[1280px] mx-auto">
-          <p className="text-[11px] tracking-widest uppercase mb-6" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.20em' }}>
-            WHAT'S POSSIBLE
-          </p>
-          <h2 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 400, lineHeight: '1.15' }} className="text-[28px] md:text-[40px] lg:text-[56px] mb-8 max-w-4xl">
-            Every brand we work with is different. The system underneath the work is the same: connected, customer-aware, and built to perform.
-          </h2>
-          <Link
-            to="/contact"
-            className="text-[15px] transition-opacity duration-700 hover:opacity-60"
-            style={{ color: '#171717', fontWeight: 400, letterSpacing: '0.10em' }}
-          >
-            → Begin a conversation
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }

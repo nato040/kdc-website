@@ -122,8 +122,8 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Four linkable chapters */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-16 lg:mb-20">
+          {/* Four chapters — no per-block links, one Substack CTA below */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-12 lg:mb-16">
             {[
               {
                 title: "Brand",
@@ -142,12 +142,9 @@ export default function Home() {
                 body: "The signals the audience already sends. How the brand listens, and responds.",
               },
             ].map((s) => (
-              <a
+              <div
                 key={s.title}
-                href="https://kennydonnacollective.substack.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block border-t pt-6 transition-opacity hover:opacity-70"
+                className="border-t pt-6"
                 style={{ borderColor: "#D6D0CF" }}
               >
                 <h3
@@ -156,18 +153,22 @@ export default function Home() {
                 >
                   {s.title}
                 </h3>
-                <p className="text-[14px] lg:text-[15px] mb-6" style={{ color: "#5E5954", fontWeight: 400, lineHeight: "1.55" }}>
+                <p className="text-[14px] lg:text-[15px]" style={{ color: "#5E5954", fontWeight: 400, lineHeight: "1.55" }}>
                   {s.body}
                 </p>
-                <span
-                  className="text-[11px] tracking-widest uppercase"
-                  style={{ color: "#171717", fontWeight: 500, letterSpacing: "0.15em" }}
-                >
-                  &rarr; Read on Substack
-                </span>
-              </a>
+              </div>
             ))}
           </div>
+
+          <a
+            href="https://kennydonnacollective.substack.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[13px] tracking-widest uppercase transition-opacity hover:opacity-60 inline-block mb-16 lg:mb-20"
+            style={{ color: "#171717", fontWeight: 500, letterSpacing: "0.18em" }}
+          >
+            &rarr; Read more on Substack
+          </a>
 
           <p
             className="text-[20px] lg:text-[24px]"

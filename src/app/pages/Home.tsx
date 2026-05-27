@@ -100,7 +100,7 @@ export default function Home() {
 
       <SectionDivider />
 
-      {/* THE FOUR SURFACES — same cream as the rest of the scroll */}
+      {/* THE FOUR SURFACES — four linkable chapters; each opens KDC's Substack */}
       <section id="surfaces" className="px-6 lg:px-16 scroll-mt-24" style={sectionStyle}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
@@ -113,26 +113,73 @@ export default function Home() {
           >
             Brand. Content. Retention. Community.
           </h2>
-          <div className="text-[16px] lg:text-[18px]" style={bodyStyle}>
+          <div className="text-[16px] lg:text-[18px] mb-16 lg:mb-20" style={bodyStyle}>
             <p>
               The four surfaces of a modern brand. We don&rsquo;t hand over a list of deliverables &mdash; we take ownership of how the surfaces connect, and how the work that lives on them compounds.
             </p>
             <p style={{ color: "#171717", fontWeight: 400, paddingTop: "16px" }}>
               You stay the brand. We own how it performs.
             </p>
-            <p
-              className="text-[20px] lg:text-[24px]"
-              style={{
-                ...headingStyle,
-                color: "#171717",
-                fontStyle: "italic",
-                lineHeight: "1.3",
-                paddingTop: "24px",
-              }}
-            >
-              When channels align, growth accelerates.
-            </p>
           </div>
+
+          {/* Four linkable chapters */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-16 lg:mb-20">
+            {[
+              {
+                title: "Brand",
+                body: "Voice, design, and the story that runs through every channel without a crack.",
+              },
+              {
+                title: "Content",
+                body: "The editorial layer — how the brand shows up across owned, earned, and social.",
+              },
+              {
+                title: "Retention",
+                body: "Lifecycle, CRM, and the inbox as an editorial environment.",
+              },
+              {
+                title: "Community",
+                body: "The signals the audience already sends. How the brand listens, and responds.",
+              },
+            ].map((s) => (
+              <a
+                key={s.title}
+                href="https://kennydonnacollective.substack.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block border-t pt-6 transition-opacity hover:opacity-70"
+                style={{ borderColor: "#D6D0CF" }}
+              >
+                <h3
+                  className="text-[22px] lg:text-[26px] mb-3"
+                  style={{ ...headingStyle, color: "#171717" }}
+                >
+                  {s.title}
+                </h3>
+                <p className="text-[14px] lg:text-[15px] mb-6" style={{ color: "#5E5954", fontWeight: 400, lineHeight: "1.55" }}>
+                  {s.body}
+                </p>
+                <span
+                  className="text-[11px] tracking-widest uppercase"
+                  style={{ color: "#171717", fontWeight: 500, letterSpacing: "0.15em" }}
+                >
+                  &rarr; Read on Substack
+                </span>
+              </a>
+            ))}
+          </div>
+
+          <p
+            className="text-[20px] lg:text-[24px]"
+            style={{
+              ...headingStyle,
+              color: "#171717",
+              fontStyle: "italic",
+              lineHeight: "1.3",
+            }}
+          >
+            When channels align, growth accelerates.
+          </p>
         </div>
       </section>
 

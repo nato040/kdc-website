@@ -130,7 +130,7 @@ export default function Home() {
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
           <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
-            HOW WE PARTNER
+            THE PARTNERSHIP
           </p>
           <h2 className="text-[28px] md:text-[40px] lg:text-[56px] mb-8" style={headingStyle}>
             We don&rsquo;t onboard, deliver, and disappear. We embed.

@@ -1,5 +1,6 @@
 import { SectionDivider } from "../components/SectionDivider";
 import aboutImg from "../../imports/i-vgrVGvj-X2.jpg";
+import collectiveImg from "../../imports/i-rQjXSbx-X2.jpg";
 
 /**
  * About — Cody's story. Editorial, ownership-led, no overlap with the homepage or Signals.
@@ -182,19 +183,35 @@ export default function About() {
           <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
             THE COLLECTIVE
           </p>
-          <h2
-            className="text-[28px] md:text-[40px] lg:text-[52px] mb-10"
-            style={headingStyle}
-          >
-            KDC is not an agency. It&rsquo;s a small, focused team, built to work as one with founders and the people already inside the business.
-          </h2>
-          <div className="space-y-5 text-[16px] lg:text-[18px]" style={bodyStyle}>
-            <p>
-              Strategy stays joined to execution. Outside perspective stays joined to inside context. Nothing gets handed off, nothing gets lost in translation.
-            </p>
-            <p>
-              That&rsquo;s what keeps the work sharp, the brand intact, and the partnership long.
-            </p>
+
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+            {/* Left — text */}
+            <div>
+              <h2
+                className="text-[28px] md:text-[40px] lg:text-[52px] mb-10"
+                style={headingStyle}
+              >
+                KDC is not an agency. It&rsquo;s a small, focused team, built to work as one with founders and the people already inside the business.
+              </h2>
+              <div className="space-y-5 text-[16px] lg:text-[18px]" style={bodyStyle}>
+                <p>
+                  Strategy stays joined to execution. Outside perspective stays joined to inside context. Nothing gets handed off, nothing gets lost in translation.
+                </p>
+                <p>
+                  That&rsquo;s what keeps the work sharp, the brand intact, and the partnership long.
+                </p>
+              </div>
+            </div>
+
+            {/* Right — image */}
+            <div>
+              <img
+                src={collectiveImg}
+                alt="The collective at work"
+                className="w-full h-[500px] lg:h-[600px] object-cover"
+                style={{ filter: "grayscale(8%) contrast(0.95)" }}
+              />
+            </div>
           </div>
         </div>
       </section>

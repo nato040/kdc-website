@@ -51,7 +51,27 @@ export default function Home() {
     <>
       <HeroCarousel />
 
-      {/* WHO WE WORK WITH — with image */}
+      {/* THE PROBLEM — leads, diagnosis right after the hero */}
+      <section id="problem" className="px-6 lg:px-16 scroll-mt-24" style={sectionStyle}>
+        {noiseOverlay}
+        <div className="max-w-[1280px] mx-auto relative">
+          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
+            THE PROBLEM
+          </p>
+          <h2 className="text-[28px] md:text-[40px] lg:text-[56px] mb-8" style={headingStyle}>
+            It&rsquo;s not that your brand needs more marketing.
+          </h2>
+          <div className="text-[16px] lg:text-[18px]" style={bodyStyle}>
+            <p>
+              You already have a clear point of view, a strong product, and a defined aesthetic. Marketing just begins to feel fragmented across channels, inconsistent across campaigns, and disconnected from the brand itself.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* WHO WE WORK WITH — audience qualifier after the diagnosis */}
       <section className="px-6 lg:px-16" style={sectionStyle}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
@@ -74,26 +94,6 @@ export default function Home() {
                 style={{ width: "100%", height: "600px", objectFit: "cover", objectPosition: "center 85%" }}
               />
             </div>
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* THE PROBLEM */}
-      <section id="problem" className="px-6 lg:px-16 scroll-mt-24" style={sectionStyle}>
-        {noiseOverlay}
-        <div className="max-w-[1280px] mx-auto relative">
-          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
-            THE PROBLEM
-          </p>
-          <h2 className="text-[28px] md:text-[40px] lg:text-[56px] mb-8" style={headingStyle}>
-            It&rsquo;s not that your brand needs more marketing.
-          </h2>
-          <div className="text-[16px] lg:text-[18px]" style={bodyStyle}>
-            <p>
-              You already have a clear point of view, a strong product, and a defined aesthetic. Marketing just begins to feel fragmented across channels, inconsistent across campaigns, and disconnected from the brand itself.
-            </p>
           </div>
         </div>
       </section>

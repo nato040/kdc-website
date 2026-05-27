@@ -11,11 +11,9 @@ type NavLink = {
 };
 
 const navLinks: NavLink[] = [
+  { to: "/case-studies", label: "Work" },
+  { to: "/signals", label: "Signals" },
   { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
-  { to: "/approach", label: "Approach" },
-  { to: "/case-studies", label: "Case Studies" },
-  { to: "/journal", label: "Journal" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -66,7 +64,7 @@ export default function Root() {
           {/* Desktop nav — 3-column grid as designed */}
           <div className="hidden lg:grid grid-cols-3 items-center gap-12">
             <div className="flex gap-9 lg:gap-14 justify-start">
-              {navLinks.slice(0, 3).map((l) => (
+              {navLinks.slice(0, 2).map((l) => (
                 <NavItem
                   key={l.to}
                   link={l}
@@ -79,7 +77,7 @@ export default function Root() {
               <img src={logoImg} alt="Kenny Donna Collective" className="h-32 lg:h-40 w-auto max-w-3xl" />
             </Link>
             <div className="flex gap-9 lg:gap-14 justify-end">
-              {navLinks.slice(3).map((l) => (
+              {navLinks.slice(2).map((l) => (
                 <NavItem
                   key={l.to}
                   link={l}
@@ -191,7 +189,7 @@ export default function Root() {
               <a href="https://instagram.com/kennydonnacollective" target="_blank" rel="noopener noreferrer" className="text-xs tracking-widest uppercase transition-all hover:opacity-60" style={{ color: '#5E5954', letterSpacing: '0.15em' }}>
                 Instagram
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-xs tracking-widest uppercase transition-all hover:opacity-60" style={{ color: '#5E5954', letterSpacing: '0.15em' }}>
+              <a href="https://www.linkedin.com/company/kenny-donna-collective" target="_blank" rel="noopener noreferrer" className="text-xs tracking-widest uppercase transition-all hover:opacity-60" style={{ color: '#5E5954', letterSpacing: '0.15em' }}>
                 LinkedIn
               </a>
               <a href={SUBSTACK_URL} target="_blank" rel="noopener noreferrer" className="text-xs tracking-widest uppercase transition-all hover:opacity-60" style={{ color: '#5E5954', letterSpacing: '0.15em' }}>

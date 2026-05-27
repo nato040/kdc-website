@@ -5,3 +5,6 @@ dist
 .env
 .env.local
 .vercel
+
+# Source-image originals from local compression (12MB ProRes backups, etc.)
+*.orig.*

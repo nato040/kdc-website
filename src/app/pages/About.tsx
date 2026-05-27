@@ -1,39 +1,220 @@
+import { SectionDivider } from "../components/SectionDivider";
 import aboutImg from "../../imports/Screenshot_2026-04-21_at_5.26.10 PM.png";
 
+/**
+ * About — Cody's story. Editorial, ownership-led, no overlap with the homepage or Signals.
+ * Structure: Hero → The Why → Founder → The Collective → Closing.
+ */
 export default function About() {
+  const eyebrowStyle = {
+    color: "#5E5954",
+    fontWeight: 500,
+    letterSpacing: "0.20em",
+  };
+
+  const headingStyle = {
+    fontFamily: "var(--font-serif)",
+    color: "#171717",
+    fontWeight: 400,
+    lineHeight: "1.15",
+  };
+
+  const bodyStyle = {
+    color: "#5E5954",
+    fontWeight: 400,
+    lineHeight: "1.6",
+    maxWidth: "720px",
+  };
+
   return (
-    <section className="py-20 sm:py-28 lg:py-40 px-6 sm:px-8 lg:px-16 mt-20 sm:mt-24 lg:mt-32" style={{ backgroundColor: '#FCFBF8', position: 'relative' }}>
+    <div style={{ backgroundColor: "#FAFAFA" }}>
       {/* Subtle texture overlay */}
-      <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{
-        backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.7\' numOctaves=\'3\' /%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' /%3E%3C/svg%3E")',
-        backgroundSize: '250px 250px'
-      }} />
-      <div className="max-w-7xl mx-auto relative">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
-          <img
-            src={aboutImg}
-            alt="Editorial fashion"
-            className="w-full h-[460px] sm:h-[600px] lg:h-[800px] object-cover"
-            style={{ filter: 'grayscale(8%)' }}
-          />
-          <div className="space-y-8 lg:space-y-10 max-w-lg">
-            <h2 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 300 }} className="text-3xl lg:text-[2.5rem] leading-tight">
-              About
-            </h2>
-            <div className="space-y-6 lg:space-y-8 text-lg" style={{ color: '#3A342F', fontWeight: 300, lineHeight: '1.8' }}>
-              <p>
-                We partner with design-led brands that need marketing to feel as intentional as the product itself.
-              </p>
-              <p>
-                Our work connects brand, merchandising, CRM, and campaign execution into a system designed for long-term growth.
-              </p>
-              <p>
-                Every touchpoint is considered. Every campaign is connected.
-              </p>
+      <div
+        className="fixed inset-0 opacity-[0.015] pointer-events-none"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E\")",
+          backgroundSize: "250px 250px",
+        }}
+      />
+
+      {/* HERO */}
+      <section
+        className="px-6 lg:px-16 mt-32 relative"
+        style={{ paddingTop: "96px", paddingBottom: "120px" }}
+      >
+        <div className="max-w-[1280px] mx-auto">
+          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
+            ABOUT
+          </p>
+          <h1
+            className="text-[40px] md:text-[56px] lg:text-[72px]"
+            style={{ ...headingStyle, lineHeight: "1.1" }}
+          >
+            KDC exists because taste and performance were never meant to be a trade-off.
+          </h1>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* THE WHY */}
+      <section
+        className="px-6 lg:px-16 relative"
+        style={{ paddingTop: "120px", paddingBottom: "120px" }}
+      >
+        <div className="max-w-[1280px] mx-auto">
+          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
+            THE WHY
+          </p>
+          <h2
+            className="text-[28px] md:text-[40px] lg:text-[44px] mb-10"
+            style={headingStyle}
+          >
+            Kenny Donna Collective started from a frustration Cody knew from both sides of the table.
+          </h2>
+          <div className="space-y-5 text-[18px] lg:text-[20px]" style={bodyStyle}>
+            <p>
+              Agencies didn&rsquo;t know the brand &mdash; or the business &mdash; well enough to move it. Internal teams knew it intimately but never had the room to scale it without losing the thread. Either way, the work came out fragmented: beautiful campaigns disconnected from the numbers, retention that didn&rsquo;t sound like the brand.
+            </p>
+            <p style={{ color: "#171717", paddingTop: "8px" }}>
+              KDC was built to close that gap. Curated, embedded, accountable. Few partners, full attention.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* FOUNDER */}
+      <section
+        className="px-6 lg:px-16 relative"
+        style={{ paddingTop: "120px", paddingBottom: "120px" }}
+      >
+        <div className="max-w-[1280px] mx-auto">
+          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
+            FOUNDER
+          </p>
+
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+            {/* Left — Photo */}
+            <div>
+              <img
+                src={aboutImg}
+                alt="Cody Lynn Abt"
+                className="w-full h-[600px] lg:h-[700px] object-cover"
+                style={{ filter: "grayscale(12%) contrast(0.93) brightness(0.98)" }}
+              />
+            </div>
+
+            {/* Right — Bio */}
+            <div className="space-y-10 lg:space-y-12">
+              <div className="space-y-4">
+                <h2
+                  className="text-[28px] md:text-[40px] lg:text-[52px]"
+                  style={headingStyle}
+                >
+                  Cody Lynn Abt
+                </h2>
+                <p
+                  className="text-[14px]"
+                  style={{ color: "#5E5954", fontWeight: 400, fontStyle: "italic" }}
+                >
+                  Founder, Kenny Donna Collective
+                </p>
+              </div>
+
+              <div className="space-y-5 text-[17px] lg:text-[18px]" style={bodyStyle}>
+                <p style={{ color: "#171717", fontWeight: 400 }}>
+                  Cody&rsquo;s eye was trained on the floor, not in a deck.
+                </p>
+                <p>
+                  A decade inside fashion &mdash; a top stylist and manager at Intermix, Rag &amp; Bone, Club Monaco, and Theory &mdash; taught her, sale by sale, how taste and quality actually move a customer. She learned what makes a brand land in the room, and what makes it fall flat.
+                </p>
+                <p>
+                  She took that instinct brand-side, leading digital marketing for a fast-growing design-led label &mdash; building the strategy and systems underneath multi-year growth, and pulling email, SMS, and social into one editorial rhythm.
+                </p>
+                <p>
+                  That pairing is rare: the taste of someone who sold the product by hand, and the operating sense of someone who built the marketing from inside the brand. It&rsquo;s the reason KDC can own both the story and the numbers.
+                </p>
+                <p>
+                  She studied business and economics with a focus in marketing, and comes from a family of business owners &mdash; the operator&rsquo;s instinct runs underneath everything KDC does.
+                </p>
+              </div>
+
+              {/* Pull Quote */}
+              <div className="pt-8 space-y-8">
+                <p
+                  className="text-[22px] lg:text-[26px]"
+                  style={{
+                    fontFamily: "var(--font-serif)",
+                    color: "#3A342F",
+                    fontWeight: 400,
+                    fontStyle: "italic",
+                    lineHeight: "1.35",
+                  }}
+                >
+                  &ldquo;The work I love is the work I&rsquo;m built for &mdash; design-led, considered, customer-aware. KDC is for founders and teams who want a partner who knows the brand the way they do.&rdquo;
+                </p>
+                <a
+                  href="https://www.linkedin.com/in/codylynnabt/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[15px] transition-opacity duration-700 hover:opacity-60 inline-block uppercase"
+                  style={{ color: "#171717", fontWeight: 400, letterSpacing: "0.15em" }}
+                >
+                  &rarr; Connect on LinkedIn
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <SectionDivider />
+
+      {/* THE COLLECTIVE — lives here only */}
+      <section
+        className="px-6 lg:px-16 relative"
+        style={{ paddingTop: "120px", paddingBottom: "120px" }}
+      >
+        <div className="max-w-[1280px] mx-auto">
+          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
+            THE COLLECTIVE
+          </p>
+          <h2
+            className="text-[28px] md:text-[40px] lg:text-[52px] mb-10"
+            style={headingStyle}
+          >
+            KDC is not an agency. It&rsquo;s a small, focused team, built to work as one with founders and the people already inside the business.
+          </h2>
+          <div className="space-y-5 text-[18px] lg:text-[20px]" style={bodyStyle}>
+            <p>
+              Strategy stays joined to execution. Outside perspective stays joined to inside context. Nothing gets handed off, nothing gets lost in translation.
+            </p>
+            <p>
+              That&rsquo;s what keeps the work sharp, the brand intact, and the partnership long.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* CLOSING */}
+      <section
+        className="px-6 lg:px-16 relative"
+        style={{ paddingTop: "120px", paddingBottom: "160px", backgroundColor: "#F3F0EA" }}
+      >
+        <div className="max-w-[1280px] mx-auto">
+          <h2
+            className="text-[28px] md:text-[40px] lg:text-[52px]"
+            style={headingStyle}
+          >
+            We take a limited number of partners. The brands we say yes to get all of it.
+          </h2>
+        </div>
+      </section>
+    </div>
   );
 }

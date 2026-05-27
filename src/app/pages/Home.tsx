@@ -120,6 +120,18 @@ export default function Home() {
             <p style={{ color: "#171717", fontWeight: 400, paddingTop: "16px" }}>
               You stay the brand. We own how it performs.
             </p>
+            <p
+              className="text-[20px] lg:text-[24px]"
+              style={{
+                ...headingStyle,
+                color: "#171717",
+                fontStyle: "italic",
+                lineHeight: "1.3",
+                paddingTop: "24px",
+              }}
+            >
+              When channels align, growth accelerates.
+            </p>
           </div>
         </div>
       </section>
@@ -168,37 +180,18 @@ export default function Home() {
 
       <SectionDivider />
 
-      {/* CTA — dark, closes with the cyan "When channels align" line */}
+      {/* CTA — minimal close; the scarcity argument has already been made above */}
       <section className="px-6 lg:px-16" style={{ ...sectionStyle, backgroundColor: "#171717" }}>
         <div className="max-w-[1280px] mx-auto relative">
           <p className="text-[11px] tracking-widest uppercase mb-6" style={{ ...eyebrowStyle, color: "#D6D0CF" }}>
             GET IN TOUCH
           </p>
           <h2
-            className="text-[28px] md:text-[40px] lg:text-[56px] mb-8"
+            className="text-[28px] md:text-[40px] lg:text-[56px] mb-12"
             style={{ ...headingStyle, color: "#FAFAFA" }}
           >
-            Let&rsquo;s create the story your brand was meant to tell while driving real results.
+            The work begins with a conversation.
           </h2>
-          <div className="text-[16px] lg:text-[18px] mb-10" style={{ ...bodyStyle, color: "#D6D0CF" }}>
-            <p style={{ color: "#FAFAFA" }}>
-              Limited partnerships. Built for long term growth.
-            </p>
-            <p style={{ paddingTop: "8px" }}>
-              Reserved for brands that see it the same way. Few partners. Full attention.
-            </p>
-          </div>
-          <p
-            className="text-[22px] lg:text-[26px] mb-12"
-            style={{
-              ...headingStyle,
-              color: "#FAFAFA",
-              fontStyle: "italic",
-              lineHeight: "1.3",
-            }}
-          >
-            When channels align, growth accelerates.
-          </p>
           <Link
             to="/contact"
             className="text-[15px] transition-opacity duration-700 hover:opacity-60 uppercase"

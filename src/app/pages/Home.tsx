@@ -63,7 +63,7 @@ export default function Home() {
               <h2 className="text-[28px] md:text-[40px] lg:text-[56px] mb-8" style={headingStyle}>
                 We partner with design led brands.
               </h2>
-              <p className="text-[20px] lg:text-[22px]" style={bodyStyle}>
+              <p className="text-[16px] lg:text-[18px]" style={bodyStyle}>
                 Brands with strong products and a clear identity, where marketing has started to feel inconsistent or disconnected.
               </p>
             </div>
@@ -90,7 +90,7 @@ export default function Home() {
           <h2 className="text-[28px] md:text-[40px] lg:text-[56px] mb-8" style={headingStyle}>
             It&rsquo;s not that your brand needs more marketing.
           </h2>
-          <div className="text-[20px] lg:text-[22px]" style={bodyStyle}>
+          <div className="text-[16px] lg:text-[18px]" style={bodyStyle}>
             <p>
               You already have a clear point of view, a strong product, and a defined aesthetic. Marketing just begins to feel fragmented across channels, inconsistent across campaigns, and disconnected from the brand itself.
             </p>
@@ -112,7 +112,7 @@ export default function Home() {
           >
             We don&rsquo;t hand over a list of deliverables. We take ownership.
           </h2>
-          <div className="text-[20px] lg:text-[22px]" style={{ ...bodyStyle, color: "#D6D0CF" }}>
+          <div className="text-[16px] lg:text-[18px]" style={{ ...bodyStyle, color: "#D6D0CF" }}>
             <p>
               Of campaigns, content, retention, and the brand running through every channel.
             </p>
@@ -135,7 +135,7 @@ export default function Home() {
           <h2 className="text-[28px] md:text-[40px] lg:text-[56px] mb-8" style={headingStyle}>
             We don&rsquo;t onboard, deliver, and disappear. We embed.
           </h2>
-          <div className="text-[20px] lg:text-[22px]" style={bodyStyle}>
+          <div className="text-[16px] lg:text-[18px]" style={bodyStyle}>
             <p>
               KDC works as an extension of your team, inside the brand, accountable to the numbers, present for the long build, not a project with an end date.
             </p>
@@ -178,7 +178,7 @@ export default function Home() {
           >
             Let&rsquo;s create the story your brand was meant to tell while driving real results.
           </h2>
-          <div className="text-[20px] lg:text-[22px] mb-10" style={{ ...bodyStyle, color: "#D6D0CF" }}>
+          <div className="text-[16px] lg:text-[18px] mb-10" style={{ ...bodyStyle, color: "#D6D0CF" }}>
             <p style={{ color: "#FAFAFA" }}>
               Limited partnerships. Built for long term growth.
             </p>

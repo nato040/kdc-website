@@ -73,7 +73,7 @@ export default function About() {
           >
             Kenny Donna Collective started from a frustration Cody knew from both sides of the table.
           </h2>
-          <div className="space-y-5 text-[18px] lg:text-[20px]" style={bodyStyle}>
+          <div className="space-y-5 text-[16px] lg:text-[18px]" style={bodyStyle}>
             <p>
               Agencies didn&rsquo;t know the brand &mdash; or the business &mdash; well enough to move it. Internal teams knew it intimately but never had the room to scale it without losing the thread. Either way, the work came out fragmented: beautiful campaigns disconnected from the numbers, retention that didn&rsquo;t sound like the brand.
             </p>
@@ -124,7 +124,7 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="space-y-5 text-[17px] lg:text-[18px]" style={bodyStyle}>
+              <div className="space-y-5 text-[16px] lg:text-[18px]" style={bodyStyle}>
                 <p style={{ color: "#171717", fontWeight: 400 }}>
                   Cody&rsquo;s eye was trained on the floor, not in a deck.
                 </p>
@@ -188,7 +188,7 @@ export default function About() {
           >
             KDC is not an agency. It&rsquo;s a small, focused team, built to work as one with founders and the people already inside the business.
           </h2>
-          <div className="space-y-5 text-[18px] lg:text-[20px]" style={bodyStyle}>
+          <div className="space-y-5 text-[16px] lg:text-[18px]" style={bodyStyle}>
             <p>
               Strategy stays joined to execution. Outside perspective stays joined to inside context. Nothing gets handed off, nothing gets lost in translation.
             </p>

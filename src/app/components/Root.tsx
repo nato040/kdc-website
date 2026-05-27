@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Outlet, Link, useLocation } from "react-router";
 import logoImg from "../../imports/kenny_donna_collective_logo_transparent-1.png";
 import { ScrollToHash } from "./ScrollToHash";
@@ -175,21 +175,31 @@ export default function Root() {
       <footer className="py-16 sm:py-20 lg:py-24 px-6 sm:px-8 lg:px-16" style={{ backgroundColor: '#171717', borderTop: '1px solid #3A342F' }}>
         <div className="max-w-7xl mx-auto">
 
-          {/* The Index — chapter titles, the THE [X] taxonomy surfaced */}
+          {/* The Index — chapter titles linked by arrows, reading as a directed flow */}
           <div className="mb-14 lg:mb-20 pb-10 lg:pb-14" style={{ borderBottom: '1px solid #2A2A2A' }}>
             <p className="text-[10px] tracking-widest uppercase mb-6" style={{ color: '#5E5954', letterSpacing: '0.20em' }}>
               The Index
             </p>
-            <div className="flex flex-wrap gap-x-8 gap-y-3 lg:gap-x-12">
-              {indexLinks.map((l) => (
-                <Link
-                  key={l.to}
-                  to={l.to}
-                  style={{ fontFamily: 'var(--font-serif)', color: '#FCFBF8', fontWeight: 300, letterSpacing: '0.01em' }}
-                  className="text-[18px] lg:text-[22px] transition-opacity hover:opacity-60"
-                >
-                  {l.label}
-                </Link>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-3 lg:gap-x-5">
+              {indexLinks.map((l, i) => (
+                <Fragment key={l.to}>
+                  <Link
+                    to={l.to}
+                    style={{ fontFamily: 'var(--font-serif)', color: '#FCFBF8', fontWeight: 300, letterSpacing: '0.01em' }}
+                    className="text-[18px] lg:text-[22px] transition-opacity hover:opacity-60"
+                  >
+                    {l.label}
+                  </Link>
+                  {i < indexLinks.length - 1 && (
+                    <span
+                      aria-hidden="true"
+                      style={{ color: '#5E5954', fontWeight: 300 }}
+                      className="text-[18px] lg:text-[22px] select-none"
+                    >
+                      &rarr;
+                    </span>
+                  )}
+                </Fragment>
               ))}
             </div>
           </div>

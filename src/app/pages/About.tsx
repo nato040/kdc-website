@@ -1,6 +1,6 @@
 import { SectionDivider } from "../components/SectionDivider";
 import aboutImg from "../../imports/i-vgrVGvj-X2.jpg";
-import collectiveImg from "../../imports/i-rQjXSbx-X2.jpg";
+import collectiveImg from "../../imports/_DUG9728.jpg";
 
 /**
  * About — Cody's story. Editorial, ownership-led, no overlap with the homepage or Signals.

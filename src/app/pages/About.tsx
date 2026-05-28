@@ -40,26 +40,16 @@ export default function About() {
         }}
       />
 
-      {/* HERO — headline stacked over a chapter-opening image */}
+      {/* HERO — full-bleed chapter image, no title, the page opens visually */}
       <section
         className="px-6 lg:px-16 mt-32 relative"
-        style={{ paddingTop: "96px", paddingBottom: "80px" }}
+        style={{ paddingTop: "48px", paddingBottom: "0px" }}
       >
         <div className="max-w-[1280px] mx-auto">
-          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
-            ABOUT
-          </p>
-          <h1
-            className="text-[40px] md:text-[56px] lg:text-[72px] max-w-[1100px] mb-16 lg:mb-20"
-            style={{ ...headingStyle, lineHeight: "1.1" }}
-          >
-            KDC exists because taste and performance were never meant to be a trade-off.
-          </h1>
-
           <img
             src={heroImg}
             alt="Curating reference imagery on iPad"
-            className="w-full h-[400px] md:h-[500px] lg:h-[620px] object-cover"
+            className="w-full h-[480px] md:h-[600px] lg:h-[720px] object-cover"
             style={{ filter: "grayscale(8%) contrast(0.95)" }}
           />
         </div>

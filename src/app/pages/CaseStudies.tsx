@@ -86,6 +86,39 @@ export default function CaseStudies() {
 
       <SectionDivider />
 
+      {/* OUTCOMES — indicative numerical results from past partnerships */}
+      <section className="px-6 lg:px-16 relative" style={{ paddingTop: '120px', paddingBottom: '120px' }}>
+        <div className="max-w-[1280px] mx-auto">
+          <p className="text-[11px] tracking-widest uppercase mb-6" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.20em' }}>
+            OUTCOMES
+          </p>
+          <h2 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 400, lineHeight: '1.15' }} className="text-[28px] md:text-[40px] lg:text-[52px] mb-12 lg:mb-16 max-w-3xl">
+            What the work has produced.
+          </h2>
+
+          <div className="grid sm:grid-cols-2 gap-10 lg:gap-20">
+            <div className="border-t pt-8" style={{ borderColor: '#D6D0CF' }}>
+              <p style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 400, lineHeight: '1' }} className="text-[56px] md:text-[72px] lg:text-[88px] mb-4">
+                30-35%
+              </p>
+              <p className="text-[11px] tracking-widest uppercase" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.18em' }}>
+                CRM Revenue Contribution
+              </p>
+            </div>
+            <div className="border-t pt-8" style={{ borderColor: '#D6D0CF' }}>
+              <p style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 400, lineHeight: '1' }} className="text-[56px] md:text-[72px] lg:text-[88px] mb-4">
+                +112%
+              </p>
+              <p className="text-[11px] tracking-widest uppercase" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.18em' }}>
+                YoY DTC Growth
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
       {/* SECTION 4 — CATEGORIES */}
       <section className="px-6 lg:px-16 relative" style={{ paddingTop: '120px', paddingBottom: '120px' }}>
         <div className="max-w-[1280px] mx-auto">

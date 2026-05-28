@@ -1,5 +1,3 @@
-import { SectionDivider } from "../components/SectionDivider";
-
 /**
  * Signals — single editorial landing. No fake article grid until there's
  * real Substack content to surface. Subscribe-only for launch.
@@ -67,19 +65,6 @@ export default function Signals() {
         </div>
       </section>
 
-      <SectionDivider />
-
-      {/* CLOSING */}
-      <section
-        className="px-6 lg:px-16 relative"
-        style={{ paddingTop: "120px", paddingBottom: "160px", backgroundColor: "#F3F0EA" }}
-      >
-        <div className="max-w-[1280px] mx-auto">
-          <h2 className="text-[28px] md:text-[40px] lg:text-[52px]" style={headingStyle}>
-            Few partners. Full attention. Same on the page.
-          </h2>
-        </div>
-      </section>
     </div>
   );
 }

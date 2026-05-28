@@ -57,7 +57,7 @@ export default function CaseStudies() {
                 Our own retention platform.
               </h3>
               <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                Built in-house. Klaviyo data, campaign and flow performance, monthly KPIs, send calendars, and creative briefs &mdash; one system per partner, every metric in real time. No third-party black box.
+                Built in-house. Klaviyo data, campaign and flow performance, monthly KPIs, send calendars, and creative briefs. One system per partner, every metric in real time. No third-party black box.
               </p>
             </div>
 

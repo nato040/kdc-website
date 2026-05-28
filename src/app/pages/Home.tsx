@@ -115,7 +115,7 @@ export default function Home() {
           </h2>
           <div className="text-[16px] lg:text-[18px] mb-16 lg:mb-20" style={bodyStyle}>
             <p>
-              The four surfaces of a modern brand. We don&rsquo;t hand over a list of deliverables &mdash; we take ownership of how the surfaces connect, and how the work that lives on them compounds.
+              The four surfaces of a modern brand. We don&rsquo;t hand over a list of deliverables. We take ownership of how the surfaces connect, and how the work that lives on them compounds.
             </p>
             <p style={{ color: "#171717", fontWeight: 400, paddingTop: "16px" }}>
               You stay the brand. We own how it performs.
@@ -131,7 +131,7 @@ export default function Home() {
               },
               {
                 title: "Content",
-                body: "The editorial layer — how the brand shows up across owned, earned, and social.",
+                body: "The editorial layer. How the brand shows up across owned, earned, and social.",
               },
               {
                 title: "Retention",

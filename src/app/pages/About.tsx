@@ -85,7 +85,7 @@ export default function About() {
           </h2>
           <div className="space-y-5 text-[16px] lg:text-[18px]" style={bodyStyle}>
             <p>
-              Agencies didn&rsquo;t know the brand &mdash; or the business &mdash; well enough to move it. Internal teams knew it intimately but never had the room to scale it without losing the thread. Either way, the work came out fragmented: beautiful campaigns disconnected from the numbers, retention that didn&rsquo;t sound like the brand.
+              Agencies didn&rsquo;t know the brand, or the business, well enough to move it. Internal teams knew it intimately but never had the room to scale it without losing the thread. Either way, the work came out fragmented: beautiful campaigns disconnected from the numbers, retention that didn&rsquo;t sound like the brand.
             </p>
             <p style={{ color: "#171717", paddingTop: "8px" }}>
               KDC was built to close that gap. Curated, embedded, accountable. Few partners, full attention.
@@ -184,16 +184,16 @@ export default function About() {
                   Cody&rsquo;s eye was trained on the floor, not in a deck.
                 </p>
                 <p>
-                  A decade inside fashion &mdash; a top stylist and manager at Intermix, Rag &amp; Bone, Club Monaco, and Theory &mdash; taught her, sale by sale, how taste and quality actually move a customer. She learned what makes a brand land in the room, and what makes it fall flat.
+                  A decade inside fashion, as a top stylist and manager at Intermix, Rag &amp; Bone, Club Monaco, and Theory, taught her sale by sale how taste and quality actually move a customer. She learned what makes a brand land in the room, and what makes it fall flat.
                 </p>
                 <p>
-                  She took that instinct brand-side, leading digital marketing for a fast-growing design-led label &mdash; building the strategy and systems underneath multi-year growth, and pulling email, SMS, and social into one editorial rhythm.
+                  She took that instinct brand-side, leading digital marketing for a fast-growing design-led label. She built the strategy and systems underneath multi-year growth, and pulled email, SMS, and social into one editorial rhythm.
                 </p>
                 <p>
                   That pairing is rare: the taste of someone who sold the product by hand, and the operating sense of someone who built the marketing from inside the brand. It&rsquo;s the reason KDC can own both the story and the numbers.
                 </p>
                 <p>
-                  She studied business and economics with a focus in marketing, and comes from a family of business owners &mdash; the operator&rsquo;s instinct runs underneath everything KDC does.
+                  She studied business and economics with a focus in marketing, and comes from a family of business owners. The operator&rsquo;s instinct runs underneath everything KDC does.
                 </p>
               </div>
 
@@ -209,7 +209,7 @@ export default function About() {
                     lineHeight: "1.35",
                   }}
                 >
-                  &ldquo;The work I love is the work I&rsquo;m built for &mdash; design-led, considered, customer-aware. KDC is for founders and teams who want a partner who knows the brand the way they do.&rdquo;
+                  &ldquo;The work I love is the work I&rsquo;m built for. Design-led, considered, customer-aware. KDC is for founders and teams who want a partner who knows the brand the way they do.&rdquo;
                 </p>
                 <a
                   href="https://www.linkedin.com/in/codylynnabt/"

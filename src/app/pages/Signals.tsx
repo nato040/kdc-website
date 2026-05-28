@@ -53,7 +53,7 @@ export default function Signals() {
             A working journal on brand, retention, and how design led brands grow.
           </h1>
           <p className="text-[16px] lg:text-[18px] mb-10" style={bodyStyle}>
-            Notes from the work — what we&rsquo;re seeing, what&rsquo;s shifting, what&rsquo;s next. Published on Substack.
+            Notes from the work. What we&rsquo;re seeing, what&rsquo;s shifting, what&rsquo;s next. Published on Substack.
           </p>
           <a
             href="https://kennydonnacollective.substack.com"

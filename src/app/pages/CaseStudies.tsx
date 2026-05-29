@@ -70,26 +70,6 @@ export default function CaseStudies() {
                 The relationships around the brand. Cause-related partnerships with nonprofits, creator and PR collaborations, and the brands and people the audience already trusts.
               </p>
             </div>
-
-            {/* Connector — the system that holds the four together */}
-            <div className="space-y-6">
-              <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
-                The system that connects them.
-              </h3>
-              <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                Campaign calendars, content briefs, and cross-channel rhythm. Email, SMS, and social moving as one editorial system, not four parallel ones.
-              </p>
-            </div>
-
-            {/* Connector — measurement, framed around the engine not the channel */}
-            <div className="space-y-6">
-              <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
-                How we measure the engine.
-              </h3>
-              <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                Measurement frameworks, KPI architecture, and reporting cadence built around how the surfaces compound, not just channel-level performance.
-              </p>
-            </div>
           </div>
         </div>
       </section>

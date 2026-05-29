@@ -107,34 +107,6 @@ export default function CaseStudies() {
         </div>
       </section>
 
-      <SectionDivider />
-
-      {/* SECTION 4 — CATEGORIES */}
-      <section className="px-6 lg:px-16 relative" style={{ paddingTop: '120px', paddingBottom: '120px' }}>
-        <div className="max-w-[1280px] mx-auto">
-          <p className="text-[11px] tracking-widest uppercase mb-6" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.20em' }}>
-            CATEGORIES
-          </p>
-
-          <p className="text-[16px] mb-10" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6' }}>
-            KDC works with design-led brands. The center of the work is fashion and lifestyle.
-          </p>
-
-          <p className="text-[28px] md:text-[36px] lg:text-[44px] mb-12" style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 400, lineHeight: '1.2' }}>
-            Fashion and lifestyle.
-          </p>
-
-          <p className="text-[11px] tracking-widest uppercase mb-4" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.20em' }}>
-            Adjacent
-          </p>
-          <div className="space-y-3 text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6' }}>
-            <p>Athletic and activewear</p>
-            <p>Beauty</p>
-            <p>Wellness</p>
-          </div>
-        </div>
-      </section>
-
     </div>
   );
 }

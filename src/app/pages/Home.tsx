@@ -4,8 +4,8 @@ import { Link } from "react-router";
 import whoWeWorkWithImg from "../../imports/_DUG9698.jpg";
 
 /**
- * Home — six tight beats, no echo:
- * Hero → Who We Work With → The Problem → What We Own → How We Partner → Where We Sit (editorial pause) → CTA
+ * Home — seven tight beats, no echo:
+ * Hero → What We Do → The Problem → Who We Work With → The Four Surfaces → The Partnership → Where We Sit → CTA
  */
 export default function Home() {
   const sectionStyle = {
@@ -51,7 +51,27 @@ export default function Home() {
     <>
       <HeroCarousel />
 
-      {/* THE PROBLEM — leads, diagnosis right after the hero */}
+      {/* WHAT WE DO — plain-language beat that names the work in one breath */}
+      <section id="what-we-do" className="px-6 lg:px-16 scroll-mt-24" style={sectionStyle}>
+        {noiseOverlay}
+        <div className="max-w-[1280px] mx-auto relative">
+          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
+            WHAT WE DO
+          </p>
+          <h2 className="text-[28px] md:text-[40px] lg:text-[52px] mb-8" style={headingStyle}>
+            KDC runs brand marketing &amp; growth for design-led fashion and lifestyle brands.
+          </h2>
+          <div className="text-[16px] lg:text-[18px]" style={bodyStyle}>
+            <p>
+              The strategy, the content, and the channels that turn it into sales. One team, one point of view, across everything your customer sees.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* THE PROBLEM — diagnosis */}
       <section id="problem" className="px-6 lg:px-16 scroll-mt-24" style={sectionStyle}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
@@ -81,7 +101,7 @@ export default function Home() {
                 WHO WE WORK WITH
               </p>
               <h2 className="text-[28px] md:text-[40px] lg:text-[56px] mb-8" style={headingStyle}>
-                We partner with design led brands.
+                We partner with design-led fashion and lifestyle brands.
               </h2>
               <p className="text-[16px] lg:text-[18px]" style={bodyStyle}>
                 Brands with strong products and a clear identity, where marketing has started to feel inconsistent or disconnected.
@@ -111,7 +131,7 @@ export default function Home() {
             className="text-[28px] md:text-[40px] lg:text-[56px] mb-10"
             style={headingStyle}
           >
-            Brand. Content. Retention. Community.
+            Brand. Content. Retention. Community &amp; Partnerships.
           </h2>
           <div className="text-[16px] lg:text-[18px] mb-16 lg:mb-20" style={bodyStyle}>
             <p>
@@ -135,11 +155,11 @@ export default function Home() {
               },
               {
                 title: "Retention",
-                body: "Lifecycle, CRM, and the inbox as an editorial environment.",
+                body: "Lifecycle, CRM, and the inbox. Editorial in voice, built to convert.",
               },
               {
-                title: "Community",
-                body: "The signals the audience already sends. How the brand listens, and responds.",
+                title: "Community & Partnerships",
+                body: "The relationships around the brand. The signals the audience sends, and the brands and people it chooses to stand beside.",
               },
             ].map((s) => (
               <div
@@ -198,7 +218,7 @@ export default function Home() {
           </h2>
           <div className="text-[16px] lg:text-[18px]" style={bodyStyle}>
             <p>
-              KDC works as an extension of your team, inside the brand, accountable to the numbers, present for the long build, not a project with an end date.
+              KDC works as an extension of your team, inside the brand, accountable for how it connects and converts, present for the long build, not a project with an end date.
             </p>
             <p style={{ color: "#171717", paddingTop: "16px" }}>
               Twelve partners at a time. By invitation. The ones we say yes to get all of it.

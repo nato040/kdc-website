@@ -31,53 +31,63 @@ export default function CaseStudies() {
           </p>
 
           <div className="space-y-16">
-            {/* Block 1 */}
+            {/* Pillar 1 — Brand */}
             <div className="space-y-6">
               <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
-                Brand and strategy.
+                Brand.
               </h3>
               <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
                 Brand architecture, messaging, voice, and creative direction. Campaign briefs and seasonal planning.
               </p>
             </div>
 
-            {/* Block 2 */}
+            {/* Pillar 2 — Content (added 2026-05-29 per consistency map) */}
             <div className="space-y-6">
               <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
-                Marketing systems designed to scale.
+                Content.
               </h3>
               <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                Campaign calendars, content briefs, and cross-channel rhythm connecting email, SMS, and social into one editorial system.
+                Direction and production of social, product, and campaign shoots. Stylist-led, brand-led, built to live across every channel without losing the thread.
               </p>
             </div>
 
-            {/* Block 3 — our own retention platform */}
+            {/* Pillar 3 — Retention (directed, not run) */}
             <div className="space-y-6">
               <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
-                Our own retention platform.
+                Retention.
               </h3>
               <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                Built in-house. Klaviyo data, campaign and flow performance, monthly KPIs, send calendars, and creative briefs. One system per partner, every metric in real time. No third-party black box.
+                Email and CRM strategy, lifecycle direction, and the inbox as an editorial environment. Built on our own platform: Klaviyo data, campaign and flow performance, monthly KPIs, send calendars, and creative briefs in one system. Our direction, our reporting, execution by our team. No third-party black box.
               </p>
             </div>
 
-            {/* Block 4 */}
+            {/* Pillar 4 — Community & Partnerships */}
             <div className="space-y-6">
               <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
-                Beyond the brand.
+                Community &amp; Partnerships.
               </h3>
               <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                Cause-related partnerships with nonprofit organizations, influencer and PR collaborations, and content strategy aligned across every customer touchpoint.
+                The relationships around the brand. Cause-related partnerships with nonprofits, creator and PR collaborations, and the brands and people the audience already trusts.
               </p>
             </div>
 
-            {/* Block 5 */}
+            {/* Connector — the system that holds the four together */}
             <div className="space-y-6">
               <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
-                Analytics and measurement.
+                The system that connects them.
               </h3>
               <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                Measurement frameworks, KPI architecture, and reporting cadence that turn data into informed decisions.
+                Campaign calendars, content briefs, and cross-channel rhythm. Email, SMS, and social moving as one editorial system, not four parallel ones.
+              </p>
+            </div>
+
+            {/* Connector — measurement, framed around the engine not the channel */}
+            <div className="space-y-6">
+              <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
+                How we measure the engine.
+              </h3>
+              <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
+                Measurement frameworks, KPI architecture, and reporting cadence built around how the surfaces compound, not just channel-level performance.
               </p>
             </div>
           </div>
@@ -126,16 +136,21 @@ export default function CaseStudies() {
             CATEGORIES
           </p>
 
-          <p className="text-[16px] mb-8" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6' }}>
-            KDC works with design-led brands across:
+          <p className="text-[16px] mb-10" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6' }}>
+            KDC works with design-led brands. The center of the work is fashion and lifestyle.
           </p>
 
-          <div className="space-y-4 text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6' }}>
-            <p>Fashion and apparel</p>
+          <p className="text-[28px] md:text-[36px] lg:text-[44px] mb-12" style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 400, lineHeight: '1.2' }}>
+            Fashion and lifestyle.
+          </p>
+
+          <p className="text-[11px] tracking-widest uppercase mb-4" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.20em' }}>
+            Adjacent
+          </p>
+          <div className="space-y-3 text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6' }}>
             <p>Athletic and activewear</p>
             <p>Beauty</p>
             <p>Wellness</p>
-            <p>Lifestyle and home</p>
           </div>
         </div>
       </section>

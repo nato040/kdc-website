@@ -187,7 +187,7 @@ export default function About() {
                 </p>
               </div>
 
-              {/* Pull Quote */}
+              {/* Closing — 3rd-person editorial line, voice stays consistent with the bio above */}
               <div className="pt-6 border-t" style={{ borderColor: "#D6D0CF" }}>
                 <p
                   className="text-[22px] lg:text-[26px] mb-8"
@@ -195,11 +195,10 @@ export default function About() {
                     fontFamily: "var(--font-serif)",
                     color: "#3A342F",
                     fontWeight: 400,
-                    fontStyle: "italic",
                     lineHeight: "1.35",
                   }}
                 >
-                  &ldquo;The work I love is the work I&rsquo;m built for. Design-led, considered, customer-aware. KDC is for founders and teams who want a partner who knows the brand the way they do.&rdquo;
+                  The work she&rsquo;s built for is design-led, considered, customer-aware. KDC is for founders and teams who want a partner who knows the brand the way they do.
                 </p>
                 <a
                   href="https://www.linkedin.com/in/codylynnabt/"

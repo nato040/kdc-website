@@ -1,5 +1,53 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, ReactNode } from "react";
 import { SectionDivider } from "../components/SectionDivider";
+
+/**
+ * FadeInOnScroll — fades + slight rise as the element enters the viewport.
+ * 700ms transition, threshold 0.2. Respects prefers-reduced-motion.
+ * Used on THE WORK pillars so each block reveals as the reader hits it.
+ */
+function FadeInOnScroll({ children }: { children: ReactNode }) {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(16px)",
+        transition: "opacity 700ms ease, transform 700ms ease",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
 
 /**
  * CountUp — animates from 0 to `end` when scrolled into view.
@@ -95,44 +143,52 @@ export default function CaseStudies() {
 
           <div className="space-y-16">
             {/* Pillar 1 — Brand */}
-            <div className="space-y-6">
-              <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
-                Brand.
-              </h3>
-              <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                Brand architecture, messaging, voice, and creative direction. Campaign briefs and seasonal planning.
-              </p>
-            </div>
+            <FadeInOnScroll>
+              <div className="space-y-6">
+                <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
+                  Brand.
+                </h3>
+                <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
+                  Brand architecture, messaging, voice, and creative direction. Campaign briefs and seasonal planning.
+                </p>
+              </div>
+            </FadeInOnScroll>
 
             {/* Pillar 2 — Content (added 2026-05-29 per consistency map) */}
-            <div className="space-y-6">
-              <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
-                Content.
-              </h3>
-              <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                Direction and production of social, product, and campaign shoots. Stylist-led, brand-led, built to live across every channel without losing the thread.
-              </p>
-            </div>
+            <FadeInOnScroll>
+              <div className="space-y-6">
+                <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
+                  Content.
+                </h3>
+                <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
+                  Direction and production of social, product, and campaign shoots. Stylist-led, brand-led, built to live across every channel without losing the thread.
+                </p>
+              </div>
+            </FadeInOnScroll>
 
             {/* Pillar 3 — Retention (directed, not run) */}
-            <div className="space-y-6">
-              <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
-                Retention.
-              </h3>
-              <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                Email and CRM strategy, lifecycle direction, and the inbox as an editorial environment. Built on our own platform: Klaviyo data, campaign and flow performance, monthly KPIs, send calendars, and creative briefs in one system. Our direction, our reporting, execution by our team. No third-party black box.
-              </p>
-            </div>
+            <FadeInOnScroll>
+              <div className="space-y-6">
+                <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
+                  Retention.
+                </h3>
+                <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
+                  Email and CRM strategy, lifecycle direction, and the inbox as an editorial environment. Built on our own platform: Klaviyo data, campaign and flow performance, monthly KPIs, send calendars, and creative briefs in one system. Our direction, our reporting, execution by our team. No third-party black box.
+                </p>
+              </div>
+            </FadeInOnScroll>
 
             {/* Pillar 4 — Community & Partnerships */}
-            <div className="space-y-6">
-              <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
-                Community &amp; Partnerships.
-              </h3>
-              <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                The relationships around the brand. Cause-related partnerships with nonprofits, creator and PR collaborations, and the brands and people the audience already trusts.
-              </p>
-            </div>
+            <FadeInOnScroll>
+              <div className="space-y-6">
+                <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
+                  Community &amp; Partnerships.
+                </h3>
+                <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
+                  The relationships around the brand. Cause-related partnerships with nonprofits, creator and PR collaborations, and the brands and people the audience already trusts.
+                </p>
+              </div>
+            </FadeInOnScroll>
           </div>
         </div>
       </section>

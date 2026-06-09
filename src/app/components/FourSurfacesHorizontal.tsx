@@ -79,10 +79,32 @@ const ZOOM_TARGETS = [
 
 const PANEL_BG = ["#FAFAFA", "#F3F0EA", "#FAFAFA", "#F3F0EA"] as const;
 
+// easeInOutCubic — smooth ramps on the zoom in/out portions.
+function easeInOutCubic(t: number): number {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
+/**
+ * Trapezoid-with-eased-edges. Within a single panel segment (local 0..1):
+ *   0    -> 0.25:  ramp up,   eased    (zooming in)
+ *   0.25 -> 0.75:  HOLD at 1            (dwell at peak — reader can read)
+ *   0.75 -> 1:     ramp down, eased    (zooming back out)
+ *
+ * 50% dwell at full zoom gives the reader time to absorb the panel; the eased
+ * edges keep the transitions soft instead of snappy.
+ */
+function zoomCurve(local: number): number {
+  if (local < 0.25) return easeInOutCubic(local / 0.25);
+  if (local > 0.75) return easeInOutCubic((1 - local) / 0.25);
+  return 1;
+}
+
 export function FourSurfacesHorizontal() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const frameRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
+  // Cache frame dimensions so the scroll loop doesn't read layout every frame.
+  const frameDimsRef = useRef({ w: 0, h: 0 });
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -93,12 +115,20 @@ export function FourSurfacesHorizontal() {
 
     let ticking = false;
 
+    const measure = () => {
+      const frame = frameRef.current;
+      if (!frame) return;
+      frameDimsRef.current = {
+        w: frame.offsetWidth,
+        h: frame.offsetHeight,
+      };
+    };
+
     const update = () => {
       ticking = false;
       const section = sectionRef.current;
-      const frame = frameRef.current;
       const track = trackRef.current;
-      if (!section || !frame || !track) return;
+      if (!section || !track) return;
 
       if (window.innerWidth < 1024 || prefersReduced) {
         track.style.transform = "";
@@ -114,14 +144,13 @@ export function FourSurfacesHorizontal() {
       const progress = Math.max(0, Math.min(1, scrolled / total));
 
       // Each of the 4 panels gets 1/4 of total progress.
-      // Within a cycle, the triangle wave gives zoom 0 -> 1 -> 0.
       const idx = Math.min(3, Math.floor(progress * 4));
       const local = progress * 4 - idx;
-      const zoom = 1 - Math.abs(2 * local - 1); // 0 at start/end, 1 at midpoint
+      const zoom = zoomCurve(local);
 
       const target = ZOOM_TARGETS[idx];
-      const fw = frame.offsetWidth;
-      const fh = frame.offsetHeight;
+      const { w: fw, h: fh } = frameDimsRef.current;
+      if (!fw || !fh) return;
 
       const s = 0.5 + 0.5 * zoom; // 0.5 (overview) -> 1.0 (zoomed)
       const vxPx = zoom * target.vx * fw;
@@ -139,12 +168,18 @@ export function FourSurfacesHorizontal() {
       }
     };
 
+    const onResize = () => {
+      measure();
+      onScroll();
+    };
+
+    measure();
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
+    window.addEventListener("resize", onResize, { passive: true });
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 

@@ -130,30 +130,30 @@ export default function Home() {
 
       <SectionDivider />
 
-      {/* THE FOUR SURFACES — four linkable chapters; each opens KDC's Substack (ivory tile) */}
-      <section id="surfaces" className="px-6 lg:px-16 scroll-mt-24" style={{ ...sectionStyle, backgroundColor: "#F3F0EA" }}>
+      {/* THE FOUR SURFACES — four linkable chapters; each opens KDC's Substack (ivory tile, tightened) */}
+      <section id="surfaces" className="px-6 lg:px-16 scroll-mt-24" style={{ ...sectionStyle, backgroundColor: "#F3F0EA", paddingTop: "80px", paddingBottom: "80px" }}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
-          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
+          <p className="text-[11px] tracking-widest uppercase mb-4" style={eyebrowStyle}>
             THE FOUR SURFACES
           </p>
           <h2
-            className="text-[28px] md:text-[40px] lg:text-[56px] mb-10"
+            className="text-[24px] md:text-[32px] lg:text-[44px] mb-6"
             style={headingStyle}
           >
             Brand. Content. Retention. Community &amp; Partnerships.
           </h2>
-          <div className="text-[16px] lg:text-[18px] mb-16 lg:mb-20" style={bodyStyle}>
+          <div className="text-[15px] lg:text-[17px] mb-10 lg:mb-12" style={bodyStyle}>
             <p>
               The four surfaces of a modern brand. We don&rsquo;t hand over a list of deliverables. We take ownership of how the surfaces connect, and how the work that lives on them compounds.
             </p>
-            <p style={{ color: "#171717", fontWeight: 400, paddingTop: "16px" }}>
+            <p style={{ color: "#171717", fontWeight: 400, paddingTop: "10px" }}>
               You stay the brand. We own how it performs.
             </p>
           </div>
 
           {/* Four chapters — no per-block links, one Substack CTA below */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-12 lg:mb-16">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-8 lg:mb-10">
             {[
               {
                 title: "Brand",
@@ -174,16 +174,16 @@ export default function Home() {
             ].map((s) => (
               <div
                 key={s.title}
-                className="border-t pt-6"
+                className="border-t pt-4"
                 style={{ borderColor: "#D6D0CF" }}
               >
                 <h3
-                  className="text-[22px] lg:text-[26px] mb-3"
+                  className="text-[18px] lg:text-[22px] mb-2"
                   style={{ ...headingStyle, color: "#171717" }}
                 >
                   {s.title}
                 </h3>
-                <p className="text-[14px] lg:text-[15px]" style={{ color: "#5E5954", fontWeight: 400, lineHeight: "1.55" }}>
+                <p className="text-[13px] lg:text-[14px]" style={{ color: "#5E5954", fontWeight: 400, lineHeight: "1.5" }}>
                   {s.body}
                 </p>
               </div>
@@ -194,7 +194,7 @@ export default function Home() {
             href="https://kennydonnacollective.substack.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[13px] tracking-widest uppercase transition-opacity hover:opacity-60 inline-block mb-16 lg:mb-20"
+            className="text-[13px] tracking-widest uppercase transition-opacity hover:opacity-60 inline-block mb-10 lg:mb-12"
             style={{ color: "#171717", fontWeight: 500, letterSpacing: "0.18em" }}
           >
             &rarr; Read more on Substack

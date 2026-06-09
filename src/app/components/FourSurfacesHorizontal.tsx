@@ -3,22 +3,26 @@ import brandImg from "../../imports/_DUG9698.jpg"; // rack
 import contentImg from "../../imports/_DUG9734.jpg"; // iPad moodboard
 
 /**
- * FourSurfacesHorizontal — desktop pins the section. Inside the pin, a
- * CONTAINED frame holds a 2x2 canvas of 4 panels. Vertical scroll drives
- * a SNAKE-path translation through the canvas:
+ * FourSurfacesHorizontal — zoom-into-each-panel interaction.
  *
- *   [Brand]    [Content]
- *   [C & P]    [Retention]
+ * Initial state: all 4 panels visible at once as a 2x2 grid inside a bounded
+ * frame. As the reader scrolls, the frame cycles:
  *
- * Reader's vertical scroll moves the canvas: right to Content, up to Retention,
- * left to Community & Partnerships, then the pin releases and the page
- * continues vertically.
+ *   overview -> zoom Brand -> overview -> zoom Content -> overview ->
+ *   zoom Retention -> overview -> zoom Community & Partnerships -> overview
  *
- * The frame is a bounded block (~1100x620) centered in the viewport, so the
- * section reads as one editorial block on the page, not a full-screen takeover.
+ * Each zoom cycle (one of four panels) consumes 1/4 of the section's scroll
+ * budget. Within a cycle, the first half zooms in, the second half zooms back
+ * out — so the reader is always returning to the 2x2 grid between panels.
+ *
+ * Mechanism: the inner track is 200% x 200% of the frame, with 4 panels at
+ * 50% x 50% each (one per quadrant). Transform-origin is top-left. At zoom
+ * level 0 the track is scaled to 0.5 (frame size = full track = all 4 panels
+ * visible). At zoom level 1 the track is scaled to 1 and translated so the
+ * active panel lands in the frame.
  *
  * Mobile/tablet (<lg) falls back to a normal 2-up grid; no scroll hijack.
- * Reduced motion users see the mobile grid (no canvas translation).
+ * Reduced motion users see the mobile grid.
  */
 
 type Surface = {
@@ -28,8 +32,9 @@ type Surface = {
   alt?: string;
 };
 
-// Order matters: index 0 = Brand (top-left), 1 = Content (top-right),
-// 2 = Retention (bottom-right), 3 = Community & Partnerships (bottom-left).
+// Order: Brand (top-left), Content (top-right), Retention (bottom-right),
+// Community & Partnerships (bottom-left). Reading order is left-to-right,
+// then bottom-right to bottom-left (the snake order from before, preserved).
 const SURFACES: Surface[] = [
   {
     title: "Brand",
@@ -55,16 +60,23 @@ const SURFACES: Surface[] = [
   },
 ];
 
-// Position each panel on the 2x2 canvas. Values in percent of the canvas
-// (which is 200% x 200% of the frame — i.e. 50% per panel cell).
+// Panel positions inside the track (% of track dimensions).
 const PANEL_POSITIONS = [
-  { left: 0, top: 0 }, // Brand: top-left
-  { left: 50, top: 0 }, // Content: top-right
-  { left: 50, top: 50 }, // Retention: bottom-right
-  { left: 0, top: 50 }, // Community & Partnerships: bottom-left
+  { left: 0, top: 0 }, // Brand
+  { left: 50, top: 0 }, // Content
+  { left: 50, top: 50 }, // Retention
+  { left: 0, top: 50 }, // Community & Partnerships
 ];
 
-// Alternating cream/ivory per panel keeps the chapter-shift rhythm during travel.
+// Target track-viewport in panel-units (panel size = frame size).
+// vx=0 means frame top-left aligned to track-x=0, etc.
+const ZOOM_TARGETS = [
+  { vx: 0, vy: 0 }, // Brand
+  { vx: 1, vy: 0 }, // Content
+  { vx: 1, vy: 1 }, // Retention
+  { vx: 0, vy: 1 }, // Community & Partnerships
+];
+
 const PANEL_BG = ["#FAFAFA", "#F3F0EA", "#FAFAFA", "#F3F0EA"] as const;
 
 export function FourSurfacesHorizontal() {
@@ -101,27 +113,23 @@ export function FourSurfacesHorizontal() {
       const total = Math.max(1, sectionHeight - viewportHeight);
       const progress = Math.max(0, Math.min(1, scrolled / total));
 
+      // Each of the 4 panels gets 1/4 of total progress.
+      // Within a cycle, the triangle wave gives zoom 0 -> 1 -> 0.
+      const idx = Math.min(3, Math.floor(progress * 4));
+      const local = progress * 4 - idx;
+      const zoom = 1 - Math.abs(2 * local - 1); // 0 at start/end, 1 at midpoint
+
+      const target = ZOOM_TARGETS[idx];
       const fw = frame.offsetWidth;
       const fh = frame.offsetHeight;
 
-      const seg = 1 / 3;
-      let tx: number;
-      let ty: number;
-      if (progress <= seg) {
-        const t = progress / seg;
-        tx = -t * fw;
-        ty = 0;
-      } else if (progress <= seg * 2) {
-        const t = (progress - seg) / seg;
-        tx = -fw;
-        ty = -t * fh;
-      } else {
-        const t = Math.min(1, (progress - seg * 2) / seg);
-        tx = -fw + t * fw;
-        ty = -fh;
-      }
+      const s = 0.5 + 0.5 * zoom; // 0.5 (overview) -> 1.0 (zoomed)
+      const vxPx = zoom * target.vx * fw;
+      const vyPx = zoom * target.vy * fh;
+      const tx = -vxPx * s;
+      const ty = -vyPx * s;
 
-      track.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+      track.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(${s})`;
     };
 
     const onScroll = () => {
@@ -142,7 +150,7 @@ export function FourSurfacesHorizontal() {
 
   return (
     <>
-      {/* MOBILE / TABLET — vertical grid, text-only (no image hijack) */}
+      {/* MOBILE / TABLET — vertical grid, text-only (no zoom hijack) */}
       <section
         className="lg:hidden px-6 relative"
         style={{ paddingTop: "40px", paddingBottom: "60px", backgroundColor: "#F3F0EA" }}
@@ -178,11 +186,11 @@ export function FourSurfacesHorizontal() {
         </div>
       </section>
 
-      {/* DESKTOP — pinned section, contained frame, 2x2 canvas, snake-path translation */}
+      {/* DESKTOP — pinned section, contained frame, 2x2 canvas, zoom-in/out cycles */}
       <section
         ref={sectionRef}
         className="hidden lg:block relative"
-        style={{ height: "300vh", backgroundColor: "#F3F0EA" }}
+        style={{ height: "400vh", backgroundColor: "#F3F0EA" }}
         aria-label="The Four Surfaces"
       >
         <div
@@ -201,10 +209,12 @@ export function FourSurfacesHorizontal() {
           >
             <div
               ref={trackRef}
-              className="absolute inset-0"
+              className="absolute top-0 left-0"
               style={{
                 width: "200%",
                 height: "200%",
+                transformOrigin: "0 0",
+                transform: "translate3d(0, 0, 0) scale(0.5)",
                 willChange: "transform",
               }}
             >
@@ -223,7 +233,6 @@ export function FourSurfacesHorizontal() {
                     }}
                   >
                     {s.image ? (
-                      // Panel with image: 2-col grid (text left, image right)
                       <div className="grid grid-cols-2 gap-8 items-center w-full">
                         <div>
                           <h3
@@ -263,7 +272,6 @@ export function FourSurfacesHorizontal() {
                         </div>
                       </div>
                     ) : (
-                      // Typographic panel: centered, no image
                       <div className="max-w-xl">
                         <h3
                           className="text-[44px] xl:text-[56px] mb-5"

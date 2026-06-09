@@ -150,23 +150,12 @@ export default function Home() {
       {/* THE FOUR SURFACES — desktop: pinned horizontal panels. Mobile: vertical grid. */}
       <FourSurfacesHorizontal />
 
-      {/* THE FOUR SURFACES — outro (italic closer + right-aligned Substack link, ivory) */}
+      {/* THE FOUR SURFACES — outro (Substack link only, right-aligned, ivory) */}
       <section className="px-6 lg:px-16" style={{ ...sectionStyle, backgroundColor: "#F3F0EA", paddingTop: "40px", paddingBottom: "80px" }}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
           <FadeInOnScroll>
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
-              <p
-                className="text-[20px] lg:text-[24px] max-w-[640px]"
-                style={{
-                  ...headingStyle,
-                  color: "#171717",
-                  fontStyle: "italic",
-                  lineHeight: "1.3",
-                }}
-              >
-                When channels align, growth accelerates.
-              </p>
+            <div className="flex justify-end">
               <a
                 href="https://kennydonnacollective.substack.com"
                 target="_blank"

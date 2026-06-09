@@ -1,5 +1,6 @@
 import { HeroCarousel } from "../components/HeroCarousel";
 import { SectionDivider } from "../components/SectionDivider";
+import { FourSurfacesHorizontal } from "../components/FourSurfacesHorizontal";
 import { Link } from "react-router";
 import whoWeWorkWithImg from "../../imports/_DUG9698.jpg";
 import whatWeDoImg from "../../imports/_DUG9734.jpg";
@@ -130,8 +131,8 @@ export default function Home() {
 
       <SectionDivider />
 
-      {/* THE FOUR SURFACES — four linkable chapters; each opens KDC's Substack (ivory tile, tightened) */}
-      <section id="surfaces" className="px-6 lg:px-16 scroll-mt-24" style={{ ...sectionStyle, backgroundColor: "#F3F0EA", paddingTop: "80px", paddingBottom: "80px" }}>
+      {/* THE FOUR SURFACES — intro (vertical, ivory) */}
+      <section id="surfaces" className="px-6 lg:px-16 scroll-mt-24" style={{ ...sectionStyle, backgroundColor: "#F3F0EA", paddingTop: "80px", paddingBottom: "60px" }}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
           <p className="text-[11px] tracking-widest uppercase mb-4" style={eyebrowStyle}>
@@ -143,7 +144,7 @@ export default function Home() {
           >
             Brand. Content. Retention. Community &amp; Partnerships.
           </h2>
-          <div className="text-[15px] lg:text-[17px] mb-10 lg:mb-12" style={bodyStyle}>
+          <div className="text-[15px] lg:text-[17px]" style={bodyStyle}>
             <p>
               The four surfaces of a modern brand. We don&rsquo;t hand over a list of deliverables. We take ownership of how the surfaces connect, and how the work that lives on them compounds.
             </p>
@@ -151,45 +152,16 @@ export default function Home() {
               You stay the brand. We own how it performs.
             </p>
           </div>
+        </div>
+      </section>
 
-          {/* Four chapters — no per-block links, one Substack CTA below */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-8 lg:mb-10">
-            {[
-              {
-                title: "Brand",
-                body: "Voice, design, and the story that runs through every channel without a crack.",
-              },
-              {
-                title: "Content",
-                body: "The editorial layer. How the brand shows up across owned, earned, and social.",
-              },
-              {
-                title: "Retention",
-                body: "Lifecycle, CRM, and the inbox. Editorial in voice, built to convert.",
-              },
-              {
-                title: "Community & Partnerships",
-                body: "The relationships around the brand. The signals the audience sends, and the brands and people it chooses to stand beside.",
-              },
-            ].map((s) => (
-              <div
-                key={s.title}
-                className="border-t pt-4"
-                style={{ borderColor: "#D6D0CF" }}
-              >
-                <h3
-                  className="text-[18px] lg:text-[22px] mb-2"
-                  style={{ ...headingStyle, color: "#171717" }}
-                >
-                  {s.title}
-                </h3>
-                <p className="text-[13px] lg:text-[14px]" style={{ color: "#5E5954", fontWeight: 400, lineHeight: "1.5" }}>
-                  {s.body}
-                </p>
-              </div>
-            ))}
-          </div>
+      {/* THE FOUR SURFACES — desktop: pinned horizontal panels. Mobile: vertical grid. */}
+      <FourSurfacesHorizontal />
 
+      {/* THE FOUR SURFACES — outro (Substack link + italic closer, ivory) */}
+      <section className="px-6 lg:px-16" style={{ ...sectionStyle, backgroundColor: "#F3F0EA", paddingTop: "40px", paddingBottom: "80px" }}>
+        {noiseOverlay}
+        <div className="max-w-[1280px] mx-auto relative">
           <a
             href="https://kennydonnacollective.substack.com"
             target="_blank"

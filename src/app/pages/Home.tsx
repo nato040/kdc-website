@@ -239,25 +239,6 @@ export default function Home() {
 
       <SectionDivider />
 
-      {/* WHERE WE SIT — editorial pause (ivory tile) */}
-      <section className="px-6 lg:px-16" style={{ ...sectionStyle, backgroundColor: "#F3F0EA" }}>
-        {noiseOverlay}
-        <div className="max-w-[960px] mx-auto relative text-center">
-          <h2
-            className="text-[32px] md:text-[44px] lg:text-[56px]"
-            style={{
-              ...headingStyle,
-              fontStyle: "italic",
-              lineHeight: "1.25",
-            }}
-          >
-            We shape what you&rsquo;re creating into how it shows up across every customer moment.
-          </h2>
-        </div>
-      </section>
-
-      <SectionDivider />
-
       {/* CTA — minimal close; the scarcity argument has already been made above */}
       <section className="px-6 lg:px-16" style={{ ...sectionStyle, backgroundColor: "#171717" }}>
         <div className="max-w-[1280px] mx-auto relative">

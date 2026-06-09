@@ -3,12 +3,11 @@ import { SectionDivider } from "../components/SectionDivider";
 import { FourSurfacesHorizontal } from "../components/FourSurfacesHorizontal";
 import { FadeInOnScroll } from "../components/FadeInOnScroll";
 import { Link } from "react-router";
-import whoWeWorkWithImg from "../../imports/_DUG9698.jpg";
-import whatWeDoImg from "../../imports/_DUG9734.jpg";
 
 /**
- * Home — seven tight beats, no echo:
- * Hero → What We Do → The Problem → Who We Work With → The Four Surfaces → The Partnership → Where We Sit → CTA
+ * Home — five beats:
+ * Hero → The Four Surfaces (intro + horizontal panels with images on Brand + Content) → outro → The Partnership (text) → CTA
+ * Images (rack, iPad) now live exclusively on the horizontal panels; image-based grids removed from prose sections.
  */
 export default function Home() {
   const sectionStyle = {
@@ -54,74 +53,9 @@ export default function Home() {
     <>
       <HeroCarousel />
 
-      {/* WHAT WE DO — plain-language beat paired with the iPad moodboard image */}
-      <section id="what-we-do" className="px-6 lg:px-16 scroll-mt-24" style={sectionStyle}>
-        {noiseOverlay}
-        <div className="max-w-[1280px] mx-auto relative">
-          <FadeInOnScroll>
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
-                  WHAT WE DO
-                </p>
-                <h2 className="text-[28px] md:text-[40px] lg:text-[52px] mb-8" style={headingStyle}>
-                  KDC runs brand marketing &amp; growth for design-led fashion and lifestyle brands.
-                </h2>
-                <p className="text-[16px] lg:text-[18px]" style={bodyStyle}>
-                  The strategy, the content, and the channels that turn it into sales. One team, one point of view, across everything your customer sees.
-                </p>
-              </div>
-              <div>
-                <img
-                  src={whatWeDoImg}
-                  alt="Curating reference imagery on iPad"
-                  style={{ width: "100%", height: "600px", objectFit: "cover" }}
-                />
-              </div>
-            </div>
-          </FadeInOnScroll>
-        </div>
-      </section>
-
       <SectionDivider />
 
-      {/* THE PARTNERSHIP — inherits WHO WE WORK WITH's slot: ivory grid + rack image right */}
-      <section id="partnership" className="px-6 lg:px-16 scroll-mt-24" style={{ ...sectionStyle, backgroundColor: "#F3F0EA" }}>
-        {noiseOverlay}
-        <div className="max-w-[1280px] mx-auto relative">
-          <FadeInOnScroll>
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
-                  THE PARTNERSHIP
-                </p>
-                <h2 className="text-[28px] md:text-[40px] lg:text-[56px] mb-8" style={headingStyle}>
-                  We don&rsquo;t onboard, deliver, and disappear. We embed.
-                </h2>
-                <div className="text-[16px] lg:text-[18px]" style={bodyStyle}>
-                  <p>
-                    KDC works as an extension of your team, inside the brand, accountable for how it connects and converts, present for the long build, not a project with an end date.
-                  </p>
-                  <p style={{ color: "#171717", paddingTop: "16px" }}>
-                    Twelve partners at a time. By invitation. The ones we say yes to get all of it.
-                  </p>
-                </div>
-              </div>
-              <div>
-                <img
-                  src={whoWeWorkWithImg}
-                  alt="On the rack"
-                  style={{ width: "100%", height: "600px", objectFit: "cover", objectPosition: "center 85%" }}
-                />
-              </div>
-            </div>
-          </FadeInOnScroll>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* THE FOUR SURFACES — intro (vertical, ivory) */}
+      {/* THE FOUR SURFACES — intro lands immediately after the hero */}
       <section id="surfaces" className="px-6 lg:px-16 scroll-mt-24" style={{ ...sectionStyle, backgroundColor: "#F3F0EA", paddingTop: "80px", paddingBottom: "60px" }}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
@@ -165,6 +99,31 @@ export default function Home() {
               >
                 &rarr; Read more on Substack
               </a>
+            </div>
+          </FadeInOnScroll>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* THE PARTNERSHIP — text-only, cream, sits just before the CTA */}
+      <section id="partnership" className="px-6 lg:px-16 scroll-mt-24" style={sectionStyle}>
+        {noiseOverlay}
+        <div className="max-w-[1280px] mx-auto relative">
+          <FadeInOnScroll>
+            <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
+              THE PARTNERSHIP
+            </p>
+            <h2 className="text-[28px] md:text-[40px] lg:text-[56px] mb-8" style={headingStyle}>
+              We don&rsquo;t onboard, deliver, and disappear. We embed.
+            </h2>
+            <div className="text-[16px] lg:text-[18px]" style={bodyStyle}>
+              <p>
+                KDC works as an extension of your team, inside the brand, accountable for how it connects and converts, present for the long build, not a project with an end date.
+              </p>
+              <p style={{ color: "#171717", paddingTop: "16px" }}>
+                Twelve partners at a time. By invitation. The ones we say yes to get all of it.
+              </p>
             </div>
           </FadeInOnScroll>
         </div>

@@ -1,34 +1,48 @@
 import { useEffect, useRef } from "react";
+import brandImg from "../../imports/_DUG9698.jpg"; // rack
+import contentImg from "../../imports/_DUG9734.jpg"; // iPad moodboard
 
 /**
  * FourSurfacesHorizontal — desktop pins the section and converts vertical
  * scroll into horizontal travel across four full-viewport panels.
  * Mobile/tablet (<lg) falls back to a normal 2-up grid; no scroll hijack.
  *
- * Pattern: section is 300vh tall on lg+. A sticky child fills 100vw x 100vh.
- * A flex track inside that holds 4 panels of 100vw each (400vw total),
- * and its translateX moves from 0 to -300vw as scroll progresses 0 -> 1.
- * Respects prefers-reduced-motion (skips the pin; renders panels stacked).
+ * Brand panel pairs the title/body with the rack photo (right).
+ * Content panel pairs with the iPad moodboard photo (right).
+ * Retention and Community & Partnerships are typographic panels (no image).
  */
 
-const SURFACES = [
+type Surface = {
+  title: string;
+  body: string;
+  image: string | null;
+  alt?: string;
+};
+
+const SURFACES: Surface[] = [
   {
     title: "Brand",
     body: "Voice, design, and the story that runs through every channel without a crack.",
+    image: brandImg,
+    alt: "On the rack",
   },
   {
     title: "Content",
     body: "The editorial layer. How the brand shows up across owned, earned, and social.",
+    image: contentImg,
+    alt: "Curating reference imagery on iPad",
   },
   {
     title: "Retention",
     body: "Lifecycle, CRM, and the inbox. Editorial in voice, built to convert.",
+    image: null,
   },
   {
     title: "Community & Partnerships",
     body: "The relationships around the brand. The signals the audience sends, and the brands and people it chooses to stand beside.",
+    image: null,
   },
-] as const;
+];
 
 // Alternating cream/ivory per panel keeps the chapter-shift rhythm during horizontal travel.
 const PANEL_BG = ["#FAFAFA", "#F3F0EA", "#FAFAFA", "#F3F0EA"] as const;
@@ -52,7 +66,6 @@ export function FourSurfacesHorizontal() {
       const track = trackRef.current;
       if (!section || !track) return;
 
-      // Below lg breakpoint OR reduced motion -> no transform; mobile grid is shown instead.
       if (window.innerWidth < 1024 || prefersReduced) {
         track.style.transform = "";
         return;
@@ -62,14 +75,10 @@ export function FourSurfacesHorizontal() {
       const sectionHeight = section.offsetHeight;
       const viewportHeight = window.innerHeight;
 
-      // Vertical scroll consumed inside the section.
       const scrolled = Math.max(0, -rect.top);
-      // Total scrollable distance within the section.
       const total = Math.max(1, sectionHeight - viewportHeight);
-      // 0 at top of section, 1 at bottom.
       const progress = Math.max(0, Math.min(1, scrolled / total));
 
-      // Translate 4 panels (400vw) by 3 panel widths total to surface panel 4 at end.
       track.style.transform = `translate3d(${progress * -300}vw, 0, 0)`;
     };
 
@@ -91,7 +100,7 @@ export function FourSurfacesHorizontal() {
 
   return (
     <>
-      {/* MOBILE / TABLET — normal vertical grid, no scroll hijack */}
+      {/* MOBILE / TABLET — vertical grid, text-only (no image hijack) */}
       <section
         className="lg:hidden px-6 relative"
         style={{ paddingTop: "40px", paddingBottom: "60px", backgroundColor: "#F3F0EA" }}
@@ -150,31 +159,74 @@ export function FourSurfacesHorizontal() {
                   backgroundColor: PANEL_BG[i],
                 }}
               >
-                <div className="max-w-3xl">
-                  <h3
-                    className="text-[72px] xl:text-[96px] mb-8"
-                    style={{
-                      fontFamily: "var(--font-serif)",
-                      color: "#171717",
-                      fontWeight: 400,
-                      lineHeight: "1.05",
-                      letterSpacing: "0.01em",
-                    }}
-                  >
-                    {s.title}
-                  </h3>
-                  <p
-                    className="text-[20px] xl:text-[24px]"
-                    style={{
-                      color: "#5E5954",
-                      fontWeight: 400,
-                      lineHeight: "1.5",
-                      maxWidth: "640px",
-                    }}
-                  >
-                    {s.body}
-                  </p>
-                </div>
+                {s.image ? (
+                  // Panel with image: 2-col grid (text left, image right)
+                  <div className="grid grid-cols-2 gap-16 items-center w-full max-w-[1500px]">
+                    <div>
+                      <h3
+                        className="text-[64px] xl:text-[88px] mb-8"
+                        style={{
+                          fontFamily: "var(--font-serif)",
+                          color: "#171717",
+                          fontWeight: 400,
+                          lineHeight: "1.05",
+                          letterSpacing: "0.01em",
+                        }}
+                      >
+                        {s.title}
+                      </h3>
+                      <p
+                        className="text-[18px] xl:text-[22px]"
+                        style={{
+                          color: "#5E5954",
+                          fontWeight: 400,
+                          lineHeight: "1.5",
+                          maxWidth: "560px",
+                        }}
+                      >
+                        {s.body}
+                      </p>
+                    </div>
+                    <div>
+                      <img
+                        src={s.image}
+                        alt={s.alt || ""}
+                        style={{
+                          width: "100%",
+                          height: "70vh",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  // Typographic panel: centered, no image
+                  <div className="max-w-3xl">
+                    <h3
+                      className="text-[72px] xl:text-[96px] mb-8"
+                      style={{
+                        fontFamily: "var(--font-serif)",
+                        color: "#171717",
+                        fontWeight: 400,
+                        lineHeight: "1.05",
+                        letterSpacing: "0.01em",
+                      }}
+                    >
+                      {s.title}
+                    </h3>
+                    <p
+                      className="text-[20px] xl:text-[24px]"
+                      style={{
+                        color: "#5E5954",
+                        fontWeight: 400,
+                        lineHeight: "1.5",
+                        maxWidth: "640px",
+                      }}
+                    >
+                      {s.body}
+                    </p>
+                  </div>
+                )}
               </div>
             ))}
           </div>

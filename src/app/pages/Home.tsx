@@ -2,6 +2,7 @@ import { HeroCarousel } from "../components/HeroCarousel";
 import { SectionDivider } from "../components/SectionDivider";
 import { Link } from "react-router";
 import whoWeWorkWithImg from "../../imports/_DUG9698.jpg";
+import whatWeDoImg from "../../imports/_DUG9734.jpg";
 
 /**
  * Home — seven tight beats, no echo:
@@ -51,20 +52,29 @@ export default function Home() {
     <>
       <HeroCarousel />
 
-      {/* WHAT WE DO — plain-language beat that names the work in one breath */}
+      {/* WHAT WE DO — plain-language beat paired with the iPad moodboard image */}
       <section id="what-we-do" className="px-6 lg:px-16 scroll-mt-24" style={sectionStyle}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
-          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
-            WHAT WE DO
-          </p>
-          <h2 className="text-[28px] md:text-[40px] lg:text-[52px] mb-8" style={headingStyle}>
-            KDC runs brand marketing &amp; growth for design-led fashion and lifestyle brands.
-          </h2>
-          <div className="text-[16px] lg:text-[18px]" style={bodyStyle}>
-            <p>
-              The strategy, the content, and the channels that turn it into sales. One team, one point of view, across everything your customer sees.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
+                WHAT WE DO
+              </p>
+              <h2 className="text-[28px] md:text-[40px] lg:text-[52px] mb-8" style={headingStyle}>
+                KDC runs brand marketing &amp; growth for design-led fashion and lifestyle brands.
+              </h2>
+              <p className="text-[16px] lg:text-[18px]" style={bodyStyle}>
+                The strategy, the content, and the channels that turn it into sales. One team, one point of view, across everything your customer sees.
+              </p>
+            </div>
+            <div>
+              <img
+                src={whatWeDoImg}
+                alt="Curating reference imagery on iPad"
+                style={{ width: "100%", height: "600px", objectFit: "cover" }}
+              />
+            </div>
           </div>
         </div>
       </section>

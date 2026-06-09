@@ -85,22 +85,27 @@ export default function Home() {
 
       <SectionDivider />
 
-      {/* WHO WE WORK WITH — audience qualifier (ivory tile, moved up after PROBLEM removed) */}
-      <section className="px-6 lg:px-16" style={{ ...sectionStyle, backgroundColor: "#F3F0EA" }}>
+      {/* THE PARTNERSHIP — inherits WHO WE WORK WITH's slot: ivory grid + rack image right */}
+      <section id="partnership" className="px-6 lg:px-16 scroll-mt-24" style={{ ...sectionStyle, backgroundColor: "#F3F0EA" }}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
           <FadeInOnScroll>
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
-                  WHO WE WORK WITH
+                  THE PARTNERSHIP
                 </p>
                 <h2 className="text-[28px] md:text-[40px] lg:text-[56px] mb-8" style={headingStyle}>
-                  We partner with design-led fashion and lifestyle brands.
+                  We don&rsquo;t onboard, deliver, and disappear. We embed.
                 </h2>
-                <p className="text-[16px] lg:text-[18px]" style={bodyStyle}>
-                  Brands with strong products and a clear identity, where marketing has started to feel inconsistent or disconnected.
-                </p>
+                <div className="text-[16px] lg:text-[18px]" style={bodyStyle}>
+                  <p>
+                    KDC works as an extension of your team, inside the brand, accountable for how it connects and converts, present for the long build, not a project with an end date.
+                  </p>
+                  <p style={{ color: "#171717", paddingTop: "16px" }}>
+                    Twelve partners at a time. By invitation. The ones we say yes to get all of it.
+                  </p>
+                </div>
               </div>
               <div>
                 <img
@@ -109,31 +114,6 @@ export default function Home() {
                   style={{ width: "100%", height: "600px", objectFit: "cover", objectPosition: "center 85%" }}
                 />
               </div>
-            </div>
-          </FadeInOnScroll>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* THE PARTNERSHIP — moved up to sit next to WHO WE WORK WITH (cream) */}
-      <section id="partnership" className="px-6 lg:px-16 scroll-mt-24" style={sectionStyle}>
-        {noiseOverlay}
-        <div className="max-w-[1280px] mx-auto relative">
-          <FadeInOnScroll>
-            <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
-              THE PARTNERSHIP
-            </p>
-            <h2 className="text-[28px] md:text-[40px] lg:text-[56px] mb-8" style={headingStyle}>
-              We don&rsquo;t onboard, deliver, and disappear. We embed.
-            </h2>
-            <div className="text-[16px] lg:text-[18px]" style={bodyStyle}>
-              <p>
-                KDC works as an extension of your team, inside the brand, accountable for how it connects and converts, present for the long build, not a project with an end date.
-              </p>
-              <p style={{ color: "#171717", paddingTop: "16px" }}>
-                Twelve partners at a time. By invitation. The ones we say yes to get all of it.
-              </p>
             </div>
           </FadeInOnScroll>
         </div>

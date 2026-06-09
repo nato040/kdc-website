@@ -1,20 +1,9 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Outlet, Link, useLocation } from "react-router";
 import logoImg from "../../imports/kdc-logo-stacked-black.png";
 import { ScrollToHash } from "./ScrollToHash";
 
 const SUBSTACK_URL = "https://kennydonnacollective.substack.com";
-
-// The KDC index — surfaces the "THE [X]" taxonomy as chapter titles in the footer.
-// Order reads as a manifesto: spark -> diagnosis -> model -> identity -> method -> proof.
-const indexLinks: Array<{ to: string; label: string }> = [
-  { to: "/about#why", label: "The Why" },
-  { to: "/#problem", label: "The Problem" },
-  { to: "/#surfaces", label: "The Four Surfaces" },
-  { to: "/about#collective", label: "The Collective" },
-  { to: "/#partnership", label: "The Partnership" },
-  { to: "/case-studies#work", label: "The Work" },
-];
 
 type NavLink = {
   to: string;
@@ -174,36 +163,6 @@ export default function Root() {
       {/* Footer */}
       <footer className="py-16 sm:py-20 lg:py-24 px-6 sm:px-8 lg:px-16" style={{ backgroundColor: '#171717', borderTop: '1px solid #3A342F' }}>
         <div className="max-w-7xl mx-auto">
-
-          {/* The Index — chapter titles linked by arrows, reading as a directed flow */}
-          <div className="mb-14 lg:mb-20 pb-10 lg:pb-14" style={{ borderBottom: '1px solid #2A2A2A' }}>
-            <p className="text-[10px] tracking-widest uppercase mb-6" style={{ color: '#5E5954', letterSpacing: '0.20em' }}>
-              The Index
-            </p>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-3 lg:gap-x-5">
-              {indexLinks.map((l, i) => (
-                <Fragment key={l.to}>
-                  <Link
-                    to={l.to}
-                    style={{ fontFamily: 'var(--font-serif)', color: '#FCFBF8', fontWeight: 300, letterSpacing: '0.01em' }}
-                    className="text-[18px] lg:text-[22px] transition-opacity hover:opacity-60"
-                  >
-                    {l.label}
-                  </Link>
-                  {i < indexLinks.length - 1 && (
-                    <span
-                      aria-hidden="true"
-                      style={{ color: '#5E5954', fontWeight: 300 }}
-                      className="text-[18px] lg:text-[22px] select-none"
-                    >
-                      &rarr;
-                    </span>
-                  )}
-                </Fragment>
-              ))}
-            </div>
-          </div>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 mb-12 lg:mb-16">
             {/* Left - Brand */}
             <div className="sm:col-span-2 lg:col-span-1">

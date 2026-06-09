@@ -160,10 +160,10 @@ export default function CaseStudies() {
             </div>
             <div className="border-t pt-8" style={{ borderColor: '#D6D0CF' }}>
               <p style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 400, lineHeight: '1' }} className="text-[56px] md:text-[72px] lg:text-[88px] mb-4">
-                <CountUp end={112} prefix="+" suffix="%" />
+                <CountUp end={2} suffix="x" />-<CountUp end={3} suffix="x" />
               </p>
               <p className="text-[11px] tracking-widest uppercase" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.18em' }}>
-                YoY DTC Growth
+                Conversion Rate
               </p>
             </div>
           </div>

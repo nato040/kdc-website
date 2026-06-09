@@ -111,6 +111,29 @@ export default function Home() {
 
       <SectionDivider />
 
+      {/* THE PARTNERSHIP — moved up to sit next to WHO WE WORK WITH (cream) */}
+      <section id="partnership" className="px-6 lg:px-16 scroll-mt-24" style={sectionStyle}>
+        {noiseOverlay}
+        <div className="max-w-[1280px] mx-auto relative">
+          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
+            THE PARTNERSHIP
+          </p>
+          <h2 className="text-[28px] md:text-[40px] lg:text-[56px] mb-8" style={headingStyle}>
+            We don&rsquo;t onboard, deliver, and disappear. We embed.
+          </h2>
+          <div className="text-[16px] lg:text-[18px]" style={bodyStyle}>
+            <p>
+              KDC works as an extension of your team, inside the brand, accountable for how it connects and converts, present for the long build, not a project with an end date.
+            </p>
+            <p style={{ color: "#171717", paddingTop: "16px" }}>
+              Twelve partners at a time. By invitation. The ones we say yes to get all of it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
       {/* THE FOUR SURFACES — intro (vertical, ivory) */}
       <section id="surfaces" className="px-6 lg:px-16 scroll-mt-24" style={{ ...sectionStyle, backgroundColor: "#F3F0EA", paddingTop: "80px", paddingBottom: "60px" }}>
         {noiseOverlay}
@@ -138,53 +161,31 @@ export default function Home() {
       {/* THE FOUR SURFACES — desktop: pinned horizontal panels. Mobile: vertical grid. */}
       <FourSurfacesHorizontal />
 
-      {/* THE FOUR SURFACES — outro (Substack link + italic closer, ivory) */}
+      {/* THE FOUR SURFACES — outro (italic closer + right-aligned Substack link, ivory) */}
       <section className="px-6 lg:px-16" style={{ ...sectionStyle, backgroundColor: "#F3F0EA", paddingTop: "40px", paddingBottom: "80px" }}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
-          <a
-            href="https://kennydonnacollective.substack.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[13px] tracking-widest uppercase transition-opacity hover:opacity-60 inline-block mb-10 lg:mb-12"
-            style={{ color: "#171717", fontWeight: 500, letterSpacing: "0.18em" }}
-          >
-            &rarr; Read more on Substack
-          </a>
-
-          <p
-            className="text-[20px] lg:text-[24px]"
-            style={{
-              ...headingStyle,
-              color: "#171717",
-              fontStyle: "italic",
-              lineHeight: "1.3",
-            }}
-          >
-            When channels align, growth accelerates.
-          </p>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* THE PARTNERSHIP */}
-      <section id="partnership" className="px-6 lg:px-16 scroll-mt-24" style={sectionStyle}>
-        {noiseOverlay}
-        <div className="max-w-[1280px] mx-auto relative">
-          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
-            THE PARTNERSHIP
-          </p>
-          <h2 className="text-[28px] md:text-[40px] lg:text-[56px] mb-8" style={headingStyle}>
-            We don&rsquo;t onboard, deliver, and disappear. We embed.
-          </h2>
-          <div className="text-[16px] lg:text-[18px]" style={bodyStyle}>
-            <p>
-              KDC works as an extension of your team, inside the brand, accountable for how it connects and converts, present for the long build, not a project with an end date.
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+            <p
+              className="text-[20px] lg:text-[24px] max-w-[640px]"
+              style={{
+                ...headingStyle,
+                color: "#171717",
+                fontStyle: "italic",
+                lineHeight: "1.3",
+              }}
+            >
+              When channels align, growth accelerates.
             </p>
-            <p style={{ color: "#171717", paddingTop: "16px" }}>
-              Twelve partners at a time. By invitation. The ones we say yes to get all of it.
-            </p>
+            <a
+              href="https://kennydonnacollective.substack.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[13px] tracking-widest uppercase transition-opacity hover:opacity-60 whitespace-nowrap"
+              style={{ color: "#171717", fontWeight: 500, letterSpacing: "0.18em" }}
+            >
+              &rarr; Read more on Substack
+            </a>
           </div>
         </div>
       </section>

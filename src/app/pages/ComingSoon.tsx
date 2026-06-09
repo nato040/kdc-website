@@ -1,4 +1,4 @@
-import logoImg from "../../imports/kenny_donna_collective_logo_transparent-1.png";
+import logoImg from "../../imports/kdc-logo-stacked-black.png";
 
 const SUBSTACK_URL = "https://kennydonnacollective.substack.com";
 const INSTAGRAM_URL = "https://instagram.com/kennydonnacollective";

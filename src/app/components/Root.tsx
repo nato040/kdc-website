@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react";
 import { Outlet, Link, useLocation } from "react-router";
-import logoImg from "../../imports/kenny_donna_collective_logo_transparent-1.png";
+import logoImg from "../../imports/kdc-logo-stacked-black.png";
 import { ScrollToHash } from "./ScrollToHash";
 
 const SUBSTACK_URL = "https://kennydonnacollective.substack.com";

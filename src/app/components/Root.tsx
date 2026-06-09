@@ -76,7 +76,7 @@ export default function Root() {
               ))}
             </div>
             <Link to="/" className="flex justify-center">
-              <img src={logoImg} alt="Kenny Donna Collective" className="h-32 lg:h-40 w-auto max-w-3xl" />
+              <img src={logoImg} alt="Kenny Donna Collective" className="h-24 lg:h-32 w-auto max-w-3xl" />
             </Link>
             <div className="flex gap-9 lg:gap-14 justify-end">
               {navLinks.slice(2).map((l) => (

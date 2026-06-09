@@ -160,11 +160,11 @@ export function FourSurfacesHorizontal() {
                 }}
               >
                 {s.image ? (
-                  // Panel with image: 2-col grid (text left, image right)
-                  <div className="grid grid-cols-2 gap-16 items-center w-full max-w-[1500px]">
+                  // Panel with image: 2-col grid (text left, image right) — sized down
+                  <div className="grid grid-cols-2 gap-12 items-center w-full max-w-[1200px]">
                     <div>
                       <h3
-                        className="text-[64px] xl:text-[88px] mb-8"
+                        className="text-[40px] xl:text-[56px] mb-6"
                         style={{
                           fontFamily: "var(--font-serif)",
                           color: "#171717",
@@ -176,12 +176,12 @@ export function FourSurfacesHorizontal() {
                         {s.title}
                       </h3>
                       <p
-                        className="text-[18px] xl:text-[22px]"
+                        className="text-[15px] xl:text-[17px]"
                         style={{
                           color: "#5E5954",
                           fontWeight: 400,
                           lineHeight: "1.5",
-                          maxWidth: "560px",
+                          maxWidth: "480px",
                         }}
                       >
                         {s.body}
@@ -193,17 +193,17 @@ export function FourSurfacesHorizontal() {
                         alt={s.alt || ""}
                         style={{
                           width: "100%",
-                          height: "70vh",
+                          height: "55vh",
                           objectFit: "cover",
                         }}
                       />
                     </div>
                   </div>
                 ) : (
-                  // Typographic panel: centered, no image
-                  <div className="max-w-3xl">
+                  // Typographic panel: centered, no image — sized down
+                  <div className="max-w-2xl">
                     <h3
-                      className="text-[72px] xl:text-[96px] mb-8"
+                      className="text-[48px] xl:text-[64px] mb-6"
                       style={{
                         fontFamily: "var(--font-serif)",
                         color: "#171717",
@@ -215,12 +215,12 @@ export function FourSurfacesHorizontal() {
                       {s.title}
                     </h3>
                     <p
-                      className="text-[20px] xl:text-[24px]"
+                      className="text-[16px] xl:text-[19px]"
                       style={{
                         color: "#5E5954",
                         fontWeight: 400,
                         lineHeight: "1.5",
-                        maxWidth: "640px",
+                        maxWidth: "560px",
                       }}
                     >
                       {s.body}

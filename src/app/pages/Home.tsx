@@ -55,28 +55,36 @@ export default function Home() {
 
       <SectionDivider />
 
-      {/* THE FOUR SURFACES — intro lands immediately after the hero */}
-      <section id="surfaces" className="px-6 lg:px-16 scroll-mt-24" style={{ ...sectionStyle, backgroundColor: "#F3F0EA", paddingTop: "80px", paddingBottom: "60px" }}>
+      {/* THE FOUR SURFACES — intro lands immediately after the hero, more space, punchline elevated */}
+      <section id="surfaces" className="px-6 lg:px-16 scroll-mt-24" style={{ ...sectionStyle, backgroundColor: "#F3F0EA", paddingTop: "140px", paddingBottom: "120px" }}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
           <FadeInOnScroll>
-            <p className="text-[11px] tracking-widest uppercase mb-4" style={eyebrowStyle}>
+            <p className="text-[11px] tracking-widest uppercase mb-8" style={eyebrowStyle}>
               THE FOUR SURFACES
             </p>
             <h2
-              className="text-[24px] md:text-[32px] lg:text-[44px] mb-6"
+              className="text-[28px] md:text-[44px] lg:text-[64px] mb-12"
               style={headingStyle}
             >
               Brand. Content. Retention. Community &amp; Partnerships.
             </h2>
-            <div className="text-[15px] lg:text-[17px]" style={bodyStyle}>
-              <p>
-                The four surfaces of a modern brand. We don&rsquo;t hand over a list of deliverables. We take ownership of how the surfaces connect, and how the work that lives on them compounds.
-              </p>
-              <p style={{ color: "#171717", fontWeight: 400, paddingTop: "10px" }}>
-                You stay the brand. We own how it performs.
-              </p>
-            </div>
+            <p className="text-[16px] lg:text-[20px] mb-12" style={bodyStyle}>
+              The four surfaces of a modern brand. We don&rsquo;t hand over a list of deliverables. We take ownership of how the surfaces connect, and how the work that lives on them compounds.
+            </p>
+            <p
+              className="text-[24px] md:text-[32px] lg:text-[40px]"
+              style={{
+                fontFamily: "var(--font-serif)",
+                color: "#171717",
+                fontWeight: 400,
+                lineHeight: "1.2",
+                letterSpacing: "0.01em",
+                maxWidth: "900px",
+              }}
+            >
+              You stay the brand. We own how it performs.
+            </p>
           </FadeInOnScroll>
         </div>
       </section>

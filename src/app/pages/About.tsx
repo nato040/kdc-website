@@ -86,11 +86,11 @@ export default function About() {
 
       <SectionDivider />
 
-      {/* THE COLLECTIVE — now ahead of the founder bio, per Phase */}
+      {/* THE COLLECTIVE — now ahead of the founder bio, per Phase (ivory tile) */}
       <section
         id="collective"
         className="px-6 lg:px-16 relative scroll-mt-24"
-        style={{ paddingTop: "100px", paddingBottom: "100px" }}
+        style={{ paddingTop: "100px", paddingBottom: "100px", backgroundColor: "#F3F0EA" }}
       >
         <div className="max-w-[1280px] mx-auto">
           <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>

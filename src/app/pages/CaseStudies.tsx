@@ -23,8 +23,8 @@ export default function CaseStudies() {
 
       <SectionDivider />
 
-      {/* SECTION 2 — THE WORK */}
-      <section id="work" className="px-6 lg:px-16 relative scroll-mt-24" style={{ paddingTop: '120px', paddingBottom: '120px' }}>
+      {/* SECTION 2 — THE WORK (ivory tile) */}
+      <section id="work" className="px-6 lg:px-16 relative scroll-mt-24" style={{ paddingTop: '120px', paddingBottom: '120px', backgroundColor: '#F3F0EA' }}>
         <div className="max-w-[1280px] mx-auto">
           <p className="text-[11px] tracking-widest uppercase mb-6" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.20em' }}>
             THE WORK

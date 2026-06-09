@@ -103,10 +103,10 @@ export default function Signals() {
 
       <SectionDivider />
 
-      {/* RECENT — latest 3 posts pulled live from Substack via /api/journal-posts */}
+      {/* RECENT — latest 3 posts pulled live from Substack via /api/journal-posts (ivory tile) */}
       <section
         className="px-6 lg:px-16 relative"
-        style={{ paddingTop: "100px", paddingBottom: "120px" }}
+        style={{ paddingTop: "100px", paddingBottom: "120px", backgroundColor: "#F3F0EA" }}
       >
         <div className="max-w-[1280px] mx-auto">
           <p className="text-[11px] tracking-widest uppercase mb-10" style={eyebrowStyle}>

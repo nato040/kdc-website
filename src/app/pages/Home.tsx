@@ -71,8 +71,8 @@ export default function Home() {
 
       <SectionDivider />
 
-      {/* THE PROBLEM — diagnosis */}
-      <section id="problem" className="px-6 lg:px-16 scroll-mt-24" style={sectionStyle}>
+      {/* THE PROBLEM — diagnosis (ivory tile) */}
+      <section id="problem" className="px-6 lg:px-16 scroll-mt-24" style={{ ...sectionStyle, backgroundColor: "#F3F0EA" }}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
           <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
@@ -120,8 +120,8 @@ export default function Home() {
 
       <SectionDivider />
 
-      {/* THE FOUR SURFACES — four linkable chapters; each opens KDC's Substack */}
-      <section id="surfaces" className="px-6 lg:px-16 scroll-mt-24" style={sectionStyle}>
+      {/* THE FOUR SURFACES — four linkable chapters; each opens KDC's Substack (ivory tile) */}
+      <section id="surfaces" className="px-6 lg:px-16 scroll-mt-24" style={{ ...sectionStyle, backgroundColor: "#F3F0EA" }}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
           <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
@@ -229,8 +229,8 @@ export default function Home() {
 
       <SectionDivider />
 
-      {/* WHERE WE SIT — editorial pause, on the same cream as the rest of the page */}
-      <section className="px-6 lg:px-16" style={sectionStyle}>
+      {/* WHERE WE SIT — editorial pause (ivory tile) */}
+      <section className="px-6 lg:px-16" style={{ ...sectionStyle, backgroundColor: "#F3F0EA" }}>
         {noiseOverlay}
         <div className="max-w-[960px] mx-auto relative text-center">
           <h2

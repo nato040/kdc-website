@@ -139,10 +139,10 @@ export default function Contact() {
 
       <SectionDivider />
 
-      {/* INTRO + QUESTIONNAIRE */}
+      {/* INTRO + QUESTIONNAIRE (ivory tile) */}
       <section
         className="px-6 lg:px-16 relative"
-        style={{ paddingTop: "100px", paddingBottom: "120px" }}
+        style={{ paddingTop: "100px", paddingBottom: "120px", backgroundColor: "#F3F0EA" }}
       >
         <div className="max-w-[1280px] mx-auto">
           <p className="text-[16px] lg:text-[18px] mb-12 lg:mb-16" style={bodyStyle}>

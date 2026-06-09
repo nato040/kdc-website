@@ -1,53 +1,6 @@
-import { useEffect, useRef, useState, ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SectionDivider } from "../components/SectionDivider";
-
-/**
- * FadeInOnScroll — fades + slight rise as the element enters the viewport.
- * 700ms transition, threshold 0.2. Respects prefers-reduced-motion.
- * Used on THE WORK pillars so each block reveals as the reader hits it.
- */
-function FadeInOnScroll({ children }: { children: ReactNode }) {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      setVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(16px)",
-        transition: "opacity 700ms ease, transform 700ms ease",
-      }}
-    >
-      {children}
-    </div>
-  );
-}
+import { FadeInOnScroll } from "../components/FadeInOnScroll";
 
 /**
  * CountUp — animates from 0 to `end` when scrolled into view.

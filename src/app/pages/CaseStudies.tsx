@@ -1,4 +1,67 @@
+import { useEffect, useRef, useState } from "react";
 import { SectionDivider } from "../components/SectionDivider";
+
+/**
+ * CountUp — animates from 0 to `end` when scrolled into view.
+ * easeOutCubic curve, ~1.2s default. Respects prefers-reduced-motion.
+ * Used for the OUTCOMES stats so the numbers feel earned.
+ */
+function CountUp({
+  end,
+  duration = 1200,
+  prefix = "",
+  suffix = "",
+}: {
+  end: number;
+  duration?: number;
+  prefix?: string;
+  suffix?: string;
+}) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement | null>(null);
+  const startedRef = useRef(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setCount(end);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !startedRef.current) {
+          startedRef.current = true;
+          const start = performance.now();
+          const tick = (now: number) => {
+            const elapsed = now - start;
+            const t = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 3);
+            setCount(Math.round(eased * end));
+            if (t < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [end, duration]);
+
+  return (
+    <span ref={ref}>
+      {prefix}
+      {count}
+      {suffix}
+    </span>
+  );
+}
 
 export default function CaseStudies() {
   return (
@@ -89,7 +152,7 @@ export default function CaseStudies() {
           <div className="grid sm:grid-cols-2 gap-10 lg:gap-20">
             <div className="border-t pt-8" style={{ borderColor: '#D6D0CF' }}>
               <p style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 400, lineHeight: '1' }} className="text-[56px] md:text-[72px] lg:text-[88px] mb-4">
-                30-35%
+                <CountUp end={30} />-<CountUp end={35} suffix="%" />
               </p>
               <p className="text-[11px] tracking-widest uppercase" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.18em' }}>
                 CRM Revenue Contribution
@@ -97,7 +160,7 @@ export default function CaseStudies() {
             </div>
             <div className="border-t pt-8" style={{ borderColor: '#D6D0CF' }}>
               <p style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 400, lineHeight: '1' }} className="text-[56px] md:text-[72px] lg:text-[88px] mb-4">
-                +112%
+                <CountUp end={112} prefix="+" suffix="%" />
               </p>
               <p className="text-[11px] tracking-widest uppercase" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.18em' }}>
                 YoY DTC Growth

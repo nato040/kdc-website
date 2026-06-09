@@ -3,8 +3,9 @@ import brandImg from "../../imports/_DUG9698.jpg"; // rack
 import contentImg from "../../imports/_DUG9734.jpg"; // iPad moodboard
 
 /**
- * FourSurfacesHorizontal — desktop pins the section and converts vertical
- * scroll into a SNAKE path through 4 panels arranged on a 2x2 canvas:
+ * FourSurfacesHorizontal — desktop pins the section. Inside the pin, a
+ * CONTAINED frame holds a 2x2 canvas of 4 panels. Vertical scroll drives
+ * a SNAKE-path translation through the canvas:
  *
  *   [Brand]    [Content]
  *   [C & P]    [Retention]
@@ -13,9 +14,8 @@ import contentImg from "../../imports/_DUG9734.jpg"; // iPad moodboard
  * left to Community & Partnerships, then the pin releases and the page
  * continues vertically.
  *
- * Brand panel pairs the title/body with the rack photo (right).
- * Content panel pairs with the iPad moodboard photo (right).
- * Retention and Community & Partnerships are typographic panels (no image).
+ * The frame is a bounded block (~1100x620) centered in the viewport, so the
+ * section reads as one editorial block on the page, not a full-screen takeover.
  *
  * Mobile/tablet (<lg) falls back to a normal 2-up grid; no scroll hijack.
  * Reduced motion users see the mobile grid (no canvas translation).
@@ -55,40 +55,21 @@ const SURFACES: Surface[] = [
   },
 ];
 
-// Position each panel on a 2x2 canvas (200vw wide x 200vh tall).
-// Values are in vw / vh (no unit), expanded at render time.
+// Position each panel on the 2x2 canvas. Values in percent of the canvas
+// (which is 200% x 200% of the frame — i.e. 50% per panel cell).
 const PANEL_POSITIONS = [
   { left: 0, top: 0 }, // Brand: top-left
-  { left: 100, top: 0 }, // Content: top-right
-  { left: 100, top: 100 }, // Retention: bottom-right
-  { left: 0, top: 100 }, // Community & Partnerships: bottom-left
+  { left: 50, top: 0 }, // Content: top-right
+  { left: 50, top: 50 }, // Retention: bottom-right
+  { left: 0, top: 50 }, // Community & Partnerships: bottom-left
 ];
 
 // Alternating cream/ivory per panel keeps the chapter-shift rhythm during travel.
 const PANEL_BG = ["#FAFAFA", "#F3F0EA", "#FAFAFA", "#F3F0EA"] as const;
 
-/**
- * Maps overall scroll progress (0->1) to a 2D translation that walks the snake:
- *   segment 1 (0 -> 1/3):  Brand -> Content      (translate left)
- *   segment 2 (1/3 -> 2/3): Content -> Retention (translate up)
- *   segment 3 (2/3 -> 1):  Retention -> C & P    (translate right)
- */
-function snakeTransform(progress: number): { tx: number; ty: number } {
-  const seg = 1 / 3;
-  if (progress <= seg) {
-    const t = progress / seg;
-    return { tx: -t * 100, ty: 0 };
-  } else if (progress <= seg * 2) {
-    const t = (progress - seg) / seg;
-    return { tx: -100, ty: -t * 100 };
-  } else {
-    const t = Math.min(1, (progress - seg * 2) / seg);
-    return { tx: -100 + t * 100, ty: -100 };
-  }
-}
-
 export function FourSurfacesHorizontal() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const frameRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -103,8 +84,9 @@ export function FourSurfacesHorizontal() {
     const update = () => {
       ticking = false;
       const section = sectionRef.current;
+      const frame = frameRef.current;
       const track = trackRef.current;
-      if (!section || !track) return;
+      if (!section || !frame || !track) return;
 
       if (window.innerWidth < 1024 || prefersReduced) {
         track.style.transform = "";
@@ -119,8 +101,27 @@ export function FourSurfacesHorizontal() {
       const total = Math.max(1, sectionHeight - viewportHeight);
       const progress = Math.max(0, Math.min(1, scrolled / total));
 
-      const { tx, ty } = snakeTransform(progress);
-      track.style.transform = `translate3d(${tx}vw, ${ty}vh, 0)`;
+      const fw = frame.offsetWidth;
+      const fh = frame.offsetHeight;
+
+      const seg = 1 / 3;
+      let tx: number;
+      let ty: number;
+      if (progress <= seg) {
+        const t = progress / seg;
+        tx = -t * fw;
+        ty = 0;
+      } else if (progress <= seg * 2) {
+        const t = (progress - seg) / seg;
+        tx = -fw;
+        ty = -t * fh;
+      } else {
+        const t = Math.min(1, (progress - seg * 2) / seg);
+        tx = -fw + t * fw;
+        ty = -fh;
+      }
+
+      track.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
     };
 
     const onScroll = () => {
@@ -177,43 +178,95 @@ export function FourSurfacesHorizontal() {
         </div>
       </section>
 
-      {/* DESKTOP — pinned section, 2x2 canvas, snake-path translation */}
+      {/* DESKTOP — pinned section, contained frame, 2x2 canvas, snake-path translation */}
       <section
         ref={sectionRef}
         className="hidden lg:block relative"
-        style={{ height: "300vh" }}
+        style={{ height: "300vh", backgroundColor: "#F3F0EA" }}
         aria-label="The Four Surfaces"
       >
-        <div className="sticky top-0 h-screen w-full overflow-hidden">
+        <div
+          className="sticky top-0 h-screen w-full flex items-center justify-center px-6 lg:px-16"
+          style={{ backgroundColor: "#F3F0EA" }}
+        >
           <div
-            ref={trackRef}
-            className="relative"
+            ref={frameRef}
+            className="relative overflow-hidden"
             style={{
-              width: "200vw",
-              height: "200vh",
-              willChange: "transform",
+              width: "min(92vw, 1180px)",
+              height: "640px",
+              border: "1px solid #D6D0CF",
+              backgroundColor: "#FAFAFA",
             }}
           >
-            {SURFACES.map((s, i) => {
-              const pos = PANEL_POSITIONS[i];
-              return (
-                <div
-                  key={s.title}
-                  className="absolute flex items-center justify-center px-16"
-                  style={{
-                    left: `${pos.left}vw`,
-                    top: `${pos.top}vh`,
-                    width: "100vw",
-                    height: "100vh",
-                    backgroundColor: PANEL_BG[i],
-                  }}
-                >
-                  {s.image ? (
-                    // Panel with image: 2-col grid (text left, image right) — picture kept large
-                    <div className="grid grid-cols-2 gap-12 items-center w-full max-w-[1200px]">
-                      <div>
+            <div
+              ref={trackRef}
+              className="absolute inset-0"
+              style={{
+                width: "200%",
+                height: "200%",
+                willChange: "transform",
+              }}
+            >
+              {SURFACES.map((s, i) => {
+                const pos = PANEL_POSITIONS[i];
+                return (
+                  <div
+                    key={s.title}
+                    className="absolute flex items-center justify-center px-10"
+                    style={{
+                      left: `${pos.left}%`,
+                      top: `${pos.top}%`,
+                      width: "50%",
+                      height: "50%",
+                      backgroundColor: PANEL_BG[i],
+                    }}
+                  >
+                    {s.image ? (
+                      // Panel with image: 2-col grid (text left, image right)
+                      <div className="grid grid-cols-2 gap-8 items-center w-full">
+                        <div>
+                          <h3
+                            className="text-[36px] xl:text-[44px] mb-4"
+                            style={{
+                              fontFamily: "var(--font-serif)",
+                              color: "#171717",
+                              fontWeight: 400,
+                              lineHeight: "1.05",
+                              letterSpacing: "0.01em",
+                            }}
+                          >
+                            {s.title}
+                          </h3>
+                          <p
+                            className="text-[14px] xl:text-[16px]"
+                            style={{
+                              color: "#5E5954",
+                              fontWeight: 400,
+                              lineHeight: "1.55",
+                              maxWidth: "420px",
+                            }}
+                          >
+                            {s.body}
+                          </p>
+                        </div>
+                        <div>
+                          <img
+                            src={s.image}
+                            alt={s.alt || ""}
+                            style={{
+                              width: "100%",
+                              height: "520px",
+                              objectFit: "cover",
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      // Typographic panel: centered, no image
+                      <div className="max-w-xl">
                         <h3
-                          className="text-[40px] xl:text-[56px] mb-6"
+                          className="text-[44px] xl:text-[56px] mb-5"
                           style={{
                             fontFamily: "var(--font-serif)",
                             color: "#171717",
@@ -225,60 +278,22 @@ export function FourSurfacesHorizontal() {
                           {s.title}
                         </h3>
                         <p
-                          className="text-[15px] xl:text-[17px]"
+                          className="text-[15px] xl:text-[18px]"
                           style={{
                             color: "#5E5954",
                             fontWeight: 400,
-                            lineHeight: "1.5",
-                            maxWidth: "480px",
+                            lineHeight: "1.55",
+                            maxWidth: "520px",
                           }}
                         >
                           {s.body}
                         </p>
                       </div>
-                      <div>
-                        <img
-                          src={s.image}
-                          alt={s.alt || ""}
-                          style={{
-                            width: "100%",
-                            height: "70vh",
-                            objectFit: "cover",
-                          }}
-                        />
-                      </div>
-                    </div>
-                  ) : (
-                    // Typographic panel: centered, no image
-                    <div className="max-w-2xl">
-                      <h3
-                        className="text-[48px] xl:text-[64px] mb-6"
-                        style={{
-                          fontFamily: "var(--font-serif)",
-                          color: "#171717",
-                          fontWeight: 400,
-                          lineHeight: "1.05",
-                          letterSpacing: "0.01em",
-                        }}
-                      >
-                        {s.title}
-                      </h3>
-                      <p
-                        className="text-[16px] xl:text-[19px]"
-                        style={{
-                          color: "#5E5954",
-                          fontWeight: 400,
-                          lineHeight: "1.5",
-                          maxWidth: "560px",
-                        }}
-                      >
-                        {s.body}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

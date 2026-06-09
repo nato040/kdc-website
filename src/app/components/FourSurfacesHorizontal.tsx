@@ -85,17 +85,19 @@ function easeInOutCubic(t: number): number {
 }
 
 /**
- * Trapezoid-with-eased-edges. Within a single panel segment (local 0..1):
- *   0    -> 0.25:  ramp up,   eased    (zooming in)
- *   0.25 -> 0.75:  HOLD at 1            (dwell at peak — reader can read)
- *   0.75 -> 1:     ramp down, eased    (zooming back out)
+ * Curve with long eased ramps and a brief plateau — tuned for FLOW.
+ * Within a single panel segment (local 0..1):
+ *   0    -> 0.40:  ramp up,    eased   (long, smooth zoom-in)
+ *   0.40 -> 0.60:  HOLD at 1            (brief peak — read the panel)
+ *   0.60 -> 1:     ramp down,  eased   (long, smooth zoom-out)
  *
- * 50% dwell at full zoom gives the reader time to absorb the panel; the eased
- * edges keep the transitions soft instead of snappy.
+ * 40/20/40 split keeps the motion in continuous transition for 80% of every
+ * segment and only briefly plateaus at peak. Eliminates the "stuck" feel that
+ * a longer dwell created and gives the section a more organic, flowing pace.
  */
 function zoomCurve(local: number): number {
-  if (local < 0.25) return easeInOutCubic(local / 0.25);
-  if (local > 0.75) return easeInOutCubic((1 - local) / 0.25);
+  if (local < 0.4) return easeInOutCubic(local / 0.4);
+  if (local > 0.6) return easeInOutCubic((1 - local) / 0.4);
   return 1;
 }
 
@@ -225,7 +227,7 @@ export function FourSurfacesHorizontal() {
       <section
         ref={sectionRef}
         className="hidden lg:block relative"
-        style={{ height: "400vh", backgroundColor: "#F3F0EA" }}
+        style={{ height: "320vh", backgroundColor: "#F3F0EA" }}
         aria-label="The Four Surfaces"
       >
         <div
@@ -238,7 +240,6 @@ export function FourSurfacesHorizontal() {
             style={{
               width: "min(92vw, 1180px)",
               height: "640px",
-              border: "1px solid #D6D0CF",
               backgroundColor: "#FAFAFA",
             }}
           >

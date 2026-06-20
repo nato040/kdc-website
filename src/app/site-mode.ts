@@ -31,9 +31,9 @@
 // ─────────────────────────────────────────────────────────────
 
 // The fallback used if VITE_COMING_SOON is not set in the environment.
-// While we're pre-launch, this stays `true` so any unconfigured environment
-// defaults to safety. After permanent launch, flip to `false`.
-const FALLBACK_DEFAULT = true;
+// Launched 2026-06-20: now live by default. To revert to Coming Soon, either
+// set VITE_COMING_SOON = "true" in Vercel, or flip this back to `true`.
+const FALLBACK_DEFAULT = false;
 
 const envRaw = import.meta.env.VITE_COMING_SOON;
 const envValue =

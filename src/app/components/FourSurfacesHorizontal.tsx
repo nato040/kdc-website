@@ -6,14 +6,14 @@ import contentImg from "../../imports/_DUG9734.jpg"; // iPad moodboard
  * FourSurfacesHorizontal — zoom-into-each-panel interaction.
  *
  * Initial state: all 4 panels visible at once as a 2x2 grid inside a bounded
- * frame. As the reader scrolls, the frame cycles:
+ * frame. As the reader scrolls, a smoothed camera moves:
  *
- *   overview -> zoom Brand -> overview -> zoom Content -> overview ->
- *   zoom Retention -> overview -> zoom Community & Partnerships -> overview
+ *   overview -> zoom into Brand -> pan to Content -> pan to Retention ->
+ *   pan to Community & Partnerships -> zoom back to overview
  *
- * Each zoom cycle (one of four panels) consumes 1/4 of the section's scroll
- * budget. Within a cycle, the first half zooms in, the second half zooms back
- * out — so the reader is always returning to the 2x2 grid between panels.
+ * The camera zooms in only once and pans between panels at full zoom (no
+ * in/out churn), and its progress is eased toward the scroll position each
+ * frame so the motion glides instead of snapping to raw wheel input.
  *
  * Mechanism: the inner track is 200% x 200% of the frame, with 4 panels at
  * 50% x 50% each (one per quadrant). Transform-origin is top-left. At zoom
@@ -67,37 +67,48 @@ const PANEL_POSITIONS = [
   { left: 50, top: 50 }, // Community & Partnerships
 ];
 
-// Target track-viewport in panel-units (panel size = frame size).
-// vx=0 means frame top-left aligned to track-x=0, etc.
-const ZOOM_TARGETS = [
-  { vx: 0, vy: 0 }, // Brand
-  { vx: 1, vy: 0 }, // Content
-  { vx: 0, vy: 1 }, // Retention
-  { vx: 1, vy: 1 }, // Community & Partnerships
-];
-
 const PANEL_BG = ["#FAFAFA", "#F3F0EA", "#FAFAFA", "#F3F0EA"] as const;
 
-// easeInOutCubic — smooth ramps on the zoom in/out portions.
+// easeInOutCubic — smooth ramps for every camera segment.
 function easeInOutCubic(t: number): number {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
 
 /**
- * Curve with long eased ramps and a brief plateau — tuned for FLOW.
- * Within a single panel segment (local 0..1):
- *   0    -> 0.40:  ramp up,    eased   (long, smooth zoom-in)
- *   0.40 -> 0.60:  HOLD at 1            (brief peak — read the panel)
- *   0.60 -> 1:     ramp down,  eased   (long, smooth zoom-out)
+ * Camera keyframes over scroll progress (0..1). The camera zooms in ONCE,
+ * then PANS across the four quadrants at full zoom (no in/out churn between
+ * panels), and finally zooms back out to the 2x2 overview.
  *
- * 40/20/40 split keeps the motion in continuous transition for 80% of every
- * segment and only briefly plateaus at peak. Eliminates the "stuck" feel that
- * a longer dwell created and gives the section a more organic, flowing pace.
+ *   s      = track scale (0.5 = overview, 1.0 = one panel fills the frame)
+ *   fx, fy = focus point in normalized track coords (0..1 across the 2x2)
+ *
+ * Quadrant centers: Brand (0.25,0.25) TL · Content (0.75,0.25) TR ·
+ * Retention (0.25,0.75) BL · Community (0.75,0.75) BR.
  */
-function zoomCurve(local: number): number {
-  if (local < 0.4) return easeInOutCubic(local / 0.4);
-  if (local > 0.6) return easeInOutCubic((1 - local) / 0.4);
-  return 1;
+const CAMERA_KEYS = [
+  { p: 0.0, s: 0.5, fx: 0.5, fy: 0.5 }, // overview
+  { p: 0.14, s: 1.0, fx: 0.25, fy: 0.25 }, // zoom into Brand
+  { p: 0.37, s: 1.0, fx: 0.75, fy: 0.25 }, // pan to Content
+  { p: 0.6, s: 1.0, fx: 0.25, fy: 0.75 }, // pan to Retention
+  { p: 0.82, s: 1.0, fx: 0.75, fy: 0.75 }, // pan to Community & Partnerships
+  { p: 1.0, s: 0.5, fx: 0.5, fy: 0.5 }, // zoom back to overview
+];
+
+// Interpolate the camera (scale + focus) at a given scroll progress.
+function sampleCamera(progress: number): { s: number; fx: number; fy: number } {
+  const keys = CAMERA_KEYS;
+  let i = 0;
+  while (i < keys.length - 2 && progress > keys[i + 1].p) i++;
+  const a = keys[i];
+  const b = keys[i + 1];
+  const span = b.p - a.p || 1;
+  const lt = Math.max(0, Math.min(1, (progress - a.p) / span));
+  const e = easeInOutCubic(lt);
+  return {
+    s: a.s + (b.s - a.s) * e,
+    fx: a.fx + (b.fx - a.fx) * e,
+    fy: a.fy + (b.fy - a.fy) * e,
+  };
 }
 
 export function FourSurfacesHorizontal() {
@@ -114,7 +125,10 @@ export function FourSurfacesHorizontal() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    let ticking = false;
+    let rafId = 0;
+    let running = false;
+    let target = 0; // raw scroll progress (0..1)
+    let current = 0; // smoothed progress that the camera actually follows
 
     const measure = () => {
       const frame = frameRef.current;
@@ -125,62 +139,73 @@ export function FourSurfacesHorizontal() {
       };
     };
 
-    const update = () => {
-      ticking = false;
+    const computeTarget = () => {
       const section = sectionRef.current;
-      const track = trackRef.current;
-      if (!section || !track) return;
-
-      if (window.innerWidth < 1024 || prefersReduced) {
-        track.style.transform = "";
-        return;
-      }
-
+      if (!section) return;
       const rect = section.getBoundingClientRect();
-      const sectionHeight = section.offsetHeight;
-      const viewportHeight = window.innerHeight;
-
+      const total = Math.max(1, section.offsetHeight - window.innerHeight);
       const scrolled = Math.max(0, -rect.top);
-      const total = Math.max(1, sectionHeight - viewportHeight);
-      const progress = Math.max(0, Math.min(1, scrolled / total));
+      target = Math.max(0, Math.min(1, scrolled / total));
+    };
 
-      // Each of the 4 panels gets 1/4 of total progress.
-      const idx = Math.min(3, Math.floor(progress * 4));
-      const local = progress * 4 - idx;
-      const zoom = zoomCurve(local);
-
-      const target = ZOOM_TARGETS[idx];
+    const apply = (progress: number) => {
+      const track = trackRef.current;
+      if (!track) return;
       const { w: fw, h: fh } = frameDimsRef.current;
       if (!fw || !fh) return;
-
-      const s = 0.5 + 0.5 * zoom; // 0.5 (overview) -> 1.0 (zoomed)
-      const vxPx = zoom * target.vx * fw;
-      const vyPx = zoom * target.vy * fh;
-      const tx = -vxPx * s;
-      const ty = -vyPx * s;
-
+      const { s, fx, fy } = sampleCamera(progress);
+      // Position the track so the focus point (fx,fy) lands in the frame center.
+      const tx = fw / 2 - fx * 2 * fw * s;
+      const ty = fh / 2 - fy * 2 * fh * s;
       track.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(${s})`;
     };
 
-    const onScroll = () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(update);
+    // rAF loop: ease `current` toward `target` so the camera glides instead of
+    // snapping to raw, jittery wheel/trackpad input. Stops itself once settled.
+    const render = () => {
+      const track = trackRef.current;
+      if (!track) {
+        running = false;
+        return;
+      }
+      if (window.innerWidth < 1024 || prefersReduced) {
+        track.style.transform = "";
+        running = false;
+        return;
+      }
+      current += (target - current) * 0.09;
+      if (Math.abs(target - current) < 0.0004) current = target;
+      apply(current);
+      if (current !== target) {
+        rafId = requestAnimationFrame(render);
+      } else {
+        running = false;
+      }
+    };
+
+    const kick = () => {
+      computeTarget();
+      if (!running) {
+        running = true;
+        rafId = requestAnimationFrame(render);
       }
     };
 
     const onResize = () => {
       measure();
-      onScroll();
+      kick();
     };
 
     measure();
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
+    computeTarget();
+    current = target; // no entrance animation on first paint
+    apply(current);
+    window.addEventListener("scroll", kick, { passive: true });
     window.addEventListener("resize", onResize, { passive: true });
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", kick);
       window.removeEventListener("resize", onResize);
+      cancelAnimationFrame(rafId);
     };
   }, []);
 
@@ -226,7 +251,7 @@ export function FourSurfacesHorizontal() {
       <section
         ref={sectionRef}
         className="hidden lg:block relative"
-        style={{ height: "320vh", backgroundColor: "#F3F0EA" }}
+        style={{ height: "360vh", backgroundColor: "#F3F0EA" }}
         aria-label="The Four Surfaces"
       >
         <div

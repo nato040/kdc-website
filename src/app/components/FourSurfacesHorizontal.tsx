@@ -32,9 +32,8 @@ type Surface = {
   alt?: string;
 };
 
-// Order: Brand (top-left), Content (top-right), Retention (bottom-right),
-// Community & Partnerships (bottom-left). Reading order is left-to-right,
-// then bottom-right to bottom-left (the snake order from before, preserved).
+// Order: Brand (top-left), Content (top-right), Retention (bottom-left),
+// Community & Partnerships (bottom-right) — matches the headline and Work page.
 const SURFACES: Surface[] = [
   {
     title: "Brand",
@@ -64,8 +63,8 @@ const SURFACES: Surface[] = [
 const PANEL_POSITIONS = [
   { left: 0, top: 0 }, // Brand
   { left: 50, top: 0 }, // Content
-  { left: 50, top: 50 }, // Retention
-  { left: 0, top: 50 }, // Community & Partnerships
+  { left: 0, top: 50 }, // Retention
+  { left: 50, top: 50 }, // Community & Partnerships
 ];
 
 // Target track-viewport in panel-units (panel size = frame size).
@@ -73,8 +72,8 @@ const PANEL_POSITIONS = [
 const ZOOM_TARGETS = [
   { vx: 0, vy: 0 }, // Brand
   { vx: 1, vy: 0 }, // Content
-  { vx: 1, vy: 1 }, // Retention
-  { vx: 0, vy: 1 }, // Community & Partnerships
+  { vx: 0, vy: 1 }, // Retention
+  { vx: 1, vy: 1 }, // Community & Partnerships
 ];
 
 const PANEL_BG = ["#FAFAFA", "#F3F0EA", "#FAFAFA", "#F3F0EA"] as const;

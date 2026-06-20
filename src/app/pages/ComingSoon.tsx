@@ -2,7 +2,7 @@ import logoImg from "../../imports/kdc-logo-stacked-black.png";
 
 const SUBSTACK_URL = "https://kennydonnacollective.substack.com";
 const INSTAGRAM_URL = "https://instagram.com/kennydonnacollective";
-const CONTACT_EMAIL = "hello@kennydonnacollective.com";
+const CONTACT_EMAIL = "contact@kennydonnacollective.com";
 
 // Shared small-label style — used for "Coming Soon", social links, footer.
 const labelClass = "text-xs uppercase transition-opacity hover:opacity-60";

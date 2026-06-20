@@ -3,7 +3,7 @@ import { SectionDivider } from "../components/SectionDivider";
 
 /**
  * Contact — invitation hero + "tell us about the brand" questionnaire.
- * Submission goes to /api/contact, which forwards to hello@ via Resend.
+ * Submission goes to /api/contact, which forwards to contact@ via Resend.
  * Email remains visible alongside the form so the direct path stays open.
  */
 
@@ -338,7 +338,7 @@ export default function Contact() {
                     className="text-[13px] mt-4"
                     style={{ color: "#7A2B2B", fontStyle: "italic" }}
                   >
-                    {errorMsg} You can also email hello@kennydonnacollective.com directly.
+                    {errorMsg} You can also email contact@kennydonnacollective.com directly.
                   </p>
                 )}
               </div>
@@ -361,11 +361,11 @@ export default function Contact() {
             </p>
 
             <a
-              href="mailto:hello@kennydonnacollective.com"
+              href="mailto:contact@kennydonnacollective.com"
               style={{ fontFamily: "var(--font-serif)", color: "#171717", fontWeight: 400 }}
               className="text-[28px] lg:text-[36px] inline-block hover:opacity-60 transition-opacity"
             >
-              hello@kennydonnacollective.com
+              contact@kennydonnacollective.com
             </a>
 
             <p className="text-[14px] lg:text-[15px] pt-4" style={{ color: "#5E5954", fontStyle: "italic", maxWidth: "640px" }}>

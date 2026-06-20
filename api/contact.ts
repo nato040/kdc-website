@@ -1,9 +1,9 @@
 // Vercel serverless function — receives Contact questionnaire submissions
-// from the public site and forwards them to hello@ via Resend.
+// from the public site and forwards them to contact@ via Resend.
 //
 // Required env vars on Vercel:
 //   RESEND_API_KEY   — API key from resend.com
-//   CONTACT_TO       — (optional) destination address; defaults to hello@kennydonnacollective.com
+//   CONTACT_TO       — (optional) destination address; defaults to contact@kennydonnacollective.com
 //   RESEND_FROM      — (optional) From line; defaults to "KDC Website <noreply@kennydonnacollective.com>".
 //                      Domain must be verified in Resend for this to work.
 
@@ -19,7 +19,7 @@ type Body = {
   preferred?: string;
 };
 
-const DEFAULT_TO = "hello@kennydonnacollective.com";
+const DEFAULT_TO = "contact@kennydonnacollective.com";
 const DEFAULT_FROM = "KDC Website <noreply@kennydonnacollective.com>";
 
 export default async function handler(req: any, res: any) {

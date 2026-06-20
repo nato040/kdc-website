@@ -176,6 +176,10 @@ export default function CaseStudies() {
               </p>
             </div>
           </div>
+
+          <p className="text-[13px] md:text-[14px] mt-10 lg:mt-14" style={{ color: '#5E5954', fontWeight: 400, fontStyle: 'italic' }}>
+            From our anchor partnership. Figures anonymized.
+          </p>
         </div>
       </section>
 

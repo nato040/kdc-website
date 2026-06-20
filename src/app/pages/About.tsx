@@ -1,5 +1,5 @@
 import { SectionDivider } from "../components/SectionDivider";
-import aboutImg from "../../imports/i-vgrVGvj-X2.jpg";
+import aboutImg from "../../imports/i-vgrVGvj-X2-bw.jpg";
 import collectiveImg from "../../imports/_DUG9728.jpg";
 
 /**

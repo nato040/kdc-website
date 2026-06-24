@@ -64,8 +64,8 @@ export default function Home() {
               THE FOUR SURFACES
             </p>
             <h2
-              className="text-[28px] md:text-[44px] lg:text-[64px] mb-12"
-              style={headingStyle}
+              className="md:whitespace-nowrap mb-12"
+              style={{ ...headingStyle, fontSize: "clamp(24px, 3.7vw, 50px)" }}
             >
               Brand. Content. Retention. Community &amp; Partnerships.
             </h2>

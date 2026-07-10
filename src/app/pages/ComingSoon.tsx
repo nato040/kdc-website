@@ -1,4 +1,4 @@
-import logoImg from "../../imports/kdc-logo-stacked-black.png";
+import logoImg from "../../imports/kenny_donna_collective_logo_transparent-1.png";
 
 const SUBSTACK_URL = "https://kennydonnacollective.substack.com";
 const INSTAGRAM_URL = "https://instagram.com/kennydonnacollective";
@@ -41,22 +41,14 @@ export default function ComingSoon() {
             lineHeight: 1.12,
             letterSpacing: "-0.01em",
           }}
-          className="text-3xl sm:text-4xl lg:text-5xl mb-5"
+          className="text-3xl sm:text-4xl lg:text-5xl mb-3"
         >
           Marketing, shaped
           <br />
           like a brand.
         </h1>
 
-        {/* Subline — what KDC does */}
-        <p
-          className="text-base sm:text-lg max-w-md mx-auto mb-8"
-          style={{ color: "#5E5954", fontWeight: 300, letterSpacing: "0.01em" }}
-        >
-          Editorial commerce systems for modern consumer brands.
-        </p>
-
-        {/* Coming Soon — small label, sits under the text block */}
+        {/* Coming Soon — small label, sits under the headline */}
         <p className={labelClass} style={{ ...labelStyle, marginBottom: "2.5rem" }}>
           Coming Soon
         </p>

@@ -38,12 +38,14 @@ export default function CaseStudies() {
                 <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
                   Brand.
                 </h3>
-                <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                  The briefs everything runs on.
-                </p>
-                <p className="text-[14px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px', fontStyle: 'italic' }}>
-                  Brand strategy &amp; positioning &middot; voice &amp; messaging &middot; creative direction &middot; seasonal planning
-                </p>
+                <div className="space-y-3">
+                  <p className="text-[17px] lg:text-[18px]" style={{ color: '#171717', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
+                    The briefs everything runs on.
+                  </p>
+                  <p className="text-[14px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px', fontStyle: 'italic' }}>
+                    Brand strategy &amp; positioning &middot; voice &amp; messaging &middot; creative direction &middot; seasonal planning
+                  </p>
+                </div>
               </div>
             </FadeInOnScroll>
 
@@ -53,12 +55,14 @@ export default function CaseStudies() {
                 <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
                   Content.
                 </h3>
-                <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                  How the brand shows up, everywhere.
-                </p>
-                <p className="text-[14px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px', fontStyle: 'italic' }}>
-                  Content &amp; social strategy &middot; campaign planning &middot; photoshoot &amp; campaign direction
-                </p>
+                <div className="space-y-3">
+                  <p className="text-[17px] lg:text-[18px]" style={{ color: '#171717', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
+                    How the brand shows up, everywhere.
+                  </p>
+                  <p className="text-[14px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px', fontStyle: 'italic' }}>
+                    Content &amp; social strategy &middot; campaign planning &middot; photoshoot &amp; campaign direction
+                  </p>
+                </div>
               </div>
             </FadeInOnScroll>
 
@@ -68,12 +72,14 @@ export default function CaseStudies() {
                 <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
                   Retention.
                 </h3>
-                <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                  The inbox, editorial in voice and built to convert.
-                </p>
-                <p className="text-[14px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px', fontStyle: 'italic' }}>
-                  CRM &amp; lifecycle marketing &middot; email &amp; SMS strategy &middot; reporting, planning, and briefs in one system we built ourselves
-                </p>
+                <div className="space-y-3">
+                  <p className="text-[17px] lg:text-[18px]" style={{ color: '#171717', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
+                    The inbox, editorial in voice and built to convert.
+                  </p>
+                  <p className="text-[14px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px', fontStyle: 'italic' }}>
+                    CRM &amp; lifecycle marketing &middot; email &amp; SMS strategy &middot; reporting, planning, and briefs in one system we built ourselves
+                  </p>
+                </div>
               </div>
             </FadeInOnScroll>
 
@@ -83,12 +89,14 @@ export default function CaseStudies() {
                 <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
                   Community &amp; Partnerships.
                 </h3>
-                <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                  The company the brand keeps.
-                </p>
-                <p className="text-[14px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px', fontStyle: 'italic' }}>
-                  Creator &amp; influencer collaborations &middot; PR coordination &middot; agency &amp; partner management
-                </p>
+                <div className="space-y-3">
+                  <p className="text-[17px] lg:text-[18px]" style={{ color: '#171717', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
+                    The company the brand keeps.
+                  </p>
+                  <p className="text-[14px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px', fontStyle: 'italic' }}>
+                    Creator &amp; influencer collaborations &middot; PR coordination &middot; agency &amp; partner management
+                  </p>
+                </div>
               </div>
             </FadeInOnScroll>
           </div>

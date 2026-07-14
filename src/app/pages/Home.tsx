@@ -69,7 +69,7 @@ export default function Home() {
             >
               Brand. Content. Retention. Community &amp; Partnerships.
             </h2>
-            <p className="text-[16px] lg:text-[20px] mb-12" style={bodyStyle}>
+            <p className="text-[18px] lg:text-[24px] mb-10" style={{ ...bodyStyle, lineHeight: "1.5" }}>
               The four surfaces of a modern brand. We own how they connect.
             </p>
             <p

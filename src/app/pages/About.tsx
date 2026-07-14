@@ -72,7 +72,7 @@ export default function About() {
       <section
         id="collective"
         className="px-6 lg:px-16 relative scroll-mt-24"
-        style={{ paddingTop: "100px", paddingBottom: "100px", backgroundColor: "#F3F0EA" }}
+        style={{ paddingTop: "100px", paddingBottom: "100px" }}
       >
         <div className="max-w-[1280px] mx-auto">
           <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>

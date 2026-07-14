@@ -55,12 +55,12 @@ export default function Root() {
   const handleNavClick = () => setMobileMenuOpen(false);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#FCFBF8' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#FAFAFA' }}>
       <ScrollToHash />
       {/* Navigation */}
       <nav
         className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm"
-        style={{ backgroundColor: 'rgba(252, 251, 248, 0.95)', borderBottom: '1px solid #D6D0CF' }}
+        style={{ backgroundColor: 'rgba(250, 250, 250, 0.95)', borderBottom: '1px solid #D6D0CF' }}
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 py-4 lg:py-7">
           {/* Desktop nav — 3-column grid as designed */}

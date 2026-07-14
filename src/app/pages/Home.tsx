@@ -56,7 +56,7 @@ export default function Home() {
       <SectionDivider />
 
       {/* THE FOUR SURFACES — intro lands immediately after the hero, more space, punchline elevated */}
-      <section id="surfaces" className="px-6 lg:px-16 scroll-mt-24" style={{ ...sectionStyle, backgroundColor: "#F3F0EA", paddingTop: "140px", paddingBottom: "120px" }}>
+      <section id="surfaces" className="px-6 lg:px-16 scroll-mt-24" style={{ ...sectionStyle, paddingTop: "140px", paddingBottom: "100px" }}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
           <FadeInOnScroll>
@@ -64,16 +64,13 @@ export default function Home() {
               THE FOUR SURFACES
             </p>
             <h2
-              className="md:whitespace-nowrap mb-12"
+              className="md:whitespace-nowrap mb-8"
               style={{ ...headingStyle, fontSize: "clamp(24px, 3.7vw, 50px)" }}
             >
               Brand. Content. Retention. Community &amp; Partnerships.
             </h2>
-            <p className="text-[18px] lg:text-[24px] mb-10" style={{ ...bodyStyle, lineHeight: "1.5" }}>
-              The four surfaces of a modern brand. We own how they connect.
-            </p>
             <p
-              className="text-[24px] md:text-[32px] lg:text-[40px]"
+              className="text-[22px] md:text-[28px] lg:text-[36px] mb-8"
               style={{
                 fontFamily: "var(--font-serif)",
                 color: "#171717",
@@ -85,6 +82,9 @@ export default function Home() {
             >
               The brand stays yours. Making it perform is ours.
             </p>
+            <p className="text-[16px] lg:text-[20px]" style={bodyStyle}>
+              The four surfaces of a modern brand. We own how they connect.
+            </p>
           </FadeInOnScroll>
         </div>
       </section>
@@ -93,7 +93,7 @@ export default function Home() {
       <FourSurfacesHorizontal />
 
       {/* THE FOUR SURFACES — outro (Substack link only, right-aligned, ivory) */}
-      <section className="px-6 lg:px-16" style={{ ...sectionStyle, backgroundColor: "#F3F0EA", paddingTop: "40px", paddingBottom: "80px" }}>
+      <section className="px-6 lg:px-16" style={{ ...sectionStyle, paddingTop: "0px", paddingBottom: "80px" }}>
         {noiseOverlay}
         <div className="max-w-[1280px] mx-auto relative">
           <FadeInOnScroll>

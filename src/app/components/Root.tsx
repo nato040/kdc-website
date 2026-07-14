@@ -12,7 +12,7 @@ type NavLink = {
 };
 
 const navLinks: NavLink[] = [
-  { to: "/case-studies", label: "Work" },
+  { to: "/case-studies", label: "Approach" },
   { to: "/signals", label: "Signals" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },

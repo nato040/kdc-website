@@ -15,16 +15,6 @@ type Post = {
   image: string | null;
 };
 
-function formatDate(iso: string): string {
-  const d = new Date(iso);
-  if (isNaN(d.getTime())) return "";
-  return new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  }).format(d);
-}
-
 export default function Signals() {
   const eyebrowStyle = {
     color: "#5E5954",
@@ -124,12 +114,6 @@ export default function Signals() {
                   className="block group"
                 >
                   <div className="border-t pt-8" style={{ borderColor: "#D6D0CF" }}>
-                    <p
-                      className="text-[11px] tracking-widest uppercase mb-4"
-                      style={{ color: "#5E5954", fontWeight: 500, letterSpacing: "0.18em" }}
-                    >
-                      {formatDate(p.pubDate)}
-                    </p>
                     <h2
                       className="text-[24px] md:text-[32px] lg:text-[40px] mb-4 transition-opacity group-hover:opacity-60"
                       style={{ ...headingStyle, lineHeight: "1.2" }}

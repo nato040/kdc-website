@@ -152,10 +152,10 @@ export default function Contact() {
           {state === "sent" ? (
             <div className="max-w-[640px] space-y-4">
               <p className="text-[24px] lg:text-[28px]" style={{ ...headingStyle }}>
-                Thank you. We&rsquo;ll be in touch.
+                Thank you.
               </p>
               <p className="text-[15px]" style={{ color: "#5E5954", fontWeight: 400, lineHeight: "1.6" }}>
-                We read every note. You&rsquo;ll hear back from us at the email you provided.
+                We read everything. You&rsquo;ll hear from Cody within two business days.
               </p>
             </div>
           ) : (
@@ -357,7 +357,7 @@ export default function Contact() {
         <div className="max-w-[1280px] mx-auto">
           <div className="space-y-10">
             <p className="text-[11px] tracking-widest uppercase" style={eyebrowStyle}>
-              Or simply
+              Prefer email?
             </p>
 
             <a

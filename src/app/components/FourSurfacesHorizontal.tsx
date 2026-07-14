@@ -19,7 +19,7 @@ type Surface = {
 const SURFACES: Surface[] = [
   {
     title: "Brand",
-    body: "Voice, design, and the story that runs through every channel without a crack.",
+    body: "Voice, design, and the story that runs through every channel.",
     image: brandImg,
     alt: "On the rack",
   },

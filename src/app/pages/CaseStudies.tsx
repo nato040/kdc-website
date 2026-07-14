@@ -34,8 +34,11 @@ export default function CaseStudies() {
           <div className="space-y-16">
             {/* Pillar 1 — Brand */}
             <FadeInOnScroll>
-              <div className="space-y-6">
-                <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
+              <div className="border-t pt-8" style={{ borderColor: '#D6D0CF' }}>
+                <p className="text-[11px] tracking-widest uppercase mb-4" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.18em' }}>
+                  I.
+                </p>
+                <h3 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 400, lineHeight: '1.1', letterSpacing: '0.01em' }} className="text-[26px] lg:text-[34px] mb-5">
                   Brand.
                 </h3>
                 <div className="space-y-3">
@@ -51,8 +54,11 @@ export default function CaseStudies() {
 
             {/* Pillar 2 — Content (added 2026-05-29 per consistency map) */}
             <FadeInOnScroll>
-              <div className="space-y-6">
-                <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
+              <div className="border-t pt-8" style={{ borderColor: '#D6D0CF' }}>
+                <p className="text-[11px] tracking-widest uppercase mb-4" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.18em' }}>
+                  II.
+                </p>
+                <h3 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 400, lineHeight: '1.1', letterSpacing: '0.01em' }} className="text-[26px] lg:text-[34px] mb-5">
                   Content.
                 </h3>
                 <div className="space-y-3">
@@ -68,8 +74,11 @@ export default function CaseStudies() {
 
             {/* Pillar 3 — Retention (directed, not run) */}
             <FadeInOnScroll>
-              <div className="space-y-6">
-                <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
+              <div className="border-t pt-8" style={{ borderColor: '#D6D0CF' }}>
+                <p className="text-[11px] tracking-widest uppercase mb-4" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.18em' }}>
+                  III.
+                </p>
+                <h3 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 400, lineHeight: '1.1', letterSpacing: '0.01em' }} className="text-[26px] lg:text-[34px] mb-5">
                   Retention.
                 </h3>
                 <div className="space-y-3">
@@ -85,8 +94,11 @@ export default function CaseStudies() {
 
             {/* Pillar 4 — Community & Partnerships */}
             <FadeInOnScroll>
-              <div className="space-y-6">
-                <h3 style={{ color: '#171717', fontWeight: 400, lineHeight: '1.3' }} className="text-[24px]">
+              <div className="border-t pt-8" style={{ borderColor: '#D6D0CF' }}>
+                <p className="text-[11px] tracking-widest uppercase mb-4" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.18em' }}>
+                  IV.
+                </p>
+                <h3 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 400, lineHeight: '1.1', letterSpacing: '0.01em' }} className="text-[26px] lg:text-[34px] mb-5">
                   Community &amp; Partnerships.
                 </h3>
                 <div className="space-y-3">

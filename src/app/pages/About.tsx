@@ -57,10 +57,10 @@ export default function About() {
           </h2>
           <div className="space-y-5 text-[16px] lg:text-[18px]" style={bodyStyle}>
             <p>
-              Agencies didn&rsquo;t know the brand, or the business, well enough to move it. Internal teams knew it intimately but never had the room to scale it without losing the thread. Either way, the work came out fragmented: beautiful campaigns disconnected from the numbers, retention that didn&rsquo;t sound like the brand.
+              Agencies didn&rsquo;t know the brand well enough to move it. Internal teams knew it intimately but couldn&rsquo;t scale it. Either way, the work came out fragmented.
             </p>
             <p style={{ color: "#171717", paddingTop: "8px" }}>
-              KDC was built to close that gap. Curated, embedded, accountable. Few partners, full attention.
+              KDC was built to close that gap. Curated, embedded, accountable.
             </p>
           </div>
         </div>
@@ -90,10 +90,7 @@ export default function About() {
               </h2>
               <div className="space-y-5 text-[16px] lg:text-[18px]" style={bodyStyle}>
                 <p>
-                  Strategy stays joined to execution. Outside perspective stays joined to inside context. Nothing gets handed off, nothing gets lost in translation.
-                </p>
-                <p>
-                  That&rsquo;s what keeps the work sharp, the brand intact, and the partnership long.
+                  Strategy stays joined to execution. Nothing gets handed off, nothing gets lost.
                 </p>
               </div>
             </div>
@@ -156,16 +153,10 @@ export default function About() {
                   Cody&rsquo;s eye was trained on the floor, not in a deck.
                 </p>
                 <p>
-                  A decade inside fashion, as a top stylist and manager at Intermix, Rag &amp; Bone, Club Monaco, and Theory, taught her sale by sale how taste and quality actually move a customer. She learned what makes a brand land in the room, and what makes it fall flat.
+                  A decade inside fashion &mdash; Intermix, Rag &amp; Bone, Club Monaco, Theory &mdash; taught her, sale by sale, how taste moves a customer. She took that instinct brand-side, leading digital marketing for a design-led label and building the systems underneath multi-year growth.
                 </p>
                 <p>
-                  She took that instinct brand-side, leading digital marketing for a fast-growing design-led label. She built the strategy and systems underneath multi-year growth, and pulled email, SMS, and social into one editorial rhythm.
-                </p>
-                <p>
-                  That pairing is rare: the taste of someone who sold the product by hand, and the operating sense of someone who built the marketing from inside the brand. It&rsquo;s the reason KDC can own both the story and the numbers.
-                </p>
-                <p>
-                  She studied business and economics with a focus in marketing, and comes from a family of business owners. The operator&rsquo;s instinct runs underneath everything KDC does.
+                  That pairing is rare: the taste of someone who sold the product by hand, and the operating sense of someone who built the marketing from inside. It&rsquo;s why KDC can own both the story and the numbers.
                 </p>
               </div>
 
@@ -180,7 +171,7 @@ export default function About() {
                     lineHeight: "1.35",
                   }}
                 >
-                  The work she&rsquo;s built for is design-led, considered, customer-aware. KDC is for founders and teams who want a partner who knows the brand the way they do.
+                  KDC is for founders who want a partner who knows the brand the way they do.
                 </p>
                 <a
                   href="https://www.linkedin.com/in/codylynnabt/"

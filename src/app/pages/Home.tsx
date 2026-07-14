@@ -70,7 +70,7 @@ export default function Home() {
               Brand. Content. Retention. Community &amp; Partnerships.
             </h2>
             <p className="text-[16px] lg:text-[20px] mb-12" style={bodyStyle}>
-              The four surfaces of a modern brand. We don&rsquo;t hand over a list of deliverables. We take ownership of how the surfaces connect, and how the work that lives on them compounds.
+              The four surfaces of a modern brand. We own how they connect.
             </p>
             <p
               className="text-[24px] md:text-[32px] lg:text-[40px]"
@@ -83,7 +83,7 @@ export default function Home() {
                 maxWidth: "900px",
               }}
             >
-              You stay the brand. We own how it performs.
+              The brand stays yours. Making it perform is ours.
             </p>
           </FadeInOnScroll>
         </div>
@@ -127,10 +127,10 @@ export default function Home() {
             </h2>
             <div className="text-[16px] lg:text-[18px]" style={bodyStyle}>
               <p>
-                KDC works as an extension of your team, inside the brand, accountable for how it connects and converts, present for the long build, not a project with an end date.
+                KDC works inside the brand &mdash; accountable for how it connects and converts, present for the long build.
               </p>
               <p style={{ color: "#171717", paddingTop: "16px" }}>
-                Twelve partners at a time. By invitation. The ones we say yes to get all of it.
+                We take on a few partners at a time, so every brand gets all of us.
               </p>
             </div>
           </FadeInOnScroll>

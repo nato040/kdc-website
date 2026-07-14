@@ -14,10 +14,10 @@ export default function CaseStudies() {
       <section className="px-6 lg:px-16 mt-32 relative" style={{ paddingTop: '96px', paddingBottom: '120px' }}>
         <div className="max-w-[1280px] mx-auto">
           <p className="text-[11px] tracking-widest uppercase mb-6" style={{ color: '#5E5954', fontWeight: 500, letterSpacing: '0.20em' }}>
-            THE APPROACH.
+            THE APPROACH
           </p>
           <h1 style={{ fontFamily: 'var(--font-serif)', color: '#171717', fontWeight: 400, lineHeight: '1.1' }} className="text-[40px] md:text-[56px] lg:text-[72px] max-w-4xl">
-            What connected marketing systems make possible.
+            What one connected system makes possible.
           </h1>
         </div>
       </section>
@@ -39,7 +39,10 @@ export default function CaseStudies() {
                   Brand.
                 </h3>
                 <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                  Brand architecture, messaging, voice, and creative direction. Campaign briefs and seasonal planning.
+                  The briefs everything runs on.
+                </p>
+                <p className="text-[14px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px', fontStyle: 'italic' }}>
+                  Brand strategy &amp; positioning &middot; voice &amp; messaging &middot; creative direction &middot; seasonal planning
                 </p>
               </div>
             </FadeInOnScroll>
@@ -51,7 +54,10 @@ export default function CaseStudies() {
                   Content.
                 </h3>
                 <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                  Direction and production of social, product, and campaign shoots. Stylist-led, brand-led, built to live across every channel without losing the thread.
+                  How the brand shows up, everywhere.
+                </p>
+                <p className="text-[14px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px', fontStyle: 'italic' }}>
+                  Content &amp; social strategy &middot; campaign planning &middot; photoshoot &amp; campaign direction
                 </p>
               </div>
             </FadeInOnScroll>
@@ -63,7 +69,10 @@ export default function CaseStudies() {
                   Retention.
                 </h3>
                 <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                  Email and CRM strategy, lifecycle direction, and the inbox as an editorial environment. Built on our own platform: Klaviyo data, campaign and flow performance, monthly KPIs, send calendars, and creative briefs in one system. Our direction, our reporting, execution by our team. No third-party black box.
+                  The inbox, editorial in voice and built to convert.
+                </p>
+                <p className="text-[14px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px', fontStyle: 'italic' }}>
+                  CRM &amp; lifecycle marketing &middot; email &amp; SMS strategy &middot; reporting, planning, and briefs in one system we built ourselves
                 </p>
               </div>
             </FadeInOnScroll>
@@ -75,7 +84,10 @@ export default function CaseStudies() {
                   Community &amp; Partnerships.
                 </h3>
                 <p className="text-[16px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px' }}>
-                  The relationships around the brand. Cause-related partnerships with nonprofits, creator and PR collaborations, and the brands and people the audience already trusts.
+                  The company the brand keeps.
+                </p>
+                <p className="text-[14px]" style={{ color: '#5E5954', fontWeight: 400, lineHeight: '1.6', maxWidth: '720px', fontStyle: 'italic' }}>
+                  Creator &amp; influencer collaborations &middot; PR coordination &middot; agency &amp; partner management
                 </p>
               </div>
             </FadeInOnScroll>

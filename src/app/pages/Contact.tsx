@@ -146,7 +146,7 @@ export default function Contact() {
       >
         <div className="max-w-[1280px] mx-auto">
           <p className="text-[16px] lg:text-[18px] mb-12 lg:mb-16" style={bodyStyle}>
-            Most engagements start with a short conversation. Tell us about the brand, where it is now, and what isn&rsquo;t connecting.
+            Most engagements start with a short conversation. Tell us about the brand &mdash; and what isn&rsquo;t connecting.
           </p>
 
           {state === "sent" ? (
@@ -368,9 +368,6 @@ export default function Contact() {
               contact@kennydonnacollective.com
             </a>
 
-            <p className="text-[14px] lg:text-[15px] pt-4" style={{ color: "#5E5954", fontStyle: "italic", maxWidth: "640px" }}>
-              We say yes when the brand and the partnership match.
-            </p>
           </div>
         </div>
       </section>

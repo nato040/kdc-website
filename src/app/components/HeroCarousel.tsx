@@ -65,7 +65,7 @@ export function HeroCarousel() {
               marginBottom: "24px",
             }}
           >
-            A connected marketing architecture built from brand and designed for growth.
+            The Brand Marketing Partner for design-led brands.
           </p>
         </div>
       </div>

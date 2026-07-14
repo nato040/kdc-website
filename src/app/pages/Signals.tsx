@@ -86,7 +86,7 @@ export default function Signals() {
             A working journal and a read on the culture.
           </h1>
           <p className="text-[16px] lg:text-[18px]" style={bodyStyle}>
-            Notes on brand, content, retention, and community. What we&rsquo;re seeing, what&rsquo;s shifting, what&rsquo;s next.
+            Notes on brand, content, retention, and community.
           </p>
         </div>
       </section>

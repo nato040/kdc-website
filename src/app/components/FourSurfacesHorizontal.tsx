@@ -25,7 +25,7 @@ const SURFACES: Surface[] = [
   },
   {
     title: "Content",
-    body: "The editorial layer. How the brand shows up across owned, earned, and social.",
+    body: "The editorial layer. How the brand shows up — owned, earned, social.",
     image: contentImg,
     alt: "Curating reference imagery on iPad",
   },
@@ -36,7 +36,7 @@ const SURFACES: Surface[] = [
   },
   {
     title: "Community & Partnerships",
-    body: "The relationships around the brand. The signals the audience sends, and the brands and people it chooses to stand beside.",
+    body: "The relationships around the brand. The people and brands it stands beside.",
     image: null,
   },
 ];

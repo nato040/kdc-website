@@ -86,10 +86,16 @@ export default function About() {
                 className="text-[28px] md:text-[40px] lg:text-[52px] mb-8"
                 style={headingStyle}
               >
-                KDC is not an agency. It&rsquo;s a small, focused team, built to work as one with founders and the people already inside the business.
+                KDC is not an agency.
               </h2>
-              <div className="space-y-5 text-[16px] lg:text-[18px]" style={bodyStyle}>
-                <p>
+              <div className="space-y-5" style={bodyStyle}>
+                <p
+                  className="text-[18px] lg:text-[22px]"
+                  style={{ color: "#171717", lineHeight: "1.5" }}
+                >
+                  It&rsquo;s a small, focused team, built to work as one with founders and the people already inside the business.
+                </p>
+                <p className="text-[16px] lg:text-[18px]">
                   Strategy stays joined to execution. Nothing gets handed off, nothing gets lost.
                 </p>
               </div>

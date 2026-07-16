@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, Link, useLocation } from "react-router";
 import logoImg from "../../imports/kdc-logo-stacked-black.png";
 import { ScrollToHash } from "./ScrollToHash";
@@ -49,18 +49,37 @@ function NavItem({ link, className, style, onClick }: NavItemProps) {
 
 export default function Root() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   // Close mobile menu on route change
   const handleNavClick = () => setMobileMenuOpen(false);
+
+  // On Home the nav sits transparent over the hero video (light text, scrim
+  // is built into the hero). It becomes the standard solid nav on scroll,
+  // on every other page, and while the mobile menu is open.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const isHome = location.pathname === "/";
+  const overHero = isHome && !scrolled && !mobileMenuOpen;
+  const navLinkColor = overHero ? '#FAFAFA' : '#5E5954';
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#FAFAFA' }}>
       <ScrollToHash />
       {/* Navigation */}
       <nav
-        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm"
-        style={{ backgroundColor: 'rgba(250, 250, 250, 0.95)', borderBottom: '1px solid #D6D0CF' }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${overHero ? '' : 'backdrop-blur-sm'}`}
+        style={
+          overHero
+            ? { backgroundColor: 'transparent', borderBottom: '1px solid transparent' }
+            : { backgroundColor: 'rgba(250, 250, 250, 0.95)', borderBottom: '1px solid #D6D0CF' }
+        }
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 py-4 lg:py-7">
           {/* Desktop nav — 3-column grid as designed */}
@@ -71,12 +90,27 @@ export default function Root() {
                   key={l.to}
                   link={l}
                   className="text-xs tracking-widest uppercase transition-all hover:opacity-60"
-                  style={{ color: '#5E5954', letterSpacing: '0.15em' }}
+                  style={{ color: navLinkColor, letterSpacing: '0.15em' }}
                 />
               ))}
             </div>
             <Link to="/" className="flex justify-center">
-              <img src={logoImg} alt="Kenny Donna Collective" className="h-12 lg:h-16 w-auto max-w-3xl" />
+              {overHero ? (
+                <span
+                  className="py-3"
+                  style={{
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '18px',
+                    letterSpacing: '0.16em',
+                    color: '#FAFAFA',
+                    fontWeight: 400,
+                  }}
+                >
+                  KENNY DONNA
+                </span>
+              ) : (
+                <img src={logoImg} alt="Kenny Donna Collective" className="h-12 lg:h-16 w-auto max-w-3xl" />
+              )}
             </Link>
             <div className="flex gap-9 lg:gap-14 justify-end">
               {navLinks.slice(2).map((l) => (
@@ -84,7 +118,7 @@ export default function Root() {
                   key={l.to}
                   link={l}
                   className="text-xs tracking-widest uppercase transition-all hover:opacity-60"
-                  style={{ color: '#5E5954', letterSpacing: '0.15em' }}
+                  style={{ color: navLinkColor, letterSpacing: '0.15em' }}
                 />
               ))}
             </div>
@@ -93,7 +127,22 @@ export default function Root() {
           {/* Mobile nav — logo + hamburger */}
           <div className="flex lg:hidden items-center justify-between gap-4">
             <Link to="/" onClick={handleNavClick} className="flex items-center" aria-label="Kenny Donna Collective home">
-              <img src={logoImg} alt="Kenny Donna Collective" className="h-12 sm:h-16 w-auto" />
+              {overHero ? (
+                <span
+                  className="py-3"
+                  style={{
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '16px',
+                    letterSpacing: '0.16em',
+                    color: '#FAFAFA',
+                    fontWeight: 400,
+                  }}
+                >
+                  KENNY DONNA
+                </span>
+              ) : (
+                <img src={logoImg} alt="Kenny Donna Collective" className="h-12 sm:h-16 w-auto" />
+              )}
             </Link>
             <button
               type="button"
@@ -105,21 +154,21 @@ export default function Root() {
               <span
                 className="block w-6 h-px transition-transform"
                 style={{
-                  backgroundColor: '#171717',
+                  backgroundColor: overHero ? '#FAFAFA' : '#171717',
                   transform: mobileMenuOpen ? 'translateY(6px) rotate(45deg)' : 'none',
                 }}
               />
               <span
                 className="block w-6 h-px transition-opacity"
                 style={{
-                  backgroundColor: '#171717',
+                  backgroundColor: overHero ? '#FAFAFA' : '#171717',
                   opacity: mobileMenuOpen ? 0 : 1,
                 }}
               />
               <span
                 className="block w-6 h-px transition-transform"
                 style={{
-                  backgroundColor: '#171717',
+                  backgroundColor: overHero ? '#FAFAFA' : '#171717',
                   transform: mobileMenuOpen ? 'translateY(-6px) rotate(-45deg)' : 'none',
                 }}
               />
@@ -161,7 +210,7 @@ export default function Root() {
       <Outlet />
 
       {/* Footer */}
-      <footer className="py-16 sm:py-20 lg:py-24 px-6 sm:px-8 lg:px-16" style={{ backgroundColor: '#171717', borderTop: '1px solid #3A342F' }}>
+      <footer className="py-16 sm:py-20 lg:py-24 px-6 sm:px-8 lg:px-16" style={{ backgroundColor: overHero ? '#FAFAFA' : '#171717', borderTop: '1px solid #3A342F' }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 mb-12 lg:mb-16">
             {/* Left - Brand */}

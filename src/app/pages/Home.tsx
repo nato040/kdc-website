@@ -1,21 +1,21 @@
-import { useState } from "react";
 import { Link } from "react-router";
 import { FadeInOnScroll } from "../components/FadeInOnScroll";
 import heroPoster from "../../imports/home-hero-poster.jpg";
 import partnershipImg from "../../imports/home-partnership-ipad.jpg";
 import whyImg from "../../imports/home-why-desk.jpg";
-import breakImg from "../../imports/home-break-rack.jpg";
 import founderImg from "../../imports/home-founder-paris.jpg";
 
 /**
- * Home — v10 FINAL one-pager (July 15 mockup):
- * Hero video → Tagline → The Architecture → The Partnership → The Why / The
- * Collective → The Conversation → break image → The Full Frame → Founder →
- * Signals → Contact (working mini-form via /api/contact).
+ * Home — v10 one-pager, revised (July 15, Cody's notes):
+ * bigger type + imagery, the mid-page image band removed (it read like a
+ * page ending), and a single "Begin a conversation" CTA that closes the page.
  *
- * Interim imagery = Teo's V5-graded exports (extracted from the approved
- * mockup); Andee's final exports swap in file-for-file later.
- * Hero video = July 15 cut (Kyla re-cut swaps in at /public/kdc-hero.mp4).
+ * Order: Hero video → Tagline → The Architecture → The Partnership →
+ * The Why / The Collective → The Full Frame → Founder → Signals →
+ * The Conversation (closing CTA → /contact).
+ *
+ * Interim imagery = V5-graded exports; the partnership shot uses the high-res
+ * original. Andee's regrades swap in file-for-file.
  */
 
 const LINKEDIN_URL = "https://www.linkedin.com/company/kenny-donna-collective";
@@ -34,8 +34,8 @@ const serif: React.CSSProperties = {
 };
 
 const body: React.CSSProperties = {
-  fontSize: "14px",
-  lineHeight: 1.9,
+  fontSize: "16px",
+  lineHeight: 1.85,
   color: "#3A342F",
   fontWeight: 300,
 };
@@ -98,144 +98,13 @@ const architectureItems = [
   },
 ];
 
-type SubmitState = "idle" | "sending" | "sent" | "error";
-
-function HomeContactForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [brand, setBrand] = useState("");
-  const [message, setMessage] = useState("");
-  const [state, setState] = useState<SubmitState>("idle");
-  const [errorMsg, setErrorMsg] = useState("");
-
-  const fieldStyle: React.CSSProperties = {
-    display: "block",
-    width: "100%",
-    backgroundColor: "transparent",
-    border: "none",
-    borderBottom: "0.5px solid #B4B2A9",
-    padding: "13px 2px",
-    fontSize: "13px",
-    fontFamily: "inherit",
-    fontWeight: 300,
-    color: "#171717",
-    outline: "none",
-    borderRadius: 0,
-  };
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (state === "sending") return;
-    setState("sending");
-    setErrorMsg("");
-    try {
-      const resp = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ brand, notConnecting: message, name, email }),
-      });
-      if (!resp.ok) {
-        const data = await resp.json().catch(() => ({}));
-        throw new Error(data?.error || `Submission failed (${resp.status}).`);
-      }
-      setState("sent");
-    } catch (err: any) {
-      setErrorMsg(err?.message || "Submission failed.");
-      setState("error");
-    }
-  }
-
-  if (state === "sent") {
-    return (
-      <p
-        className="max-w-[400px] mx-auto"
-        style={{ ...body, marginTop: "38px", textAlign: "center" }}
-      >
-        We read everything. You&rsquo;ll hear from Cody within two business
-        days.
-      </p>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} noValidate>
-      <div className="max-w-[400px] mx-auto text-left" style={{ marginTop: "38px" }}>
-        <label className="sr-only" htmlFor="home-name">Name</label>
-        <input
-          id="home-name"
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          style={fieldStyle}
-        />
-        <label className="sr-only" htmlFor="home-email">Email</label>
-        <input
-          id="home-email"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          style={fieldStyle}
-        />
-        <label className="sr-only" htmlFor="home-brand">Brand</label>
-        <input
-          id="home-brand"
-          type="text"
-          placeholder="Brand"
-          value={brand}
-          onChange={(e) => setBrand(e.target.value)}
-          required
-          style={fieldStyle}
-        />
-        <label className="sr-only" htmlFor="home-message">Tell us about the brand</label>
-        <textarea
-          id="home-message"
-          placeholder="Tell us about the brand"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          required
-          rows={3}
-          style={{ ...fieldStyle, paddingBottom: "38px", resize: "none" }}
-        />
-      </div>
-      <button
-        type="submit"
-        disabled={state === "sending"}
-        className="transition-opacity hover:opacity-60 disabled:opacity-40"
-        style={{
-          marginTop: "40px",
-          fontSize: "11px",
-          letterSpacing: "0.22em",
-          border: "1px solid #171717",
-          background: "transparent",
-          color: "#171717",
-          display: "inline-block",
-          padding: "13px 36px",
-          cursor: "pointer",
-          fontFamily: "inherit",
-        }}
-      >
-        {state === "sending" ? "SENDING…" : "SEND"}
-      </button>
-      {state === "error" && (
-        <p style={{ ...body, fontSize: "12px", marginTop: "16px", color: "#8A3B2E" }}>
-          {errorMsg} If it keeps failing, email contact@kennydonnacollective.com.
-        </p>
-      )}
-    </form>
-  );
-}
-
 export default function Home() {
   return (
     <div style={{ backgroundColor: "#FAFAFA" }}>
       {/* HERO — full-bleed video under the (transparent) nav */}
       <div
         className="relative overflow-hidden"
-        style={{ height: "72vh", minHeight: "420px" }}
+        style={{ height: "82vh", minHeight: "520px" }}
       >
         <video
           src="/kdc-hero.mp4"
@@ -260,13 +129,13 @@ export default function Home() {
       {/* TAGLINE */}
       <section
         className={`${sectionPad} text-center`}
-        style={{ padding: "110px 40px 90px" }}
+        style={{ padding: "130px 40px 110px" }}
       >
         <FadeInOnScroll>
-          <h1 style={{ ...serif, fontSize: "clamp(32px, 5vw, 46px)", lineHeight: 1.2 }}>
+          <h1 style={{ ...serif, fontSize: "clamp(40px, 6vw, 62px)", lineHeight: 1.15 }}>
             Marketing, shaped like a brand.
           </h1>
-          <p style={{ ...kicker, marginTop: "24px" }}>
+          <p style={{ ...kicker, marginTop: "28px" }}>
             The Brand Marketing Partner for design-led brands
           </p>
         </FadeInOnScroll>
@@ -276,7 +145,7 @@ export default function Home() {
       <section
         id="surfaces"
         className={`${sectionPad} text-center scroll-mt-24`}
-        style={{ ...hairline, padding: "110px 40px" }}
+        style={{ ...hairline, padding: "130px 40px" }}
       >
         <FadeInOnScroll>
           <p style={kicker}>The Architecture</p>
@@ -284,21 +153,21 @@ export default function Home() {
             className="mx-auto"
             style={{
               ...serif,
-              fontSize: "clamp(23px, 3vw, 28px)",
-              marginTop: "20px",
-              maxWidth: "480px",
-              lineHeight: 1.35,
+              fontSize: "clamp(27px, 3.6vw, 36px)",
+              marginTop: "22px",
+              maxWidth: "620px",
+              lineHeight: 1.3,
             }}
           >
             The four surfaces of a modern brand. We own how they connect.
           </h2>
         </FadeInOnScroll>
-        <div className="max-w-[500px] mx-auto" style={{ marginTop: "76px" }}>
+        <div className="max-w-[640px] mx-auto" style={{ marginTop: "84px" }}>
           {architectureItems.map((item, i) => (
             <FadeInOnScroll key={item.title}>
-              <div style={{ marginBottom: i === architectureItems.length - 1 ? 0 : "60px" }}>
-                <h3 style={{ ...serif, fontSize: "22px" }}>{item.title}</h3>
-                <p style={{ ...muted, fontSize: "13.5px", marginTop: "10px" }}>
+              <div style={{ marginBottom: i === architectureItems.length - 1 ? 0 : "68px" }}>
+                <h3 style={{ ...serif, fontSize: "26px" }}>{item.title}</h3>
+                <p style={{ ...muted, fontSize: "16px", marginTop: "12px" }}>
                   {item.text}
                 </p>
               </div>
@@ -311,23 +180,23 @@ export default function Home() {
       <section
         id="partnership"
         className={`${sectionPad} scroll-mt-24`}
-        style={{ ...hairline, padding: "110px 40px" }}
+        style={{ ...hairline, padding: "130px 40px" }}
       >
-        <div className="max-w-[880px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_340px] gap-12 md:gap-16 items-center">
+        <div className="max-w-[1120px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
           <FadeInOnScroll>
             <p style={kicker}>The Partnership</p>
             <h2
               style={{
                 ...serif,
-                fontSize: "clamp(21px, 2.8vw, 25px)",
-                marginTop: "20px",
-                lineHeight: 1.45,
+                fontSize: "clamp(26px, 3.2vw, 34px)",
+                marginTop: "22px",
+                lineHeight: 1.4,
               }}
             >
               We design the architecture, then stay inside it, making sure
               everything built on it holds.
             </h2>
-            <p style={{ ...muted, marginTop: "22px" }}>
+            <p style={{ ...muted, marginTop: "26px" }}>
               We take on a few partners at a time, so every brand gets all of
               us.
             </p>
@@ -343,12 +212,12 @@ export default function Home() {
       </section>
 
       {/* THE WHY / THE COLLECTIVE */}
-      <section className={sectionPad} style={{ ...hairline, padding: "110px 40px" }}>
-        <div className="max-w-[880px] mx-auto grid grid-cols-1 md:grid-cols-[300px_1fr] gap-12 md:gap-16 items-center">
+      <section className={sectionPad} style={{ ...hairline, padding: "130px 40px" }}>
+        <div className="max-w-[1120px] mx-auto grid grid-cols-1 md:grid-cols-[440px_1fr] gap-12 md:gap-20 items-start">
           <FadeInOnScroll>
             <img
               src={whyImg}
-              className="w-full block order-last md:order-first"
+              className="w-full block"
               alt="Studio desk"
             />
           </FadeInOnScroll>
@@ -357,15 +226,15 @@ export default function Home() {
             <h2
               style={{
                 ...serif,
-                fontSize: "clamp(22px, 2.9vw, 26px)",
-                lineHeight: 1.4,
-                marginTop: "20px",
+                fontSize: "clamp(26px, 3.2vw, 33px)",
+                lineHeight: 1.35,
+                marginTop: "22px",
               }}
             >
               Kenny Donna Collective began with a frustration Cody knew from
               both sides of the table.
             </h2>
-            <p style={{ ...body, marginTop: "24px" }}>
+            <p style={{ ...body, marginTop: "26px" }}>
               Agencies didn&rsquo;t know the brand well enough to move it.
               Internal teams knew it intimately but couldn&rsquo;t scale it.
               Either way, the brand came out fragmented.
@@ -373,20 +242,20 @@ export default function Home() {
               <br />
               KDC was built to close that gap.
             </p>
-            <div style={{ marginTop: "70px" }}>
+            <div style={{ marginTop: "76px" }}>
               <p style={kicker}>The Collective</p>
               <h2
                 style={{
                   ...serif,
-                  fontSize: "clamp(20px, 2.6vw, 23px)",
-                  lineHeight: 1.45,
-                  marginTop: "20px",
+                  fontSize: "clamp(23px, 2.9vw, 29px)",
+                  lineHeight: 1.4,
+                  marginTop: "22px",
                 }}
               >
                 KDC is not an agency. A small team, built to work as one with
                 founders and the teams they already have.
               </h2>
-              <p style={{ ...body, marginTop: "20px" }}>
+              <p style={{ ...body, marginTop: "22px" }}>
                 A core group, plus a curated network of specialists, aligned
                 under one strategy. Nothing gets handed off, nothing gets lost.
               </p>
@@ -395,72 +264,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* THE CONVERSATION */}
-      <section
-        className={`${sectionPad} text-center`}
-        style={{ ...hairline, padding: "88px 40px" }}
-      >
-        <FadeInOnScroll>
-          <p style={kicker}>The Conversation</p>
-          <h2 style={{ ...serif, fontSize: "clamp(20px, 2.6vw, 23px)", marginTop: "20px" }}>
-            The work begins with a conversation.
-          </h2>
-          <Link
-            to="/contact"
-            className="transition-opacity hover:opacity-60"
-            style={{
-              marginTop: "30px",
-              fontSize: "11px",
-              letterSpacing: "0.22em",
-              border: "1px solid #171717",
-              display: "inline-block",
-              padding: "13px 32px",
-              color: "#171717",
-              textTransform: "uppercase",
-            }}
-          >
-            Begin a conversation &rarr;
-          </Link>
-        </FadeInOnScroll>
-      </section>
-
-      {/* BREAK IMAGE */}
-      <img
-        src={breakImg}
-        className="w-full block object-cover"
-        style={{ height: "340px" }}
-        alt="Ivory garments on a rack"
-      />
-
       {/* THE FULL FRAME */}
-      <section className={sectionPad} style={{ ...hairline, padding: "110px 40px" }}>
+      <section className={sectionPad} style={{ ...hairline, padding: "130px 40px" }}>
         <FadeInOnScroll>
-          <div className="text-center" style={{ marginBottom: "64px" }}>
+          <div className="text-center" style={{ marginBottom: "72px" }}>
             <p style={kicker}>The Full Frame</p>
-            <h2 style={{ ...serif, fontSize: "clamp(23px, 3vw, 28px)", marginTop: "20px" }}>
+            <h2 style={{ ...serif, fontSize: "clamp(27px, 3.6vw, 36px)", marginTop: "22px" }}>
               What one connected system makes possible.
             </h2>
           </div>
         </FadeInOnScroll>
-        <div className="max-w-[680px] mx-auto">
+        <div className="max-w-[860px] mx-auto">
           {fullFrameRows.map((row, i) => (
             <FadeInOnScroll key={row.title}>
               <div
-                className="grid grid-cols-1 sm:grid-cols-[190px_1fr] gap-3 sm:gap-[26px]"
+                className="grid grid-cols-1 sm:grid-cols-[240px_1fr] gap-3 sm:gap-8"
                 style={{
-                  padding: "32px 0",
+                  padding: "36px 0",
                   borderTop: "0.5px solid #E8E8E8",
                   borderBottom:
                     i === fullFrameRows.length - 1 ? "0.5px solid #E8E8E8" : undefined,
                 }}
               >
-                <h3 style={{ ...serif, fontSize: "21px" }}>{row.title}</h3>
+                <h3 style={{ ...serif, fontSize: "24px" }}>{row.title}</h3>
                 <p
                   style={{
                     ...serif,
                     fontStyle: "italic",
-                    fontSize: "15px",
-                    lineHeight: 1.9,
+                    fontSize: "17px",
+                    lineHeight: 1.85,
                     color: "#5E5954",
                   }}
                 >
@@ -473,8 +305,8 @@ export default function Home() {
       </section>
 
       {/* FOUNDER */}
-      <section className={sectionPad} style={{ padding: "110px 40px" }}>
-        <div className="max-w-[680px] mx-auto grid grid-cols-1 md:grid-cols-[220px_1fr] gap-10 md:gap-11 items-start">
+      <section className={sectionPad} style={{ ...hairline, padding: "130px 40px" }}>
+        <div className="max-w-[860px] mx-auto grid grid-cols-1 md:grid-cols-[360px_1fr] gap-10 md:gap-16 items-start">
           <FadeInOnScroll>
             <img
               src={founderImg}
@@ -483,9 +315,9 @@ export default function Home() {
             />
           </FadeInOnScroll>
           <FadeInOnScroll>
-            <p style={{ ...kicker, marginBottom: "18px" }}>Founder</p>
+            <p style={{ ...kicker, marginBottom: "20px" }}>Founder</p>
             <p style={body}>
-              <span style={{ ...serif, fontSize: "17px" }}>
+              <span style={{ ...serif, fontSize: "20px" }}>
                 Cody&rsquo;s eye was trained on the floor, not in a deck.
               </span>
               <br />
@@ -507,7 +339,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               className="transition-opacity hover:opacity-60"
-              style={{ ...linkUnderline, marginTop: "24px" }}
+              style={{ ...linkUnderline, marginTop: "28px" }}
             >
               Connect on LinkedIn &rarr;
             </a>
@@ -518,51 +350,52 @@ export default function Home() {
       {/* SIGNALS */}
       <section
         className={`${sectionPad} text-center`}
-        style={{ ...hairline, padding: "110px 40px" }}
+        style={{ ...hairline, padding: "130px 40px" }}
       >
         <FadeInOnScroll>
           <p style={kicker}>Signals</p>
-          <h2 style={{ ...serif, fontSize: "clamp(22px, 2.9vw, 26px)", marginTop: "20px" }}>
+          <h2 style={{ ...serif, fontSize: "clamp(25px, 3.2vw, 32px)", marginTop: "22px" }}>
             A working journal and a read on the culture.
           </h2>
-          <p style={{ ...muted, fontSize: "13px", marginTop: "12px" }}>
+          <p style={{ ...muted, fontSize: "15px", marginTop: "14px" }}>
             Notes on brand, content, retention, and community.
           </p>
           <Link
             to="/signals"
             className="transition-opacity hover:opacity-60"
-            style={{ ...linkUnderline, marginTop: "36px" }}
+            style={{ ...linkUnderline, marginTop: "40px" }}
           >
             Read the Signals &rarr;
           </Link>
         </FadeInOnScroll>
       </section>
 
-      {/* CONTACT */}
+      {/* THE CONVERSATION — single closing CTA */}
       <section
         className={`${sectionPad} text-center`}
-        style={{ ...hairline, padding: "110px 40px 100px" }}
+        style={{ ...hairline, padding: "120px 40px 130px" }}
       >
         <FadeInOnScroll>
-          <p style={kicker}>Contact</p>
-          <h2 style={{ ...serif, fontSize: "clamp(25px, 3.2vw, 30px)", marginTop: "20px" }}>
-            Begin a conversation.
+          <p style={kicker}>The Conversation</p>
+          <h2 style={{ ...serif, fontSize: "clamp(27px, 3.6vw, 36px)", marginTop: "22px" }}>
+            The work begins with a conversation.
           </h2>
-          <p className="max-w-[400px] mx-auto" style={{ ...body, marginTop: "16px" }}>
-            Most engagements start with a short conversation. Tell us about the
-            brand and what isn&rsquo;t connecting.
-          </p>
-          <HomeContactForm />
-          <p style={{ ...muted, fontSize: "12px", marginTop: "20px" }}>
-            Prefer email?{" "}
-            <a
-              href="mailto:contact@kennydonnacollective.com"
-              className="transition-opacity hover:opacity-60"
-              style={{ color: "#5E5954" }}
-            >
-              contact@kennydonnacollective.com
-            </a>
-          </p>
+          <Link
+            to="/contact"
+            className="transition-opacity hover:opacity-60"
+            style={{
+              marginTop: "36px",
+              fontSize: "12px",
+              letterSpacing: "0.22em",
+              border: "1px solid #171717",
+              display: "inline-block",
+              padding: "16px 40px",
+              color: "#171717",
+              textTransform: "uppercase",
+            }}
+          >
+            Begin a conversation &rarr;
+          </Link>
         </FadeInOnScroll>
       </section>
     </div>

@@ -195,10 +195,12 @@ export default function Root() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 mb-12 lg:mb-16">
             {/* Left - Brand */}
             <div className="sm:col-span-2 lg:col-span-1">
-              <img src={footerWordmark} alt="Kenny Donna Collective" className="h-[32px] w-auto mb-4" />
-              <p className="text-sm" style={{ color: '#D6D0CF', fontWeight: 300 }}>
-                Marketing, shaped like a brand.
-              </p>
+              <div className="inline-flex flex-col items-center">
+                <img src={footerWordmark} alt="Kenny Donna Collective" className="h-[32px] w-auto mb-4" />
+                <p className="text-sm text-center" style={{ color: '#D6D0CF', fontWeight: 300 }}>
+                  Marketing, shaped like a brand.
+                </p>
+              </div>
             </div>
 
             {/* Center - Navigation */}

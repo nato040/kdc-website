@@ -1,8 +1,8 @@
 import { Link } from "react-router";
 import { FadeInOnScroll } from "../components/FadeInOnScroll";
 import heroPoster from "../../imports/home-hero-poster.jpg";
-import partnershipImg from "../../imports/home-partnership-ipad.jpg";
-import whyImg from "../../imports/home-why-desk.jpg";
+import partnershipImg from "../../imports/KDC_founder_chair_B_web.jpg";
+import whyImg from "../../imports/KDC_rack_black_web.jpg";
 import founderImg from "../../imports/home-founder-paris.jpg";
 
 /**
@@ -70,7 +70,7 @@ const fullFrameRows = [
   {
     title: "Retention",
     services:
-      "CRM & lifecycle marketing · email & SMS strategy · reporting, planning & briefs",
+      "CRM & lifecycle marketing · email & SMS strategy · reporting, planning & briefs · platform & systems integration (Shopify, Klaviyo)",
   },
   {
     title: "Community & Partnerships",
@@ -205,7 +205,7 @@ export default function Home() {
             <img
               src={partnershipImg}
               className="w-full block"
-              alt="Moodboard review on iPad"
+              alt="Founder seated with iPad"
             />
           </FadeInOnScroll>
         </div>
@@ -218,7 +218,7 @@ export default function Home() {
             <img
               src={whyImg}
               className="w-full block"
-              alt="Studio desk"
+              alt="Styling rack"
             />
           </FadeInOnScroll>
           <FadeInOnScroll>

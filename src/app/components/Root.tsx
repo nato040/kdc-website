@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Outlet, Link, useLocation } from "react-router";
 import logoImg from "../../imports/kdc-logo-stacked-black.png";
+import heroWordmark from "../../imports/KDC-stacked-white-hero.png";
+import footerWordmark from "../../imports/KDC-stacked-ivory-footer.png";
 import { ScrollToHash } from "./ScrollToHash";
 
 const SUBSTACK_URL = "https://kennydonnacollective.substack.com";
@@ -96,18 +98,7 @@ export default function Root() {
             </div>
             <Link to="/" className="flex justify-center">
               {overHero ? (
-                <span
-                  className="py-3"
-                  style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontSize: '18px',
-                    letterSpacing: '0.16em',
-                    color: '#FAFAFA',
-                    fontWeight: 400,
-                  }}
-                >
-                  KENNY DONNA
-                </span>
+                <img src={heroWordmark} alt="Kenny Donna Collective" className="h-12 lg:h-16 w-auto max-w-3xl py-1" />
               ) : (
                 <img src={logoImg} alt="Kenny Donna Collective" className="h-12 lg:h-16 w-auto max-w-3xl" />
               )}
@@ -128,18 +119,7 @@ export default function Root() {
           <div className="flex lg:hidden items-center justify-between gap-4">
             <Link to="/" onClick={handleNavClick} className="flex items-center" aria-label="Kenny Donna Collective home">
               {overHero ? (
-                <span
-                  className="py-3"
-                  style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontSize: '16px',
-                    letterSpacing: '0.16em',
-                    color: '#FAFAFA',
-                    fontWeight: 400,
-                  }}
-                >
-                  KENNY DONNA
-                </span>
+                <img src={heroWordmark} alt="Kenny Donna Collective" className="h-12 sm:h-16 w-auto py-1" />
               ) : (
                 <img src={logoImg} alt="Kenny Donna Collective" className="h-12 sm:h-16 w-auto" />
               )}
@@ -215,9 +195,7 @@ export default function Root() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 mb-12 lg:mb-16">
             {/* Left - Brand */}
             <div className="sm:col-span-2 lg:col-span-1">
-              <p style={{ fontFamily: 'var(--font-serif)', color: '#FCFBF8', fontWeight: 300, textAlign: 'left' }} className="text-xl mb-3">
-                KENNY DONNA<br />collective
-              </p>
+              <img src={footerWordmark} alt="Kenny Donna Collective" className="h-12 lg:h-16 w-auto mb-3" />
               <p className="text-sm" style={{ color: '#D6D0CF', fontWeight: 300 }}>
                 Marketing, shaped like a brand.
               </p>

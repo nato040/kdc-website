@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { SectionDivider } from "../components/SectionDivider";
 
 /**
  * Contact — invitation hero + "tell us about the brand" questionnaire.
@@ -17,25 +16,29 @@ const SURFACES = [
 type SubmitState = "idle" | "sending" | "sent" | "error";
 
 export default function Contact() {
-  const eyebrowStyle = {
+  const eyebrowStyle: React.CSSProperties = {
+    fontSize: "11px",
+    letterSpacing: "0.26em",
     color: "#5E5954",
-    fontWeight: 500,
-    letterSpacing: "0.20em",
+    textTransform: "uppercase",
   };
 
   const headingStyle = {
     fontFamily: "var(--font-serif)",
     color: "#171717",
     fontWeight: 400,
-    lineHeight: "1.1",
+    lineHeight: 1.3,
   };
 
   const bodyStyle = {
-    color: "#5E5954",
-    fontWeight: 400,
-    lineHeight: "1.6",
+    fontSize: "16px",
+    lineHeight: 1.85,
+    color: "#3A342F",
+    fontWeight: 300,
     maxWidth: "640px",
   };
+
+  const hairline: React.CSSProperties = { borderTop: "0.5px solid #E8E8E8" };
 
   const labelStyle = {
     color: "#171717",
@@ -109,44 +112,33 @@ export default function Contact() {
 
   return (
     <div style={{ backgroundColor: "#FAFAFA" }}>
-      {/* Subtle texture overlay */}
-      <div
-        className="fixed inset-0 opacity-[0.015] pointer-events-none"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E\")",
-          backgroundSize: "250px 250px",
-        }}
-      />
-
       {/* HERO */}
       <section
-        className="px-6 lg:px-16 mt-32 relative"
-        style={{ paddingTop: "96px", paddingBottom: "80px" }}
+        className="px-6 sm:px-10 mt-32"
+        style={{ padding: "130px 40px 110px" }}
       >
-        <div className="max-w-[1280px] mx-auto">
-          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
-            CONTACT
-          </p>
+        <div className="max-w-[860px] mx-auto">
+          <p style={eyebrowStyle}>Contact</p>
           <h1
-            className="text-[40px] md:text-[56px] lg:text-[72px]"
-            style={headingStyle}
+            style={{
+              ...headingStyle,
+              fontSize: "clamp(27px, 3.6vw, 36px)",
+              marginTop: "22px",
+            }}
           >
             Begin a conversation.
           </h1>
         </div>
       </section>
 
-      <SectionDivider />
-
-      {/* INTRO + QUESTIONNAIRE (ivory tile) */}
+      {/* INTRO + QUESTIONNAIRE */}
       <section
-        className="px-6 lg:px-16 relative"
-        style={{ paddingTop: "100px", paddingBottom: "120px" }}
+        className="px-6 sm:px-10"
+        style={{ ...hairline, padding: "130px 40px" }}
       >
-        <div className="max-w-[1280px] mx-auto">
-          <p className="text-[16px] lg:text-[18px] mb-12 lg:mb-16" style={bodyStyle}>
-            Most engagements start with a short conversation. Tell us about the brand &mdash; and what isn&rsquo;t connecting.
+        <div className="max-w-[860px] mx-auto">
+          <p className="mb-12 lg:mb-16" style={bodyStyle}>
+            Most engagements start with a short conversation. Tell us about the brand, and what isn&rsquo;t connecting.
           </p>
 
           {state === "sent" ? (
@@ -347,18 +339,14 @@ export default function Contact() {
         </div>
       </section>
 
-      <SectionDivider />
-
       {/* DIRECT EMAIL — the human path stays open alongside the form */}
       <section
-        className="px-6 lg:px-16 relative"
-        style={{ paddingTop: "100px", paddingBottom: "160px" }}
+        className="px-6 sm:px-10"
+        style={{ ...hairline, padding: "130px 40px 160px" }}
       >
-        <div className="max-w-[1280px] mx-auto">
+        <div className="max-w-[860px] mx-auto">
           <div className="space-y-10">
-            <p className="text-[11px] tracking-widest uppercase" style={eyebrowStyle}>
-              Prefer email?
-            </p>
+            <p style={eyebrowStyle}>Prefer email?</p>
 
             <a
               href="mailto:contact@kennydonnacollective.com"

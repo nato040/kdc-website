@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { SectionDivider } from "../components/SectionDivider";
+import { FadeInOnScroll } from "../components/FadeInOnScroll";
 
 /**
- * Signals — editorial landing with live Substack feed.
- * Hero remit (four pillars + cultural-listening half) → 3 most recent posts → Substack CTA.
- * Posts come from /api/journal-posts (Vercel serverless function that parses Substack RSS).
+ * Signals — Jul 20 brief: Part 2 copy in the homepage formatting register.
+ * Live Substack feed via /api/journal-posts. Post dates: hidden.
  */
 
 type Post = {
@@ -15,27 +14,41 @@ type Post = {
   image: string | null;
 };
 
+const kicker: React.CSSProperties = {
+  fontSize: "11px",
+  letterSpacing: "0.26em",
+  color: "#5E5954",
+  textTransform: "uppercase",
+};
+
+const serif: React.CSSProperties = {
+  fontFamily: "var(--font-serif)",
+  fontWeight: 400,
+  color: "#171717",
+};
+
+const muted: React.CSSProperties = {
+  fontSize: "16px",
+  lineHeight: 1.85,
+  color: "#5E5954",
+  fontWeight: 300,
+};
+
+const hairline: React.CSSProperties = { borderTop: "0.5px solid #E8E8E8" };
+
+const sectionPad = "px-6 sm:px-10" as const;
+
+const linkUnderline: React.CSSProperties = {
+  fontSize: "11px",
+  letterSpacing: "0.22em",
+  color: "#171717",
+  borderBottom: "1px solid #171717",
+  display: "inline-block",
+  paddingBottom: "3px",
+  textTransform: "uppercase",
+};
+
 export default function Signals() {
-  const eyebrowStyle = {
-    color: "#5E5954",
-    fontWeight: 500,
-    letterSpacing: "0.20em",
-  };
-
-  const headingStyle = {
-    fontFamily: "var(--font-serif)",
-    color: "#171717",
-    fontWeight: 400,
-    lineHeight: "1.15",
-  };
-
-  const bodyStyle = {
-    color: "#5E5954",
-    fontWeight: 400,
-    lineHeight: "1.6",
-    maxWidth: "640px",
-  };
-
   const [posts, setPosts] = useState<Post[] | null>(null);
   const [loadFailed, setLoadFailed] = useState(false);
 
@@ -60,109 +73,102 @@ export default function Signals() {
 
   return (
     <div style={{ backgroundColor: "#FAFAFA" }}>
-      {/* Subtle texture overlay */}
-      <div
-        className="fixed inset-0 opacity-[0.015] pointer-events-none"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E\")",
-          backgroundSize: "250px 250px",
-        }}
-      />
-
-      {/* HERO — four-pillar remit + cultural-listening half explicitly named */}
+      {/* SIGNALS — hero */}
       <section
-        className="px-6 lg:px-16 mt-32 relative"
-        style={{ paddingTop: "96px", paddingBottom: "120px" }}
+        className={`${sectionPad} text-center mt-32`}
+        style={{ padding: "130px 40px 110px" }}
       >
-        <div className="max-w-[1280px] mx-auto">
-          <p className="text-[11px] tracking-widest uppercase mb-6" style={eyebrowStyle}>
-            SIGNALS
-          </p>
+        <FadeInOnScroll>
+          <p style={kicker}>Signals</p>
           <h1
-            className="text-[40px] md:text-[56px] lg:text-[72px] mb-10 max-w-4xl"
-            style={{ ...headingStyle, lineHeight: "1.1" }}
+            style={{
+              ...serif,
+              fontSize: "clamp(27px, 3.6vw, 36px)",
+              marginTop: "22px",
+              lineHeight: 1.3,
+            }}
           >
             A working journal and a read on the culture.
           </h1>
-          <p className="text-[16px] lg:text-[18px]" style={bodyStyle}>
+          <p style={{ ...muted, fontSize: "15px", marginTop: "14px" }}>
             Notes on brand, content, retention, and community.
           </p>
-        </div>
+        </FadeInOnScroll>
       </section>
 
-      <SectionDivider />
-
-      {/* RECENT — latest 3 posts pulled live from Substack via /api/journal-posts (ivory tile) */}
+      {/* RECENT — latest 3 posts pulled live from Substack. Dates hidden. */}
       <section
-        className="px-6 lg:px-16 relative"
-        style={{ paddingTop: "100px", paddingBottom: "120px" }}
+        className={sectionPad}
+        style={{ ...hairline, padding: "130px 40px" }}
       >
-        <div className="max-w-[1280px] mx-auto">
-          <p className="text-[11px] tracking-widest uppercase mb-10" style={eyebrowStyle}>
-            RECENT
-          </p>
+        <div className="max-w-[860px] mx-auto">
+          <FadeInOnScroll>
+            <p style={{ ...kicker, marginBottom: "48px" }}>Recent</p>
+          </FadeInOnScroll>
 
           {showRecent && (
-            <div className="space-y-12 lg:space-y-16">
-              {posts!.map((p) => (
-                <a
-                  key={p.link}
-                  href={p.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block group"
-                >
-                  <div className="border-t pt-8" style={{ borderColor: "#D6D0CF" }}>
-                    <h2
-                      className="text-[24px] md:text-[32px] lg:text-[40px] mb-4 transition-opacity group-hover:opacity-60"
-                      style={{ ...headingStyle, lineHeight: "1.2" }}
+            <div>
+              {posts!.map((p, i) => (
+                <FadeInOnScroll key={p.link}>
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block group"
+                  >
+                    <div
+                      style={{
+                        padding: "36px 0",
+                        borderTop: "0.5px solid #E8E8E8",
+                        borderBottom:
+                          i === posts!.length - 1 ? "0.5px solid #E8E8E8" : undefined,
+                      }}
                     >
-                      {p.title}
-                    </h2>
-                    {p.excerpt && (
-                      <p
-                        className="text-[15px] lg:text-[17px]"
-                        style={{ color: "#5E5954", fontWeight: 400, lineHeight: "1.6", maxWidth: "720px" }}
+                      <h2
+                        className="transition-opacity group-hover:opacity-60"
+                        style={{
+                          ...serif,
+                          fontSize: "clamp(23px, 2.9vw, 29px)",
+                          lineHeight: 1.3,
+                        }}
                       >
-                        {p.excerpt}
-                      </p>
-                    )}
-                  </div>
-                </a>
+                        {p.title}
+                      </h2>
+                      {p.excerpt && (
+                        <p style={{ ...muted, fontSize: "15px", marginTop: "12px" }}>
+                          {p.excerpt}
+                        </p>
+                      )}
+                    </div>
+                  </a>
+                </FadeInOnScroll>
               ))}
             </div>
           )}
 
           {!showRecent && !loadFailed && (
-            <p
-              className="text-[15px]"
-              style={{ color: "#5E5954", fontWeight: 400, fontStyle: "italic" }}
-            >
+            <p style={{ ...muted, fontSize: "15px", fontStyle: "italic" }}>
               Loading recent posts.
             </p>
           )}
 
           {loadFailed && (
-            <p
-              className="text-[15px]"
-              style={{ color: "#5E5954", fontWeight: 400, fontStyle: "italic" }}
-            >
+            <p style={{ ...muted, fontSize: "15px", fontStyle: "italic" }}>
               Recent posts are over on Substack.
             </p>
           )}
 
-          <div className="mt-16 lg:mt-20">
+          <FadeInOnScroll>
             <a
               href="https://kennydonnacollective.substack.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[15px] transition-opacity duration-700 hover:opacity-60 uppercase"
-              style={{ color: "#171717", fontWeight: 400, letterSpacing: "0.15em" }}
+              className="transition-opacity hover:opacity-60"
+              style={{ ...linkUnderline, marginTop: "48px" }}
             >
-              &rarr; Read more on Substack
+              Read the Signals &rarr;
             </a>
-          </div>
+          </FadeInOnScroll>
         </div>
       </section>
     </div>

@@ -218,6 +218,7 @@ export default function Home() {
             <img
               src={whyImg}
               className="w-full block"
+              style={{ aspectRatio: "3 / 4", objectFit: "cover" }}
               alt="Styling rack"
             />
           </FadeInOnScroll>

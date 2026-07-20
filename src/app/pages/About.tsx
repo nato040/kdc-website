@@ -1,11 +1,10 @@
 import { FadeInOnScroll } from "../components/FadeInOnScroll";
-import whyImg from "../../imports/KDC_rack_black_web.jpg";
 import founderImg from "../../imports/home-founder-paris.jpg";
 
 /**
- * About — Jul 20 brief: paste-exact Part 2 copy in the homepage formatting
- * register (same type scale, kickers, hairlines, spacing). Homepage copy is
- * canonical; this page mirrors it. Structure: The Why → The Collective → Founder.
+ * About — Jul 20 brief + Cody's notes: The Why section removed.
+ * Founder story first, The Collective below. Paste-exact Part 2 copy in the
+ * homepage formatting register.
  */
 
 const LINKEDIN_URL = "https://www.linkedin.com/company/kenny-donna-collective";
@@ -47,60 +46,8 @@ const linkUnderline: React.CSSProperties = {
 export default function About() {
   return (
     <div style={{ backgroundColor: "#FAFAFA" }}>
-      {/* THE WHY / THE COLLECTIVE — mirrors the homepage section */}
-      <section
-        className={`${sectionPad} mt-32`}
-        style={{ padding: "130px 40px" }}
-      >
-        <div className="max-w-[1120px] mx-auto grid grid-cols-1 md:grid-cols-[440px_1fr] gap-12 md:gap-20 items-start">
-          <FadeInOnScroll>
-            <img src={whyImg} className="w-full block" alt="Styling rack" />
-          </FadeInOnScroll>
-          <FadeInOnScroll>
-            <p style={kicker}>The Why</p>
-            <h1
-              style={{
-                ...serif,
-                fontSize: "clamp(26px, 3.2vw, 33px)",
-                lineHeight: 1.35,
-                marginTop: "22px",
-              }}
-            >
-              Kenny Donna Collective began with a frustration Cody knew from
-              both sides of the table.
-            </h1>
-            <p style={{ ...body, marginTop: "26px" }}>
-              Agencies didn&rsquo;t know the brand well enough to move it.
-              Internal teams knew it intimately but couldn&rsquo;t scale it.
-              Either way, the brand came out fragmented.
-              <br />
-              <br />
-              KDC was built to close that gap.
-            </p>
-            <div style={{ marginTop: "76px" }}>
-              <p style={kicker}>The Collective</p>
-              <h2
-                style={{
-                  ...serif,
-                  fontSize: "clamp(23px, 2.9vw, 29px)",
-                  lineHeight: 1.4,
-                  marginTop: "22px",
-                }}
-              >
-                KDC is not an agency. A small team, built to work as one with
-                founders and the teams they already have.
-              </h2>
-              <p style={{ ...body, marginTop: "22px" }}>
-                A core group, plus a curated network of specialists, aligned
-                under one strategy. Nothing gets handed off, nothing gets lost.
-              </p>
-            </div>
-          </FadeInOnScroll>
-        </div>
-      </section>
-
       {/* FOUNDER — mirrors the homepage section */}
-      <section className={sectionPad} style={{ ...hairline, padding: "130px 40px" }}>
+      <section className={`${sectionPad} mt-32`} style={{ padding: "130px 40px" }}>
         <div className="max-w-[860px] mx-auto grid grid-cols-1 md:grid-cols-[360px_1fr] gap-10 md:gap-16 items-start">
           <FadeInOnScroll>
             <img
@@ -138,6 +85,31 @@ export default function About() {
             >
               Connect on LinkedIn &rarr;
             </a>
+          </FadeInOnScroll>
+        </div>
+      </section>
+
+      {/* THE COLLECTIVE */}
+      <section className={sectionPad} style={{ ...hairline, padding: "130px 40px" }}>
+        <div className="max-w-[860px] mx-auto">
+          <FadeInOnScroll>
+            <p style={kicker}>The Collective</p>
+            <h2
+              style={{
+                ...serif,
+                fontSize: "clamp(23px, 2.9vw, 29px)",
+                lineHeight: 1.4,
+                marginTop: "22px",
+                maxWidth: "720px",
+              }}
+            >
+              KDC is not an agency. A small team, built to work as one with
+              founders and the teams they already have.
+            </h2>
+            <p style={{ ...body, marginTop: "22px", maxWidth: "720px" }}>
+              A core group, plus a curated network of specialists, aligned
+              under one strategy. Nothing gets handed off, nothing gets lost.
+            </p>
           </FadeInOnScroll>
         </div>
       </section>
